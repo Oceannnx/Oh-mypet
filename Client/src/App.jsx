@@ -1,28 +1,20 @@
-import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import { Homepage } from './page/homapage/Homepage'
 import { Login } from './page/login/Login'
 import { SignUp } from './page/signup/SignUp'
-import { Advidence } from './page/advidence/Advidence'
-import { Newadvpost } from './newadvpost/Newadvpost'
-import { Newpetpost } from './newpetpost/Newpetpost'
+import { Navbar } from './components/Navbar/Navbar'
 
 function App() {
-
   return (
     <>
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Homepage/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/signup' element={<SignUp/>}/>
-        <Route path='/advidence' element={<Advidence/>} />
-        <Route path='/newpetpost' element={<Newpetpost/>} />
-        <Route path='/newadvpost' element={<Newadvpost/>} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
-      
     </>
-    )
+  )
 }
-
 
 export default App
