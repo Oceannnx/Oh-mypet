@@ -7,44 +7,48 @@ export const Navbar = () => {
         <Link to="/">
           <div className="btn border-none font-normal mx-10">Home</div>
         </Link>
-        <div className="dropdown dropdown-hover items-center mx-10">
-          <label tabIndex={0} className="m-1 mx-10">
-            Animal
-          </label>
-          <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
-            <li className="hover:bg-slate-400 rounded">
-              <a>Cat</a>
-            </li>
-            <li className="hover:bg-slate-400 rounded">
-              <a>Dog</a>
-            </li>
-            <li className="hover:bg-slate-400 rounded">
-              <a>Birb</a>
-            </li>
-            <li className="hover:bg-slate-400 rounded">
-              <a>Fish</a>
-            </li>
-          </ul>
+        <div className="flex justify-center dropdown dropdown-hover items-center mx-10">
+          <span>
+            <label tabIndex={0} className="m-1 mx-10">
+              Animal
+            </label>
+            <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
+              <li className="hover:bg-slate-400 rounded">
+                <a>Cat</a>
+              </li>
+              <li className="hover:bg-slate-400 rounded">
+                <a>Dog</a>
+              </li>
+              <li className="hover:bg-slate-400 rounded">
+                <a>Birb</a>
+              </li>
+              <li className="hover:bg-slate-400 rounded">
+                <a>Fish</a>
+              </li>
+            </ul>
+          </span>
         </div>
         <Link to="/advidence">
           <div className="btn border-none font-normal px-10">Advidence</div>
         </Link>
-        <div className="dropdown dropdown-hover items-center mx-10">
-          <label tabIndex={0} className="m-1 mx-10">
-            Post
-          </label>
-          <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
-            <Link to="/newpetpost">
-              <li className="hover:bg-slate-400 rounded">
-                <a>Sell</a>
-              </li>
-            </Link>
-            <Link to="/newadvpost">
-              <li className="hover:bg-slate-400 rounded">
-                <a>Advidence</a>
-              </li>
-            </Link>
-          </ul>
+        <div className="flex justify-center dropdown dropdown-hover items-center mx-10">
+          <span>
+            <label tabIndex={0} className="m-1 mx-10">
+              Post
+            </label>
+            <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
+              <Link to="/newpetpost">
+                <li className="hover:bg-slate-400 rounded">
+                  <a>Sell</a>
+                </li>
+              </Link>
+              <Link to="/newadvpost">
+                <li className="hover:bg-slate-400 rounded">
+                  <a>Advidence</a>
+                </li>
+              </Link>
+            </ul>
+          </span>
         </div>
         <Link to="/login">
           <div className="btn ml-10 mr-5 border-solid font-normal w-24">Login</div>
