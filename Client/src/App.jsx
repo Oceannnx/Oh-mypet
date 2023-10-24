@@ -2,12 +2,12 @@ import { Route, Routes } from 'react-router-dom'
 import { Homepage } from './page/homapage/Homepage'
 import { Login } from './page/login/Login'
 import { SignUp } from './page/signup/SignUp'
-import { Navbar } from './components/Navbar/Navbar'
+// import { Navbar } from './components/Navbar/Navbar'
 
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
