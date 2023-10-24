@@ -26,8 +26,8 @@ app.post('/signup', async (req, res) => {
     res.status(200).send({
       message: 'success',
     })
-  } catch {
-    console.log(err)
+  } catch (error) {
+    console.log(error)
   }
 })
 
@@ -39,7 +39,9 @@ app.post('/login', async (req, res) => {
       password,
     }
     await client.db('oh-mypet').collection('user').find(user)
-  } catch {
-    console.log(err)
+
+    res.status(200)
+  } catch (error) {
+    console.log(error)
   }
 })
