@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export const Footer = () => {
   return (
-    <>
+    <footer className="">
       <label>© 2023 Shopee</label>
       <h1>
         Main Menu
@@ -62,6 +62,6 @@ export const Footer = () => {
           </Link>
         </ul>
       </h1>
-    </>
+    </footer>
   )
 }
