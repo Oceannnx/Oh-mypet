@@ -1,15 +1,15 @@
 const express = require('express')
 const { MongoClient } = require('mongodb')
 const cors = require('cors')
+require('dotenv').config()
 
 const app = express()
 const port = 3000
-const uri = 'mongodb+srv://onosannnnt:admin123@cluster0.zx9nnzi.mongodb.net/oh-mypet'
+const url = process.env.DB_URL
 app.use(express.json())
 app.use(cors())
 
-// const client = MongoClient.connect(uri)
-const client = new MongoClient(uri)
+const client = new MongoClient(url)
 
 app.listen(port, () => {
   console.log(`This server running on http:localhost:${port}`)
