@@ -1,36 +1,38 @@
 import { Link } from 'react-router-dom'
+import { Animals } from '../../contents/Navbar/index'
 
 export const Navbar = () => {
   return (
-    <>
-      <div className="bg-slate-200 flex justify-end sticky top-0">
-        <Link to="/">
-          <div className="btn border-none font-normal mx-10">Home</div>
-        </Link>
+    <nav className="flex items-center justify-between bg-slate-200">
+      <div className="mx-12 my-4">
+        <img src="src/assets/Logo.png" alt="Logo" width="96" />
+      </div>
+
+      <div className="flex mx-12">
+        <div className="flex justify-center items-center">
+          <Link to="/" className="px-4 py-2">
+            Home
+          </Link>
+        </div>
         <div className="flex justify-center dropdown dropdown-hover items-center mx-10">
           <span>
             <label tabIndex={0} className="m-1 mx-10">
-              Animal
+              Aniamals
             </label>
             <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
-              <li className="hover:bg-slate-400 rounded">
-                <a>Cat</a>
-              </li>
-              <li className="hover:bg-slate-400 rounded">
-                <a>Dog</a>
-              </li>
-              <li className="hover:bg-slate-400 rounded">
-                <a>Birb</a>
-              </li>
-              <li className="hover:bg-slate-400 rounded">
-                <a>Fish</a>
-              </li>
+              {Animals.map((animal, index) => {
+                return (
+                  <li className="hover:bg-slate-400 rounded" key={animal.label + index}>
+                    <Link to={animal.path}>{animal.label}</Link>
+                  </li>
+                )
+              })}
             </ul>
           </span>
         </div>
-        <Link to="/advidence">
-          <div className="btn border-none font-normal px-10">Advidence</div>
-        </Link>
+        <div className="flex justify-center items-center">
+          <Link to="/advidence">Advidence</Link>
+        </div>
         <div className="flex justify-center dropdown dropdown-hover items-center mx-10">
           <span>
             <label tabIndex={0} className="m-1 mx-10">
@@ -50,14 +52,19 @@ export const Navbar = () => {
             </ul>
           </span>
         </div>
-        <Link to="/login">
-          <div className="btn ml-10 mr-5 border-solid font-normal w-24">Login</div>
-        </Link>
-        <div className="w-1 items-center bg-stone-400"></div>
-        <Link to="/signup">
-          <div className="btn ml-5 mr-10 border-solid font-normal w-24">Sign Up</div>
-        </Link>
+        <div className="grid grid-cols-2 divide-x">
+          <div>
+            <Link to="/login">
+              <div className="btn border-solid font-normal w-24">Login</div>
+            </Link>
+          </div>
+          <div>
+            <Link to="/signup">
+              <div className="btn border-solid font-normal w-24">Sign Up</div>
+            </Link>
+          </div>
+        </div>
       </div>
-    </>
+    </nav>
   )
 }

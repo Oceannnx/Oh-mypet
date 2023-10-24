@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Animals } from '../../contents/Navbar'
 
 export const Footer = () => {
   return (
@@ -10,23 +11,19 @@ export const Footer = () => {
           <Link to="/">
             <li className="cursor-pointer">Main menu</li>
           </Link>
-          <li className="dropdown dropdown-right">
+          <li className="dropdown dropdown-hover items-center">
             <label tabIndex={0} className="m-1 mx-4 cursor-pointer">
               Animal
             </label>
-            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-              <Link>
-                <li>Cat</li>
-              </Link>
-              <Link>
-                <li>Dog</li>
-              </Link>
-              <Link>
-                <li>Birb</li>
-              </Link>
-              <Link>
-                <li>Fish</li>
-              </Link>
+            {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"> */}
+            <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
+              {Animals.map((animal, index) => {
+                return (
+                  <li className="hover:bg-slate-400 rounded" key={animal.label + index}>
+                    <Link to={animal.path}>{animal.label}</Link>
+                  </li>
+                )
+              })}
             </ul>
           </li>
           <Link to="/advidence">

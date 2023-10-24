@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 // import Swal from "sweetalert2";
-import axios from 'axios'
+import { AxiosLib } from '../../lib/axios'
 
 export const SignUp = () => {
   const [register, setRegister] = useState({
@@ -14,15 +14,18 @@ export const SignUp = () => {
     setRegister({ ...register, [e.target.name]: e.target.value })
   }
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault()
     if (register.password === register.confirmPassword) {
       const createNewUser = {
         username: register.username,
         password: register.password,
       }
-      // axios.post('http:localhost:3000', createNewUser)
-      axios.post('http://localhost:3000/signup', createNewUser)
+
+      const result = await AxiosLib.post('/signup', createNewUser)
+
+      if (result.status === 201) return (window.location.href = '/')
+      console.log(result)
     } else {
       console.log('Password is not the same')
     }
