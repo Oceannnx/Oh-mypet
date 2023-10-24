@@ -4,7 +4,7 @@ const cors = require('cors')
 require('dotenv').config()
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const url = process.env.DB_URL
 app.use(express.json())
 app.use(cors())
@@ -23,11 +23,13 @@ app.post('/signup', async (req, res) => {
       password,
     }
     await client.db('oh-mypet').collection('user').insertOne(user)
-    res.status(200).send({
-      message: 'success',
+
+    res.status(201).send({
+      message: 'Sign Up Success',
+      success: true,
     })
   } catch (error) {
-    console.log(error)
+    res.status(500).send({ success: false })
   }
 })
 
@@ -38,7 +40,9 @@ app.post('/login', async (req, res) => {
       username,
       password,
     }
-    await client.db('oh-mypet').collection('user').find(user)
+    const result = await client.db('oh-mypet').collection('user').find(user)
+
+    console.log(result)
 
     res.status(200)
   } catch (error) {
