@@ -3,19 +3,18 @@ import { Animals } from '../../contents/Navbar'
 
 export const Footer = () => {
   return (
-    <footer className="">
-      <label>© 2023 Shopee</label>
-      <h1>
-        Main Menu
+    <footer className="grid grid-cols-[5fr_2fr_2fr_1fr] bg-blue1">
+      <div className="flex items-center">
+        <img src="src/assets/Logo.png" alt="Logo" className="ml-16 w-32 object-cover my-3" />
+      </div>
+
+      <div className="flex my-4 justify-center">
         <ul>
           <Link to="/">
-            <li className="cursor-pointer">Main menu</li>
+            <h1 className="font-bold text-lg">Main menu</h1>
           </Link>
           <li className="dropdown dropdown-hover items-center">
-            <label tabIndex={0} className="m-1 mx-4 cursor-pointer">
-              Animal
-            </label>
-            {/* <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"> */}
+            Animal
             <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
               {Animals.map((animal, index) => {
                 return (
@@ -27,38 +26,27 @@ export const Footer = () => {
             </ul>
           </li>
           <Link to="/advidence">
-            <li className="mx-4">Advidence</li>
+            <li>Advidence</li>
           </Link>
-          <li className="dropdown dropdown-right">
-            <label tabIndex={1} className="m-1">
-              Animal
-            </label>
-            <ul tabIndex={1} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-              <Link to="/newpetpost">
-                <li>Sell</li>
-              </Link>
-              <Link to="/newadvpost">
-                <li>Advidence</li>
-              </Link>
-            </ul>
-          </li>
+          <Link to="/post">
+            <li>Post</li>
+          </Link>
         </ul>
-      </h1>
+      </div>
 
-      <h1>
-        Other
+      <div className="flex my-4 justify-center">
         <ul>
+          <Link to="/help">
+            <h1 className="font-bold text-lg">Help</h1>
+          </Link>
           <Link to="/contact">
             <li>Contact Us</li>
-          </Link>
-          <Link to="/help">
-            <li>Help</li>
           </Link>
           <Link to="/faq">
             <li>FAQ</li>
           </Link>
         </ul>
-      </h1>
+      </div>
     </footer>
   )
 }

@@ -3,7 +3,7 @@ import { Animals } from '../../contents/Navbar/index'
 
 export const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between bg-slate-200">
+    <nav className="flex items-center justify-between bg-blue1">
       <div className="mx-12 my-4">
         <img src="src/assets/Logo.png" alt="Logo" width="96" />
       </div>
