@@ -38,7 +38,7 @@ app.get('/api/user/me', async (req, res) => {
     return res.status(403).send({ message: '', success: false })
   }
 
-  const result = await client.db('oh-mypet').collection('user').findOne({ _id: userID })
+  const result = await client.db('oh-mypet').collection('user').find({ _id: userID })
 
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
