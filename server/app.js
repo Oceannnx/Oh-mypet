@@ -17,7 +17,6 @@ const cookieConfig = {
   httpOnly: true,
   secure: true,
   maxAge: 24 * 60 * 3600,
-  signed: true,
 }
 
 const client = new MongoClient(url)
@@ -87,7 +86,7 @@ app.post('/login', async (req, res) => {
       })
     }
     const result = await client.db('oh-mypet').collection('user').findOne({ username: username })
-    console.log(result._id.toString())
+
     if (result !== null && !bcrypt.compare(password, result.password)) {
       return res.status(401).send({
         message: 'Login Failed',
