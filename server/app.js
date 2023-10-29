@@ -2,18 +2,49 @@ const express = require('express')
 const { MongoClient } = require('mongodb')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
 const app = express()
 const port = process.env.PORT || 3000
 const url = process.env.DB_URL
+
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors())
+
+const cookieConfig = {
+  httpOnly: true,
+  secure: true,
+  maxAge: 24 * 60 * 3600,
+  signed: true,
+}
 
 const client = new MongoClient(url)
 
 app.listen(port, () => {
   console.log(`This server running on http:localhost:${port}`)
+})
+
+app.get('/', (req, res) => {
+  res.send({
+    message: 'Oh-MYPET',
+  })
+})
+
+app.get('/api/user/me', async (req, res) => {
+  const userID = req.headers['userID']
+
+  if (userID === null || userID === '') {
+    return res.status(403).send({ message: '', success: false })
+  }
+
+  const result = await client.db('oh-mypet').collection('user').findOne({ _id: userID })
+
+  if (result === null) {
+    return res.status(403).send({ message: '', success: false })
+  }
+  return res.status(200).send({ message: '', success: true })
 })
 
 app.post('/signup', async (req, res) => {
@@ -69,6 +100,7 @@ app.post('/login', async (req, res) => {
         success: false,
       })
     }
+    res.cookie('userID', result._id.toString(), cookieConfig)
 
     return res.status(200).send({
       message: 'Login Success',

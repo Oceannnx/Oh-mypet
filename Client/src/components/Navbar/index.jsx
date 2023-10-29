@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Animals } from '../../contents/Navbar/index'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/user'
 
 export const Navbar = () => {
+  const auth = useContext(AuthContext)
+
+  const IsLogin = auth?.authContext.IsLogin || false
+
   return (
     <nav className="flex items-center justify-between bg-blue1">
       <div className="mx-12 my-4">
@@ -53,16 +59,26 @@ export const Navbar = () => {
           </span>
         </div>
         <div className="grid grid-cols-2 divide-x">
-          <div>
-            <Link to="/login">
-              <div className="btn border-solid font-normal w-24">Login</div>
-            </Link>
-          </div>
-          <div>
-            <Link to="/signup">
-              <div className="btn border-solid font-normal w-24">Sign Up</div>
-            </Link>
-          </div>
+          {IsLogin ? (
+            <>
+              <div>
+                <button className="btn border-solid font-normal w-24">Logout</button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <Link to="/login">
+                  <div className="btn border-solid font-normal w-24">Login</div>
+                </Link>
+              </div>
+              <div>
+                <Link to="/signup">
+                  <div className="btn border-solid font-normal w-24">Sign Up</div>
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </nav>
