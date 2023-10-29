@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-// import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 import { AxiosLib } from '../../lib/axios'
 
 export const SignUp = () => {
@@ -15,19 +15,24 @@ export const SignUp = () => {
   }
 
   const handleRegister = async (e) => {
-    e.preventDefault()
-    if (register.password === register.confirmPassword) {
-      const createNewUser = {
-        username: register.username,
-        password: register.password,
+    try {
+      e.preventDefault()
+      if (register.password === register.confirmPassword) {
+        const createNewUser = {
+          username: register.username,
+          password: register.password,
+        }
+
+        const result = await AxiosLib.post('/signup', createNewUser)
+
+        if (result.status === 201) return (window.location.href = '/')
+      } else {
+        Swal.fire('Error', 'Password not match', 'error')
       }
-
-      const result = await AxiosLib.post('/signup', createNewUser)
-
-      if (result.status === 201) return (window.location.href = '/')
-      console.log(result)
-    } else {
-      console.log('Password is not the same')
+    } catch (error) {
+      // console.log(error.response.status)
+      if (error.response.status === 400 || error.response.status === 500 || error.response.status === 409)
+        return Swal.fire('Error', error.response.data.message, 'error')
     }
   }
 

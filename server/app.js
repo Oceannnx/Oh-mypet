@@ -1,6 +1,7 @@
 const express = require('express')
 const { MongoClient } = require('mongodb')
 const cors = require('cors')
+const bcrypt = require('bcrypt')
 require('dotenv').config()
 
 const app = express()
@@ -18,33 +19,62 @@ app.listen(port, () => {
 app.post('/signup', async (req, res) => {
   try {
     const { username, password } = req.body
+    if (username === '' || password === '') {
+      return res.status(400).send({
+        message: 'Enter Username and Password',
+        success: false,
+      })
+    }
     const user = {
       username,
-      password,
+      password: await bcrypt.hash(password, 3),
     }
     await client.db('oh-mypet').collection('user').insertOne(user)
 
-    res.status(201).send({
+    return res.status(201).send({
       message: 'Sign Up Success',
       success: true,
+      cookie: 'user',
     })
   } catch (error) {
-    res.status(500).send({ success: false })
+    if (error.code === 11000) {
+      return res.status(409).send({
+        message: 'Username Already Exists',
+        success: false,
+      })
+    }
+    return res.status(500).send({ success: false })
   }
 })
 
 app.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body
-    const user = {
-      username,
-      password,
+    if (username === '' || password === '') {
+      return res.status(400).send({
+        message: 'Bad Request',
+        success: false,
+      })
     }
-    const result = await client.db('oh-mypet').collection('user').find(user)
+    const result = await client.db('oh-mypet').collection('user').findOne({ username: username })
 
-    console.log(result)
+    if (result !== null && !bcrypt.compare(password, result.password)) {
+      return res.status(401).send({
+        message: 'Login Failed',
+        success: false,
+      })
+    } else if (result === null) {
+      return res.status(404).send({
+        message: 'User Not Found',
+        success: false,
+      })
+    }
 
-    res.status(200)
+    return res.status(200).send({
+      message: 'Login Success',
+      success: true,
+      cookie: 'user',
+    })
   } catch (error) {
     console.log(error)
   }
