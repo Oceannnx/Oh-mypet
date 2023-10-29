@@ -2,11 +2,21 @@ import { Link } from 'react-router-dom'
 import { Animals } from '../../contents/Navbar/index'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/user'
+import { AxiosLib } from '../../lib/axios'
 
 export const Navbar = () => {
   const auth = useContext(AuthContext)
 
   const IsLogin = auth?.authContext.IsLogin || false
+
+  const HandleLogout = async () => {
+    try {
+      const result = await AxiosLib.post('/api/user/logout')
+      if (result.status === 200) return window.location.href('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <nav className="flex items-center justify-between bg-blue1">
@@ -62,7 +72,9 @@ export const Navbar = () => {
           {IsLogin ? (
             <>
               <div>
-                <button className="btn border-solid font-normal w-24">Logout</button>
+                <button className="btn border-solid font-normal w-24" onClick={HandleLogout}>
+                  Logout
+                </button>
               </div>
             </>
           ) : (
