@@ -11,7 +11,7 @@ const url = process.env.DB_URL
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 
 const cookieConfig = {
   httpOnly: true,
@@ -98,6 +98,7 @@ app.post('/login', async (req, res) => {
         success: false,
       })
     }
+
     res.cookie('userID', result._id.toString(), cookieConfig)
 
     return res.status(200).send({
