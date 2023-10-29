@@ -3,11 +3,17 @@ import { Footer } from '../../components/Footer'
 export const Homepage = () => {
   return (
     <>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dolorum sed alias explicabo maiores aliquid
-        molestiae accusantium doloribus possimus laborum quidem, a voluptas laboriosam dicta nulla rerum commodi
-        delectus dolor.
-      </p>
+      <div className="">
+        <div>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod maxime obcaecati, quasi dolor aliquam provident
+          itaque, amet, maiores harum soluta debitis non dolore eum error tempore porro ad. Quam, voluptatum?
+        </div>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae soluta laudantium, commodi at asperiores
+          quam voluptates ab veritatis minus, aliquid enim fuga eos odit! Cupiditate optio similique adipisci veniam
+          aperiam!
+        </div>
+      </div>
       <Footer />
     </>
   )

@@ -23,7 +23,7 @@ const cookieConfig = {
 const client = new MongoClient(url)
 
 app.listen(port, () => {
-  console.log(`This server running on http:localhost:${port}`)
+  console.log(`Server is running on port ${port}`)
 })
 
 app.get('/', (req, res) => {
@@ -65,7 +65,6 @@ app.post('/signup', async (req, res) => {
     return res.status(201).send({
       message: 'Sign Up Success',
       success: true,
-      cookie: 'user',
     })
   } catch (error) {
     if (error.code === 11000) {
@@ -88,7 +87,7 @@ app.post('/login', async (req, res) => {
       })
     }
     const result = await client.db('oh-mypet').collection('user').findOne({ username: username })
-
+    console.log(result._id.toString())
     if (result !== null && !bcrypt.compare(password, result.password)) {
       return res.status(401).send({
         message: 'Login Failed',
@@ -105,9 +104,8 @@ app.post('/login', async (req, res) => {
     return res.status(200).send({
       message: 'Login Success',
       success: true,
-      cookie: 'user',
     })
   } catch (error) {
-    console.log(error)
+    return res.status(500).send({ success: false })
   }
 })
