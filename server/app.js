@@ -1,5 +1,5 @@
 const express = require('express')
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
 const cookieParser = require('cookie-parser')
@@ -38,7 +38,10 @@ app.get('/api/user/me', async (req, res) => {
     return res.status(403).send({ message: '', success: false })
   }
 
-  const result = await client.db('oh-mypet').collection('user').find({ _id: userID })
+  const result = await client
+    .db('oh-mypet')
+    .collection('user')
+    .find({ _id: new ObjectId(userID) })
 
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
