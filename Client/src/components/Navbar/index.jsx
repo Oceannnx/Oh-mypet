@@ -3,16 +3,18 @@ import { Animals } from '../../contents/Navbar/index'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/user'
 import { AxiosLib } from '../../lib/axios'
+import { useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
   const auth = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const IsLogin = auth?.authContext.IsLogin || false
 
   const HandleLogout = async () => {
     try {
       const result = await AxiosLib.post('/api/user/logout')
-      if (result.status === 200) return window.location.href('/')
+      if (result.status === 200) return navigate(0)
     } catch (error) {
       console.log(error)
     }

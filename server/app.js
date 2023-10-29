@@ -41,7 +41,8 @@ app.get('/api/user/me', async (req, res) => {
   const result = await client
     .db('oh-mypet')
     .collection('user')
-    .find({ _id: new ObjectId(userID) })
+    .findOne({ _id: new ObjectId(userID) })
+  console.log(result)
 
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
