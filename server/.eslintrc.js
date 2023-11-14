@@ -23,5 +23,6 @@ module.exports = {
     'no-console': 'warn',
     'require-await': 'error',
     'no-warning-comments': 'warn',
+    'no-useless-escape': 'error',
   },
 }

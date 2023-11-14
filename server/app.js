@@ -42,7 +42,6 @@ app.get('/api/user/me', async (req, res) => {
     .db('oh-mypet')
     .collection('user')
     .findOne({ _id: new ObjectId(userID) })
-  console.log(result)
 
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
@@ -52,15 +51,16 @@ app.get('/api/user/me', async (req, res) => {
 
 app.post('/signup', async (req, res) => {
   try {
-    const { username, password } = req.body
-    if (username === '' || password === '') {
+    const { email, password } = req.body
+    console.log(email)
+    if (email === '' || password === '') {
       return res.status(400).send({
-        message: 'Enter Username and Password',
+        message: 'Enter email and Password',
         success: false,
       })
     }
     const user = {
-      username,
+      email,
       password: await bcrypt.hash(password, 3),
     }
     await client.db('oh-mypet').collection('user').insertOne(user)
@@ -71,8 +71,9 @@ app.post('/signup', async (req, res) => {
     })
   } catch (error) {
     if (error.code === 11000) {
+      console.log(error)
       return res.status(409).send({
-        message: 'Username Already Exists',
+        message: 'Email Already Exists',
         success: false,
       })
     }
@@ -82,15 +83,14 @@ app.post('/signup', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   try {
-    const { username, password } = req.body
-    if (username === '' || password === '') {
+    const { email, password } = req.body
+    if (email === '' || password === '') {
       return res.status(400).send({
         message: 'Bad Request',
         success: false,
       })
     }
-    const result = await client.db('oh-mypet').collection('user').findOne({ username: username })
-
+    const result = await client.db('oh-mypet').collection('user').findOne({ email: email })
     if (result !== null && !bcrypt.compare(password, result.password)) {
       return res.status(401).send({
         message: 'Login Failed',
