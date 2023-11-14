@@ -13,7 +13,7 @@ export const Footer = () => {
           <Link to="/">
             <h1 className="font-bold text-lg">Main menu</h1>
           </Link>
-          <li className="dropdown dropdown-hover items-center">
+          <li className="dropdown dropdown-right dropdown-hover items-center">
             Animal
             <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
               {Animals.map((animal, index) => {

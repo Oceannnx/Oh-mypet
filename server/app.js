@@ -22,7 +22,7 @@ const cookieConfig = {
 const client = new MongoClient(url)
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
+  console.log(`Server is running`)
 })
 
 app.get('/', (req, res) => {
@@ -52,7 +52,6 @@ app.get('/api/user/me', async (req, res) => {
 app.post('/signup', async (req, res) => {
   try {
     const { email, password } = req.body
-    console.log(email)
     if (email === '' || password === '') {
       return res.status(400).send({
         message: 'Enter email and Password',
@@ -71,7 +70,6 @@ app.post('/signup', async (req, res) => {
     })
   } catch (error) {
     if (error.code === 11000) {
-      console.log(error)
       return res.status(409).send({
         message: 'Email Already Exists',
         success: false,
@@ -124,3 +122,28 @@ app.post('/api/user/logout', (req, res) => {
   res.status(200).clearCookie('userID')
   return res.end()
 })
+
+app.post('/api/newsellpost', async (req, res) => {
+  try {
+    const { petType, petGene, petAge, petName, petGender, petBD, petPrice, petImages, petDescription } = req.body
+    await client.db('oh-mypet').collection('sellPost').insertOne({
+      petType,
+      petGene,
+      petAge,
+      petName,
+      petGender,
+      petBD,
+      petPrice,
+      petImages,
+      petDescription,
+    })
+    return res.status(201).send({
+      message: 'New sell Success',
+      success: true,
+    })
+  } catch (error) {
+    return res.status(500).send({ success: false })
+  }
+})
+
+// supabase password "ZriXNxs6PFojh1yI"

@@ -57,7 +57,7 @@ export const Navbar = () => {
               Post
             </label>
             <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
-              <Link to="/newpetpost">
+              <Link to="/newsellpost">
                 <li className="hover:bg-slate-400 rounded">
                   <a>Sell</a>
                 </li>
