@@ -12,6 +12,7 @@ export const NewSellPost = () => {
     window.location.href = '/login'
   }
   const [post, setPet] = useState({
+    title: '',
     petType: '',
     petGene: '',
     petAge: '',
@@ -19,15 +20,17 @@ export const NewSellPost = () => {
     petGender: '',
     petBD: '',
     petPrice: '',
+    petLocation: '',
     petImages: '',
     petDescription: '',
   })
   const handleChange = (e) => {
     setPet({ ...post, [e.target.name]: e.target.value })
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (
+      post.title === '' ||
       post.petType === '' ||
       post.petGene === '' ||
       post.petAge === '' ||
@@ -35,16 +38,17 @@ export const NewSellPost = () => {
       post.petGender === '' ||
       post.petBD === '' ||
       post.petPrice === '' ||
+      post.petLocation === '' ||
       post.petImages === '' ||
       post.petDescription === ''
     ) {
       return Swal.fire('Error', 'Please fill all the information', 'error')
-    } //random post id with require 30 character url number and charecter
-    else {
+    } else {
       try {
-        AxiosLib.post('/api/newsellpost', post)
-        if (post.status === 201) {
+        const result = await AxiosLib.post('/api/newsellpost', post)
+        if (result.status === 201) {
           Swal.fire('Success', 'Post has been created', 'success')
+          setTimeout('', 1500)
           window.location.href = '/'
         }
       } catch (error) {
@@ -61,6 +65,8 @@ export const NewSellPost = () => {
           className="border-solid bg-rose-50 flex justify-center items-center h-52 flex-col"
         >
           <div>
+            <label htmlFor="title">Title</label>
+            <input type="text" placeholder="Title" id="title" name="title" />
             <label htmlFor="petType">Type</label>
             <input type="text" placeholder="Type" id="petType" name="petType" />
             <label htmlFor="petGene">Gene</label>
@@ -86,6 +92,8 @@ export const NewSellPost = () => {
             <input type="date" placeholder="Date of Birth" id="petBD" name="petBD" />
             <label htmlFor="petPrice">Price</label>
             <input className="text-center" type="number" min="0" placeholder="Price" id="petPrice" name="petPrice" />
+            <label htmlFor="petName">Location</label>
+            <input type="text" placeholder="Location" id="petLocation" name="petLocation" />
           </div>
           <div>
             <label htmlFor="petImages">Images</label>

@@ -16,7 +16,7 @@ app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 const cookieConfig = {
   httpOnly: true,
   secure: true,
-  maxAge: 24 * 60 * 3600,
+  maxAge: 7 * 24 * 60 * 3600,
 }
 
 const client = new MongoClient(url)
@@ -51,7 +51,7 @@ app.get('/api/user/me', async (req, res) => {
 
 app.post('/signup', async (req, res) => {
   try {
-    const { email, password } = req.body
+    const { email, fName, lName, password } = req.body
     if (email === '' || password === '') {
       return res.status(400).send({
         message: 'Enter email and Password',
@@ -60,6 +60,8 @@ app.post('/signup', async (req, res) => {
     }
     const user = {
       email,
+      fName,
+      lName,
       password: await bcrypt.hash(password, 3),
     }
     await client.db('oh-mypet').collection('user').insertOne(user)
@@ -125,8 +127,9 @@ app.post('/api/user/logout', (req, res) => {
 
 app.post('/api/newsellpost', async (req, res) => {
   try {
-    const { petType, petGene, petAge, petName, petGender, petBD, petPrice, petImages, petDescription } = req.body
-    await client.db('oh-mypet').collection('sellPost').insertOne({
+    const {
+      title,
+      petLocation,
       petType,
       petGene,
       petAge,
@@ -136,7 +139,25 @@ app.post('/api/newsellpost', async (req, res) => {
       petPrice,
       petImages,
       petDescription,
-    })
+    } = req.body
+    await client
+      .db('oh-mypet')
+      .collection('sellPost')
+      .insertOne({
+        userID: new ObjectId(req.cookies.userID),
+        title,
+        petType,
+        petGene,
+        petAge,
+        petName,
+        petGender,
+        petBD,
+        petPrice,
+        petLocation,
+        petImages,
+        petDescription,
+        petPostDate: new Date(Date.now()),
+      })
     return res.status(201).send({
       message: 'New sell Success',
       success: true,
@@ -146,17 +167,26 @@ app.post('/api/newsellpost', async (req, res) => {
   }
 })
 
-app.get('api/getPost', async (req, res) => {
+app.get('/api/fetchsellpost', async (req, res) => {
   try {
-    const result = await client.db('oh-mypet').collection('sellPost').find({}).toArray()
-    return res.status(200).send({
-      message: 'Get Post Success',
-      success: true,
-      result: result,
-    })
+    const result = await client
+      .db('oh-mypet')
+      .collection('sellPost')
+      .aggregate([
+        {
+          $lookup: {
+            from: 'user',
+            localField: 'userID',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+      ])
+      .sort({ petPostdate: -1 })
+      .toArray()
+    return res.status(200).send(result)
   } catch (error) {
     return res.status(500).send({ success: false })
   }
 })
-
 // supabase password "ZriXNxs6PFojh1yI"

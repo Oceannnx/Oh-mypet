@@ -74,7 +74,7 @@ export const Navbar = () => {
           {IsLogin ? (
             <>
               <div>
-                <button className="btn border-solid font-normal w-24" onClick={HandleLogout}>
+                <button className="btn border-solid font-normal w-24 hover:bg-[#FFFDF3]" onClick={HandleLogout}>
                   Logout
                 </button>
               </div>

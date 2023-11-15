@@ -2,10 +2,19 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
 import { AxiosLib } from '../../lib/axios'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/user'
 
 export const SignUp = () => {
+  const auth = useContext(AuthContext)
+  const IsLogin = auth?.authContext.IsLogin || false
+  if (!IsLogin) {
+    window.location.href = '/'
+  }
   const [register, setRegister] = useState({
     email: '',
+    fName: '',
+    lName: '',
     password: '',
     confirmPassword: '',
   })
@@ -39,6 +48,8 @@ export const SignUp = () => {
       if (register.password === register.confirmPassword) {
         const createNewUser = {
           email: register.email,
+          fName: register.fName,
+          lName: register.lName,
           password: register.password,
         }
 
@@ -57,10 +68,15 @@ export const SignUp = () => {
 
   return (
     <>
-      <form onSubmit={handleRegister} className="bg-rose-50 grid-cols-2">
+      <form onSubmit={handleRegister} className="bg-[#FFFDF3] grid-cols-2">
         <h1 className="">Sign Up</h1>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" placeholder="email" name="email" onChange={handleChange} />
+
+        <label htmlFor="fName">FirstName</label>
+        <input type="text" id="fName" placeholder="FirstName" name="fName" onChange={handleChange} />
+        <label htmlFor="lName">LastName</label>
+        <input type="text" id="lName" placeholder="LastName" name="lName" onChange={handleChange} />
 
         <label htmlFor="password">Password</label>
         <input type="password" id="password" placeholder="password" name="password" onChange={handleChange} />

@@ -2,8 +2,16 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AxiosLib } from '../../lib/axios'
 import Swal from 'sweetalert2'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/user'
 
 export const Login = () => {
+  const auth = useContext(AuthContext)
+  const IsLogin = auth?.authContext.IsLogin || false
+  if (!IsLogin) {
+    window.location.href = '/'
+  }
+
   const [login, setLogin] = useState({
     email: '',
     password: '',
@@ -53,13 +61,9 @@ export const Login = () => {
             className="rounded-md border-2 border-gray-400 border-solid h-10 w-80 px-2 ml-2"
           />
         </div>
-        <Link to="/forgotpassword" className="text-blue-900 hover:text-blue-700 py-2  ">
-          Forgot Password?
-        </Link>
-
-        {/* <Link to="/signup" className="text-blue-900 hover:text-blue-700">
+        <Link to="/signup" className="text-blue-900 hover:text-blue-700">
           New to Ohmypet ?
-        </Link> */}
+        </Link>
         <input type="submit" className="btn bg-[#8ECDDD]" />
       </form>
     </>
