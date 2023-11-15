@@ -28,40 +28,39 @@ export const Login = () => {
 
   return (
     <>
-      <form className="border-solid bg-rose-50 flex justify-center items-center h-52 flex-col" onSubmit={handlesubmit}>
-        <h1>Login</h1>
-        <div className="flex ">
-          <label className="select-none" htmlFor="email">
-            Email
-          </label>
+      <form className=" bg-[#FFFDF3] flex justify-center items-center py-5  flex-col" onSubmit={handlesubmit}>
+        <h1 className="text-blue-900 text-xl">เข้าสู่ระบบ</h1>
+        <div className="py-2">
+          <img src="src/assets/Logo.png" alt="Logo" width="200" />
+          <h1 className="flex justify-center py-2 text-blue-900 ">OH-MYPET</h1>
+          <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
+        </div>
+        <div className="flex py-5 ">
           <input
             type="email"
             id="email"
             placeholder="Email"
             name="email"
-            className="focus:border-none focus:outline-none focus:ring w-1/4 mr-2 ml-2 mb-2 mt-2 h-10 rounded-md border-2 border-gray-400 border-solid "
+            className="h-10 w-80 rounded-md border-2 border-gray-400 border-solid px-2 "
             onChange={handleChange}
           />
-
-          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
             placeholder="Password"
             name="password"
             onChange={handleChange}
-            className="focus:border-none focus:outline-none focus:ring ring w-1/4 mr-2 ml-2 mb-2 mt-2 h-10 rounded-md border-2 border-gray-400 border-solid"
+            className="rounded-md border-2 border-gray-400 border-solid h-10 w-80 px-2 ml-2"
           />
         </div>
-        <Link to="/forgotpassword" className="text-blue-900 hover:text-blue-700">
+        <Link to="/forgotpassword" className="text-blue-900 hover:text-blue-700 py-2  ">
           Forgot Password?
         </Link>
 
-        <Link to="/signup" className="text-blue-900 hover:text-blue-700">
+        {/* <Link to="/signup" className="text-blue-900 hover:text-blue-700">
           New to Ohmypet ?
-        </Link>
-
-        <input type="submit" className="btn" />
+        </Link> */}
+        <input type="submit" className="btn bg-[#8ECDDD]" />
       </form>
     </>
   )

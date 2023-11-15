@@ -37,10 +37,10 @@ export const Navbar = () => {
             <label tabIndex={0} className="m-1 mx-10">
               Aniamals
             </label>
-            <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
+            <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
               {Animals.map((animal, index) => {
                 return (
-                  <li className="hover:bg-slate-400 rounded" key={animal.label + index}>
+                  <li className="hover:bg-slate-400 rounded " key={animal.label + index}>
                     <Link to={animal.path}>{animal.label}</Link>
                   </li>
                 )
@@ -56,7 +56,7 @@ export const Navbar = () => {
             <label tabIndex={0} className="m-1 mx-10">
               Post
             </label>
-            <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
+            <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
               <Link to="/newsellpost">
                 <li className="hover:bg-slate-400 rounded">
                   <a>Sell</a>
@@ -83,12 +83,12 @@ export const Navbar = () => {
             <>
               <div>
                 <Link to="/login">
-                  <div className="btn border-solid font-normal w-24">Login</div>
+                  <div className="btn border-solid font-normal w-24 hover:bg-[#FFFDF3]">Login</div>
                 </Link>
               </div>
               <div>
                 <Link to="/signup">
-                  <div className="btn border-solid font-normal w-24">Sign Up</div>
+                  <div className="btn border-solid font-normal w-24 ml-4 hover:bg-[#FFFDF3]">Sign Up</div>
                 </Link>
               </div>
             </>
