@@ -146,4 +146,13 @@ app.post('/api/newsellpost', async (req, res) => {
   }
 })
 
+app.get('api/getPost', async (req, res) => {
+  try {
+    const result = await client.db('oh-mypet').collection('sellPost').find().toArray()
+    res.send(result)
+  } catch (error) {
+    return res.status(500).send({ success: false })
+  }
+})
+
 // supabase password "ZriXNxs6PFojh1yI"
