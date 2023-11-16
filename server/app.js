@@ -3,7 +3,6 @@ const { MongoClient, ObjectId } = require('mongodb')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
 const cookieParser = require('cookie-parser')
-const e = require('express')
 require('dotenv').config()
 
 const app = express()
@@ -17,7 +16,7 @@ app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 const cookieConfig = {
   httpOnly: true,
   secure: true,
-  maxAge: 7 * 24 * 60 * 3600,
+  maxAge: 24 * 60 * 3600 * 1000,
 }
 
 const client = new MongoClient(url)
@@ -192,12 +191,14 @@ app.get('/api/fetchsellpost', async (req, res) => {
             petName: 1,
             petPostDate: 1,
             petPrice: 1,
+            petLocation: 1,
             'user.fName': 1,
             'user.lName': 1,
           },
         },
       ])
-      .sort({ petPostdate: -1 })
+      .sort({ petPostDate: -1 })
+      .limit(2)
       .toArray()
     return res.send(result)
     // return res.status(200).send(result)
@@ -213,9 +214,7 @@ app.get('/api/sellpost/:id', async (req, res) => {
       .collection('sellPost')
       .aggregate([
         {
-          $match: {
-            _id: ObjectId(req.params.id),
-          },
+          $match: { $expr: { $eq: ['$_id', { $toObjectId: req.params.id }] } },
         },
         {
           $lookup: {
@@ -226,11 +225,13 @@ app.get('/api/sellpost/:id', async (req, res) => {
           },
         },
         {
-          $unwind: '$user',
+          $unwind: { path: '$user', preserveNullAndEmptyArrays: true },
         },
         {
           $project: {
-            _id: 1,
+            'user._id': 0,
+            'user.email': 0,
+            'user.password': 0,
           },
         },
       ])

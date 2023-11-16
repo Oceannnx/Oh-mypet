@@ -23,7 +23,9 @@ export const Navbar = () => {
   return (
     <nav className="flex items-center justify-between bg-blue1">
       <div className="mx-12 my-4">
-        <img src="src/assets/Logo.png" alt="Logo" width="96" />
+        <Link to="/">
+          <img src="src/assets/Logo.png" alt="Logo" width="96" />
+        </Link>
       </div>
 
       <div className="flex mx-12">
