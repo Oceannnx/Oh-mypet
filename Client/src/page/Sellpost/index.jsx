@@ -34,7 +34,7 @@ export const Sellpost = () => {
           <div>{sellpost[0].petDescription}</div>
           <div>{sellpost[0].petGender}</div>
           <div>{sellpost[0].petGene}</div>
-          <div>{sellpost[0].petImages}</div>
+          <img src={sellpost[0].petImages}></img>
           <div>{sellpost[0].petLocation}</div>
           <div>{sellpost[0].petName}</div>
           <div>{postDate.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
