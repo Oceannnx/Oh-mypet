@@ -21,13 +21,13 @@ export const Homepage = () => {
     <>
       <div className="flex">
         {posts.map((post, index) => {
-          // console.log(parseInt((Date.now() - Date.parse(post.petPostdate)) / 1000 / 60))
+          console.log(post)
           return (
             <Post
               key={index}
-              email={post.user[0].email}
-              fName={post.user[0].fName}
-              lName={post.user[0].lName}
+              email={post.user.email}
+              fName={post.user.fName}
+              lName={post.user.lName}
               title={post.title}
               price={post.petPrice}
               location={post.petLocation}

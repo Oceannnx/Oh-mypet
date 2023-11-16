@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/user'
 export const Login = () => {
   const auth = useContext(AuthContext)
   const IsLogin = auth?.authContext.IsLogin || false
-  if (!IsLogin) {
+  if (IsLogin) {
     window.location.href = '/'
   }
 

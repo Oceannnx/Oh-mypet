@@ -1,5 +1,9 @@
 import React from 'react'
 
 export const Sellpost = () => {
-  return <></>
+  return (
+    <>
+      <div></div>
+    </>
+  )
 }

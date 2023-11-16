@@ -3,6 +3,7 @@ const { MongoClient, ObjectId } = require('mongodb')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
 const cookieParser = require('cookie-parser')
+const e = require('express')
 require('dotenv').config()
 
 const app = express()
@@ -181,11 +182,61 @@ app.get('/api/fetchsellpost', async (req, res) => {
             as: 'user',
           },
         },
+        {
+          $unwind: '$user',
+        },
+        {
+          $project: {
+            title: 1,
+            petType: 1,
+            petName: 1,
+            petPostDate: 1,
+            petPrice: 1,
+            'user.fName': 1,
+            'user.lName': 1,
+          },
+        },
       ])
       .sort({ petPostdate: -1 })
       .toArray()
-    return res.status(200).send(result)
+    return res.send(result)
+    // return res.status(200).send(result)
   } catch (error) {
+    return res.status(500).send({ success: false })
+  }
+})
+
+app.get('/api/sellpost/:id', async (req, res) => {
+  try {
+    const result = await client
+      .db('oh-mypet')
+      .collection('sellPost')
+      .aggregate([
+        {
+          $match: {
+            _id: ObjectId(req.params.id),
+          },
+        },
+        {
+          $lookup: {
+            from: 'user',
+            localField: 'userID',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+        {
+          $unwind: '$user',
+        },
+        {
+          $project: {
+            _id: 1,
+          },
+        },
+      ])
+      .toArray()
+    return res.send(result)
+  } catch (err) {
     return res.status(500).send({ success: false })
   }
 })
