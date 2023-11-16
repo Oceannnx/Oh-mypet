@@ -36,7 +36,7 @@ export const Login = () => {
 
   return (
     <>
-      <form className=" bg-[#FFFDF3] flex justify-center items-center py-5  flex-col" onSubmit={handlesubmit}>
+      <form className="h-screen bg-[#FFFDF3] flex justify-center items-center py-5  flex-col" onSubmit={handlesubmit}>
         <h1 className="text-blue-900 text-xl">เข้าสู่ระบบ</h1>
         <div className="py-2">
           <img src="src/assets/Logo.png" alt="Logo" width="200" />
