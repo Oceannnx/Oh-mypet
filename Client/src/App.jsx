@@ -39,8 +39,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/newsellpost" element={<NewSellPost />} />
-          <Route path="/sellpost/:id" element={<Sellpost />} />
-          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/sellpost/:postId" element={<Sellpost />} />
+          <Route path="/account/:id" element={<Profile />} />
         </Routes>
       </AuthContext.Provider>
     </>

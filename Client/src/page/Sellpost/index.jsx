@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { AxiosLib } from '../../lib/axios'
 import { Footer } from '../../components/Footer'
+import { useParams } from 'react-router-dom'
 
 export const Sellpost = () => {
   const [sellpost, setSellpost] = useState({})
-  const postId = window.location.pathname.split('/')[2]
+  const { postId } = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const fetchSellpost = async () => {
     try {

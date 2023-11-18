@@ -63,6 +63,7 @@ app.post('/signup', async (req, res) => {
       fName,
       lName,
       password: await bcrypt.hash(password, 3),
+      petPostDate: new Date(),
     }
     await client.db('oh-mypet').collection('user').insertOne(user)
 
@@ -198,7 +199,7 @@ app.get('/api/fetchsellpost', async (req, res) => {
         },
       ])
       .sort({ petPostDate: -1 })
-      .limit(2)
+      .limit(40)
       .toArray()
     return res.send(result)
     // return res.status(200).send(result)
@@ -243,22 +244,84 @@ app.get('/api/sellpost/:id', async (req, res) => {
 })
 
 app.get('/api/navAccount/', async (req, res) => {
-  const result = await client
-    .db('oh-mypet')
-    .collection('user')
-    .aggregate([
-      {
-        $match: { $expr: { $eq: ['$_id', { $toObjectId: req.cookies.userID }] } },
-      },
-      {
-        $project: {
-          email: 0,
-          lName: 0,
-          password: 0,
+  try {
+    const result = await client
+      .db('oh-mypet')
+      .collection('user')
+      .aggregate([
+        {
+          $match: { $expr: { $eq: ['$_id', { $toObjectId: req.cookies.userID }] } },
         },
-      },
-    ])
-    .toArray()
-  return res.send(result)
+        {
+          $project: {
+            email: 0,
+            lName: 0,
+            password: 0,
+          },
+        },
+      ])
+      .toArray()
+    return res.send(result)
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})
+
+app.get('/api/account/:id', async (req, res) => {
+  try {
+    const result = await client
+      .db('oh-mypet')
+      .collection('user')
+      .aggregate([
+        {
+          $match: { $expr: { $eq: ['$_id', { $toObjectId: req.cookies.userID }] } },
+        },
+        {
+          $project: {
+            _id: 0,
+            password: 0,
+          },
+        },
+      ])
+      .toArray()
+    return res.send(result)
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
 })
 // supabase password "ZriXNxs6PFojh1yI"
+app.get('/api/fetchMySellPost/:id', async (req, res) => {
+  try {
+    const result = await client
+      .db('oh-mypet')
+      .collection('sellPost')
+      .aggregate([
+        {
+          $match: { userID: new ObjectId(req.cookies.userID) },
+        },
+        {
+          $lookup: {
+            from: 'user',
+            localField: 'userID',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+        {
+          $unwind: '$user',
+        },
+        {
+          $project: {
+            'user._id': 0,
+            'user.email': 0,
+            'user.password': 0,
+          },
+        },
+      ])
+      .sort({ petPostDate: -1 })
+      .toArray()
+    return res.send(result)
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})
