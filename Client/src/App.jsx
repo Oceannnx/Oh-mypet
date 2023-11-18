@@ -6,6 +6,7 @@ import { SignUp } from './page/SignUp'
 import { Navbar } from './components/Navbar'
 import { NewSellPost } from './page/NewSellPost'
 import { Sellpost } from './page/Sellpost'
+import { Profile } from './page/Profile'
 import { AxiosLib } from './lib/axios'
 import { AuthContext, ContextValue } from './context/user'
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/newsellpost" element={<NewSellPost />} />
           <Route path="/sellpost/:id" element={<Sellpost />} />
+          <Route path="/profile/:id" element={<Profile />} />
         </Routes>
       </AuthContext.Provider>
     </>

@@ -26,7 +26,8 @@ export const Login = () => {
     const result = await AxiosLib.post('/login', { email: login.email, password: login.password })
     try {
       if (result.status === 200) return (window.location.href = '/')
-      else if (result.status === 401) return Swal.fire('Error', 'Email or Password is incorrect', 'error')
+      else if (result.status === 401 || result.status === 404)
+        return Swal.fire('Error', 'Email or Password is incorrect', 'error')
     } catch (error) {
       if (error.response.status === 400 || error.response.status === 500 || error.response.status === 409) {
         return Swal.fire('Error', error.response.data.message, 'error')

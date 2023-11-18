@@ -90,8 +90,9 @@ app.post('/login', async (req, res) => {
         success: false,
       })
     }
+
     const result = await client.db('oh-mypet').collection('user').findOne({ email: email })
-    if (result !== null && !bcrypt.compare(password, result.password)) {
+    if (result !== null && !(await bcrypt.compare(password, result.password))) {
       return res.status(401).send({
         message: 'Login Failed',
         success: false,
@@ -104,7 +105,6 @@ app.post('/login', async (req, res) => {
     }
 
     res.cookie('userID', result._id.toString(), cookieConfig)
-
     return res.status(200).send({
       message: 'Login Success',
       success: true,
@@ -240,5 +240,25 @@ app.get('/api/sellpost/:id', async (req, res) => {
   } catch (err) {
     return res.status(500).send({ success: false })
   }
+})
+
+app.get('/api/navAccount/', async (req, res) => {
+  const result = await client
+    .db('oh-mypet')
+    .collection('user')
+    .aggregate([
+      {
+        $match: { $expr: { $eq: ['$_id', { $toObjectId: req.cookies.userID }] } },
+      },
+      {
+        $project: {
+          email: 0,
+          lName: 0,
+          password: 0,
+        },
+      },
+    ])
+    .toArray()
+  return res.send(result)
 })
 // supabase password "ZriXNxs6PFojh1yI"

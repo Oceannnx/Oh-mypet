@@ -68,7 +68,16 @@ export const NewSellPost = () => {
             <label htmlFor="title">Title</label>
             <input type="text" placeholder="Title" id="title" name="title" />
             <label htmlFor="petType">Type</label>
-            <input type="text" placeholder="Type" id="petType" name="petType" />
+            <select name="petType" id="petType">
+              <option disabled selected hidden>
+                Type
+              </option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="bird">Bird</option>
+              <option value="fish">Fish</option>
+              <option value="other">Other</option>
+            </select>
             <label htmlFor="petGene">Gene</label>
             <input type="text" placeholder="Gene" id="petGene" name="petGene" />
             <label htmlFor="petAge">Age</label>
