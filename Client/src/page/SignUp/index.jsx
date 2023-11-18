@@ -68,32 +68,83 @@ export const SignUp = () => {
 
   return (
     <>
-      <form onSubmit={handleRegister} className="bg-[#FFFDF3] grid-cols-2">
-        <h1 className="">Sign Up</h1>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" placeholder="email" name="email" onChange={handleChange} />
+      <form onSubmit={handleRegister} className="h-screen bg-[#FFFDF3] ">
+        <div className="border-2 border-[#FFFDF3]  ">
+          <div className="grid grid-cols-2 py-5">
+            <div className="flex justify-center items-center flex-col">
+              <img src="src/assets/Logo.png" alt="Logo" width="200" />
+              <h1 className="flex justify-center py-2 text-blue-900 text-xl">OH-MYPET</h1>
+              <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
+            </div>
+            <div className="border-2 bg-[#8ECDDD] border-[#8ECDDD] mr-5 ">
+              <div className="items-center">
+                <h1 className="flex justify-center text-blue-900 text-lg">Sign Up</h1>
+                <div className="flex justify-center items-center flex-col">
+                  <label htmlFor="fName" className="py-3 ">
+                    FirstName
+                  </label>
+                  <input
+                    type="text"
+                    id="fName"
+                    placeholder="FirstName"
+                    name="fName"
+                    onChange={handleChange}
+                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                  />
+                  <label htmlFor="lName" className="py-1">
+                    LastName
+                  </label>
+                  <input
+                    type="text"
+                    id="lName"
+                    placeholder="LastName"
+                    name="lName"
+                    onChange={handleChange}
+                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                  />
+                  <label htmlFor="email" className="py-1">
+                    Email
+                  </label>
+                  <input
+                    type="Email"
+                    id="Email"
+                    placeholder="Email"
+                    name="Email"
+                    onChange={handleChange}
+                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2 "
+                  />
+                  <label htmlFor="password" className="py-1">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="Password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={handleChange}
+                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                  />
 
-        <label htmlFor="fName">FirstName</label>
-        <input type="text" id="fName" placeholder="FirstName" name="fName" onChange={handleChange} />
-        <label htmlFor="lName">LastName</label>
-        <input type="text" id="lName" placeholder="LastName" name="lName" onChange={handleChange} />
-
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" placeholder="password" name="password" onChange={handleChange} />
-
-        <label htmlFor="confirmpassword">Confirm Password</label>
-        <input
-          type="password"
-          id="confirmpassword"
-          placeholder="confirm password"
-          name="confirmPassword"
-          onChange={handleChange}
-        />
-
-        <Link to="/login" className="text-blue-900 hover:text-blue-700">
-          Already have account?
-        </Link>
-        <input type="Submit" className="btn" name="submit-btn"></input>
+                  <label htmlFor="confirmpassword" className="py-1">
+                    Confirm Password
+                  </label>
+                  <input
+                    type="password"
+                    id="confirmpassword"
+                    placeholder="Confirm password"
+                    name="confirmPassword"
+                    onChange={handleChange}
+                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                  />
+                  <Link to="/login" className="text-blue-900 hover:text-blue-700 py-1">
+                    Already have account?
+                  </Link>
+                  <input type="Submit" className="btn  bg-[#FFFDF3] py-1 my-2" name="submit-btn"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </>
   )

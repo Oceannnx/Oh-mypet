@@ -36,9 +36,9 @@ export const Login = () => {
 
   return (
     <>
-      <form className="h-screen bg-[#FFFDF3] flex justify-center items-center py-5  flex-col" onSubmit={handlesubmit}>
-        <h1 className="text-blue-900 text-xl">เข้าสู่ระบบ</h1>
-        <div className="py-2">
+      <form className="h-screen bg-[#8ECDDD] flex justify-center items-center flex-col" onSubmit={handlesubmit}>
+        <h1 className="text-blue-900 text-xl py-5">เข้าสู่ระบบ</h1>
+        <div className="py-5">
           <img src="src/assets/Logo.png" alt="Logo" width="200" />
           <h1 className="flex justify-center py-2 text-blue-900 ">OH-MYPET</h1>
           <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
@@ -61,10 +61,10 @@ export const Login = () => {
             className="rounded-md border-2 border-gray-400 border-solid h-10 w-80 px-2 ml-2"
           />
         </div>
-        <Link to="/signup" className="text-blue-900 hover:text-blue-700">
-          New to Ohmypet ?
+        <Link to="/signup" className="text-blue-900 hover:text-blue-700 py-5">
+          New to OH-MYPET ?
         </Link>
-        <input type="submit" className="btn bg-[#8ECDDD]" />
+        <input type="submit" className="btn bg-[#FFFDF3] hover:bg-[#8ECDDD]" />
       </form>
     </>
   )
