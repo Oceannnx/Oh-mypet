@@ -241,4 +241,24 @@ app.get('/api/sellpost/:id', async (req, res) => {
     return res.status(500).send({ success: false })
   }
 })
+
+app.get('/api/navAccount/', async (req, res) => {
+  const result = await client
+    .db('oh-mypet')
+    .collection('user')
+    .aggregate([
+      {
+        $match: { $expr: { $eq: ['$_id', { $toObjectId: req.cookies.userID }] } },
+      },
+      {
+        $project: {
+          email: 0,
+          lName: 0,
+          password: 0,
+        },
+      },
+    ])
+    .toArray()
+  return res.send(result)
+})
 // supabase password "ZriXNxs6PFojh1yI"

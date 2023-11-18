@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Animals } from '../../contents/Navbar/index'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/user'
 import { AxiosLib } from '../../lib/axios'
 import { useNavigate } from 'react-router-dom'
@@ -10,6 +10,7 @@ export const Navbar = () => {
   const navigate = useNavigate()
 
   const IsLogin = auth?.authContext.IsLogin || false
+  const [account, setAccount] = useState([])
 
   const HandleLogout = async () => {
     try {
@@ -20,6 +21,19 @@ export const Navbar = () => {
     }
   }
 
+  const fetchAccount = async () => {
+    try {
+      if (IsLogin) {
+        const result = await AxiosLib.get('/api/navAccount')
+        setAccount(result.data[0])
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    fetchAccount()
+  })
   return (
     <nav className="flex items-center justify-between bg-blue1">
       <div className="mx-12 my-4">
@@ -75,6 +89,11 @@ export const Navbar = () => {
         <div className="grid grid-cols-2 divide-x">
           {IsLogin ? (
             <>
+              <div className="flex justify-center items-center">
+                <Link to={'/account/' + account._id}>
+                  <div className="border-solid font-normal underline w-24  hover:text-[#FFFDF3]">{account.fName}</div>
+                </Link>
+              </div>
               <div>
                 <button className="btn border-solid font-normal w-24 hover:bg-[#FFFDF3]" onClick={HandleLogout}>
                   Logout
