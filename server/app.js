@@ -279,7 +279,6 @@ app.get('/api/account/:id', async (req, res) => {
         {
           $project: {
             _id: 0,
-            password: 0,
           },
         },
       ])
@@ -289,7 +288,7 @@ app.get('/api/account/:id', async (req, res) => {
     res.status(500).send({ success: false })
   }
 })
-// supabase password "ZriXNxs6PFojh1yI"
+
 app.get('/api/fetchMySellPost/:id', async (req, res) => {
   try {
     const result = await client
@@ -325,3 +324,4 @@ app.get('/api/fetchMySellPost/:id', async (req, res) => {
     res.status(500).send({ success: false })
   }
 })
+// supabase password "ZriXNxs6PFojh1yI"

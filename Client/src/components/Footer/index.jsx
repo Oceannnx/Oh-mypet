@@ -7,7 +7,6 @@ export const Footer = () => {
       <div className="flex items-center">
         <img src="src/assets/Logo.png" alt="Logo" className="ml-16 w-32 object-cover my-3" />
       </div>
-
       <div className="flex my-4 justify-center">
         <ul>
           <Link to="/">
@@ -36,9 +35,7 @@ export const Footer = () => {
 
       <div className="flex my-4 justify-center">
         <ul>
-          <Link to="/help">
-            <h1 className="font-bold text-lg">Help</h1>
-          </Link>
+          <h1 className="font-bold text-lg">Help</h1>
           <Link to="/contact">
             <li>Contact Us</li>
           </Link>
@@ -47,6 +44,7 @@ export const Footer = () => {
           </Link>
         </ul>
       </div>
+      <div> Oh-mypet copyright © 2023</div>
     </footer>
   )
 }

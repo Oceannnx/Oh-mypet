@@ -7,6 +7,12 @@ import { Post } from '../../components/post'
 
 export const Profile = () => {
   const [account, setAccount] = useState([])
+  const [password, setPassword] = useState([
+    {
+      newPassword: '',
+      confirmPassword: '',
+    },
+  ])
   const { accounId } = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const [posts, setPosts] = useState([])
@@ -17,6 +23,19 @@ export const Profile = () => {
     } catch (error) {
       console.log(error)
     }
+  }
+  const handleOnAccountChange = (e) => {
+    setAccount({ ...account, [e.target.name]: e.target.value })
+    console.log(account)
+  }
+  const handleOnPasswordChange = (e) => {
+    setPassword({ ...password, [e.target.name]: e.target.value })
+  }
+  const onSubmitAccout = async (e) => {
+    await e.preventDefault()
+  }
+  const OnSubmitPassword = async (e) => {
+    await e.preventDefault()
   }
   const fetchMySellPost = async () => {
     try {
@@ -32,7 +51,7 @@ export const Profile = () => {
     fetchMySellPost()
   }, [])
   // console.log(account)
-  console.log(posts)
+  console.log(account)
   return (
     <>
       {isLoading ? (
@@ -41,13 +60,49 @@ export const Profile = () => {
         </div>
       ) : (
         <div>
-          <div>
+          <form onSubmit={onSubmitAccout}>
             <img src="src/assets/Logo.png"></img>
-            <div>{account.email}</div>
-            <div>{account.fName}</div>
-            <div>{account.lName}</div>
+            <div>
+              <div>Email</div>
+              <input
+                type="email"
+                name="email"
+                onChange={handleOnAccountChange}
+                placeholder="Email"
+                value={account.email}
+              ></input>
+            </div>
+            <div>
+              <div>FirstName</div>
+              <input
+                type="text"
+                name="fName"
+                onChange={handleOnAccountChange}
+                placeholder="First name"
+                value={account.fName}
+              ></input>
+            </div>
+            <div>
+              <div>LastName</div>
+              <input
+                type="text"
+                name="lName"
+                onChange={handleOnAccountChange}
+                placeholder="Last name"
+                value={account.lName}
+              ></input>
+              <input type="submit" value="Confirm Edit"></input>
+            </div>
+            <div>Edit</div>
+          </form>
+          <form onSubmit={OnSubmitPassword}>
+            <div>Password</div>
+            <input type="password" name="currentPassword"></input>
+            <input type="password" name="newPassword" onChange={handleOnPasswordChange}></input>
+            <input type="password" name="confirmPassword" onChange={handleOnPasswordChange}></input>
+            <input type="submit" value="Change Password"></input>
             <div></div>
-          </div>
+          </form>
           <div className="flex">
             {posts.map((post, index) => {
               return (
