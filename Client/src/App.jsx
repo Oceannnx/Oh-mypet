@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Homepage } from './page/Homepage'
 import { Login } from './page/Login'
 import { SignUp } from './page/SignUp'
+import { FAQ } from './page/FAQ'
 import { Navbar } from './components/Navbar'
 import { NewSellPost } from './page/NewSellPost'
 import { Sellpost } from './page/Sellpost'
@@ -41,6 +42,7 @@ function App() {
           <Route path="/newsellpost" element={<NewSellPost />} />
           <Route path="/sellpost/:postId" element={<Sellpost />} />
           <Route path="/account/:id" element={<Profile />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </AuthContext.Provider>
     </>
