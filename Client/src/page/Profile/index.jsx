@@ -63,10 +63,11 @@ export const Profile = () => {
         return Swal.fire('Error', 'Password must contain at least one lowercase', 'error')
       else if (!password.password.match(specialCharacter)) {
         return Swal.fire('Error', 'Password must contain at least one special character', 'error')
-      }
-      const result = await AxiosLib.post('/api/changePassword', password)
-      if (result.status === 200) {
-        Swal.fire('Success', 'Edit password success', 'success')
+      } else {
+        const result = await AxiosLib.post('/api/changePassword', password)
+        if (result.status === 200) {
+          Swal.fire('Success', 'Edit password success', 'success')
+        }
       }
     } catch (error) {
       if (error.response.status === 400) {
