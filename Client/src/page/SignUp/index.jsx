@@ -76,70 +76,62 @@ export const SignUp = () => {
               <h1 className="flex justify-center py-2 text-blue-900 text-xl">OH-MYPET</h1>
               <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
             </div>
-            <div className="border-2 bg-[#8ECDDD] border-[#8ECDDD] mr-5 ">
-              <div className="items-center">
+            <div className="border-2 bg-[#FFFDF3] border-[#FFFDF3] mr-5 ">
+              <div className="items-center py-3 border bg-[#8ECDDD] mr-10 ml-10 my-5">
                 <h1 className="flex justify-center text-blue-900 text-lg">Sign Up</h1>
-                <div className="flex justify-center items-center flex-col">
-                  <label htmlFor="fName" className="py-3 ">
-                    FirstName
-                  </label>
-                  <input
-                    type="text"
-                    id="fName"
-                    placeholder="FirstName"
-                    name="fName"
-                    onChange={handleChange}
-                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
-                  />
-                  <label htmlFor="lName" className="py-1">
-                    LastName
-                  </label>
-                  <input
-                    type="text"
-                    id="lName"
-                    placeholder="LastName"
-                    name="lName"
-                    onChange={handleChange}
-                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
-                  />
-                  <label htmlFor="email" className="py-1">
-                    Email
-                  </label>
-                  <input
-                    type="Email"
-                    id="Email"
-                    placeholder="Email"
-                    name="Email"
-                    onChange={handleChange}
-                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2 "
-                  />
-                  <label htmlFor="password" className="py-1">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    id="Password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={handleChange}
-                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
-                  />
+                <div className="">
+                  <div className="flex justify-center items-center flex-col">
+                    <label htmlFor="fName" className="py-3"></label>
+                    <input
+                      type="text"
+                      id="fName"
+                      placeholder="FirstName"
+                      name="fName"
+                      onChange={handleChange}
+                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                    />
+                    <label htmlFor="lName" className="py-3"></label>
+                    <input
+                      type="text"
+                      id="lName"
+                      placeholder="LastName"
+                      name="lName"
+                      onChange={handleChange}
+                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                    />
+                    <label htmlFor="email" className="py-3"></label>
+                    <input
+                      type="Email"
+                      id="Email"
+                      placeholder="Email"
+                      name="Email"
+                      onChange={handleChange}
+                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2 "
+                    />
+                    <label htmlFor="password" className="py-3"></label>
+                    <input
+                      type="password"
+                      id="Password"
+                      placeholder="Password"
+                      name="password"
+                      onChange={handleChange}
+                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                    />
 
-                  <label htmlFor="confirmpassword" className="py-1">
-                    Confirm Password
-                  </label>
-                  <input
-                    type="password"
-                    id="confirmpassword"
-                    placeholder="Confirm password"
-                    name="confirmPassword"
-                    onChange={handleChange}
-                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
-                  />
-                  <Link to="/login" className="text-blue-900 hover:text-blue-700 py-1">
-                    Already have account?
-                  </Link>
-                  <input type="Submit" className="btn  bg-[#FFFDF3] py-1 my-2" name="submit-btn"></input>
+                    <label htmlFor="confirmpassword" className="py-3"></label>
+                    <input
+                      type="password"
+                      id="confirmpassword"
+                      placeholder="Confirm password"
+                      name="confirmPassword"
+                      onChange={handleChange}
+                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                    />
+                    <Link to="/login" className="text-blue-900 hover:text-blue-700 py-1">
+                      Already have account?
+                    </Link>
+                    <input type="Submit" className="btn  bg-[#FFFDF3] py-1 my-2" name="submit-btn"></input>
+                  </div>
                 </div>
               </div>
             </div>
