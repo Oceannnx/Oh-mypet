@@ -49,7 +49,7 @@ export const Login = () => {
               <div className="items-center py-5 border bg-[#8ECDDD] mr-10 ml-10 my-5">
                 <h1 className="flex justify-center text-blue-900 text-lg">เข้าสู่ระบบ</h1>
                 <div className="flex justify-center items-center flex-col ">
-                  <label htmlFor="fName" className="py-3 "></label>
+                  <label htmlFor="fName" className="py-1"></label>
                   {/* <input
                     type="text"
                     id="fName"
