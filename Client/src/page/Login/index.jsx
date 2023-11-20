@@ -23,14 +23,27 @@ export const Login = () => {
 
   const handlesubmit = async (e) => {
     e.preventDefault()
-    const result = await AxiosLib.post('/login', { email: login.email, password: login.password })
     try {
-      if (result.status === 200) return (window.location.href = '/')
-      else if (result.status === 401 || result.status === 404)
-        return Swal.fire('Error', 'Email or Password is incorrect', 'error')
+      const result = await AxiosLib.post('/login', { email: login.email, password: login.password })
+      if (result.status === 200) {
+        window.location.href = '/'
+      } else {
+        Swal.fire('Error', 'Unexpected status code: ' + result.status, 'error')
+      }
     } catch (error) {
-      if (error.response.status === 400 || error.response.status === 500 || error.response.status === 409) {
-        return Swal.fire('Error', error.response.data.message, 'error')
+      if (error.response) {
+        if (
+          error.response.status === 400 ||
+          error.response.status === 401 ||
+          error.response.status === 404 ||
+          error.response.status === 409
+        ) {
+          Swal.fire('Error', error.response.data.message, 'error')
+        } else {
+          Swal.fire('Error', 'Server Error', 'error')
+        }
+      } else {
+        Swal.fire('Error', 'An error occurred', 'error')
       }
     }
   }
@@ -44,6 +57,7 @@ export const Login = () => {
           <h1 className="flex justify-center py-2 text-blue-900 ">OH-MYPET</h1>
           <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
         </div>
+
         <div className="flex py-5 ">
           <input
             type="email"

@@ -46,6 +46,7 @@ app.get('/api/user/me', async (req, res) => {
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
   }
+  // return res.status(200).send({ message: '', success: true })
   return res.status(200).send({ message: '', success: true })
 })
 
@@ -63,7 +64,6 @@ app.post('/signup', async (req, res) => {
       fName,
       lName,
       password: await bcrypt.hash(password, 3),
-      petPostDate: new Date(),
     }
     await client.db('oh-mypet').collection('user').insertOne(user)
 
@@ -95,12 +95,12 @@ app.post('/login', async (req, res) => {
     const result = await client.db('oh-mypet').collection('user').findOne({ email: email })
     if (result !== null && !(await bcrypt.compare(password, result.password))) {
       return res.status(401).send({
-        message: 'Login Failed',
+        message: 'Email or Password is incorrect',
         success: false,
       })
     } else if (result === null) {
       return res.status(404).send({
-        message: 'User Not Found',
+        message: 'Email or Password is incorrect',
         success: false,
       })
     }
@@ -199,7 +199,7 @@ app.get('/api/fetchsellpost', async (req, res) => {
         },
       ])
       .sort({ petPostDate: -1 })
-      .limit(40)
+      .limit(100)
       .toArray()
     return res.send(result)
     // return res.status(200).send(result)
@@ -274,7 +274,7 @@ app.get('/api/account/:id', async (req, res) => {
       .collection('user')
       .aggregate([
         {
-          $match: { $expr: { $eq: ['$_id', { $toObjectId: req.cookies.userID }] } },
+          $match: { $expr: { $eq: ['$_id', { $toObjectId: req.params.id }] } },
         },
         {
           $project: {
@@ -296,7 +296,8 @@ app.get('/api/fetchMySellPost/:id', async (req, res) => {
       .collection('sellPost')
       .aggregate([
         {
-          $match: { userID: new ObjectId(req.cookies.userID) },
+          $match: { userID: new ObjectId(req.params.id) },
+          // $match: { $expr: { $eq: ['userID', { $toObjectId: req.params.id }] } },
         },
         {
           $lookup: {
@@ -323,5 +324,69 @@ app.get('/api/fetchMySellPost/:id', async (req, res) => {
   } catch (error) {
     res.status(500).send({ success: false })
   }
+})
+
+app.post('/api/editAccount', async (req, res) => {
+  try {
+    const result = await client
+      .db('oh-mypet')
+      .collection('user')
+      .aggregate([
+        {
+          $match: { _id: new ObjectId(req.cookies.userID) },
+        },
+        {
+          $project: {
+            email: 1,
+            _id: 0,
+          },
+        },
+      ])
+      .toArray()
+    if (result !== null) {
+      return res.status(400).send({ message: 'Email Already Exists', success: false })
+    } else if (req.cookies.userID === null || req.cookies.userID === '') {
+      return res.status(403).send({ message: '', success: false })
+    }
+
+    const { fName, lName, email } = req.body
+    await client
+      .db('oh-mypet')
+      .collection('user')
+      .updateOne(
+        { _id: new ObjectId(req.cookies.userID) },
+        {
+          $set: {
+            fName,
+            lName,
+            email,
+          },
+        },
+      )
+    return res.status(200).send({ success: true })
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})
+
+app.post('/api/changePassword', async (req, res) => {
+  const { currentPassword, newPassword } = req.body
+  if (currentPassword === '' || newPassword === '') {
+    return res.status(400).send({ message: 'Bad Request', success: false })
+  } else if (currentPassword === newPassword) {
+    return res.status(400).send({ message: 'New password must be different from current password', success: false })
+  }
+  await client
+    .db('oh-mypet')
+    .collection('user')
+    .updateOne(
+      { _id: new ObjectId(req.cookies.userID) },
+      {
+        $set: {
+          password: await bcrypt.hash(newPassword, 3),
+        },
+      },
+    )
+  res.status(200).send({ success: true })
 })
 // supabase password "ZriXNxs6PFojh1yI"

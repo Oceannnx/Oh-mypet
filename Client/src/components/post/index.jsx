@@ -35,7 +35,7 @@ export const Post = (props) => {
 
   return (
     <>
-      <div className="m-10 p-4 border-2 w-96 h-96" onClick={handleOnClick}>
+      <div className="m-10 p-4 border-2 w-96 h-96 min-w-0 " onClick={handleOnClick}>
         <h1 className="font-bold text-lg">{fName + ' ' + lName}</h1>
         <div className="font-thin">{date}</div>
         <img className="mt-4" src="src\assets\Testimg.png" />

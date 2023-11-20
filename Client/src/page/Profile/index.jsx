@@ -4,21 +4,24 @@ import { AxiosLib } from '../../lib/axios'
 import { useState } from 'react'
 import { Footer } from '../../components/Footer'
 import { Post } from '../../components/post'
+import Swal from 'sweetalert2'
 
 export const Profile = () => {
   const [account, setAccount] = useState([])
   const [password, setPassword] = useState([
     {
+      currentPassword: '',
       newPassword: '',
       confirmPassword: '',
     },
   ])
-  const { accounId } = useParams()
+  const accounId = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const [posts, setPosts] = useState([])
+
   const fetchAccount = async () => {
     try {
-      const result = await AxiosLib.get('/api/account/:' + accounId)
+      const result = await AxiosLib.get(`/api/account/${accounId.id}`)
       setAccount(result.data[0])
     } catch (error) {
       console.log(error)
@@ -26,20 +29,55 @@ export const Profile = () => {
   }
   const handleOnAccountChange = (e) => {
     setAccount({ ...account, [e.target.name]: e.target.value })
-    console.log(account)
   }
   const handleOnPasswordChange = (e) => {
     setPassword({ ...password, [e.target.name]: e.target.value })
   }
-  const onSubmitAccout = async (e) => {
-    await e.preventDefault()
+  const onSubmitAccount = async (e) => {
+    e.preventDefault()
+    try {
+      const result = await AxiosLib.post('/api/editAccount', account)
+      if (result.status === 200) {
+        Swal.fire('Success', 'Edit account success', 'success')
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        Swal.fire('Error', 'Email already exist', 'error')
+      }
+    }
   }
   const OnSubmitPassword = async (e) => {
-    await e.preventDefault()
+    try {
+      e.preventDefault()
+      const number = /[0-9]/g
+      const upperCase = /[A-Z]/g
+      const lowerCase = /[a-z]/g
+      const specialCharacter = /(?=.*\W)/g
+      if (password.password.length < 8) return Swal.fire('Error', 'Password must be at least 8 characters', 'error')
+      else if (password.password.includes(' ')) return Swal.fire('Error', 'Password cannot contain space', 'error')
+      else if (!password.password.match(number))
+        return Swal.fire('Error', 'Password must contain at least one number', 'error')
+      else if (!password.password.match(upperCase))
+        return Swal.fire('Error', 'Password must contain at least one uppercase', 'error')
+      else if (!password.password.match(lowerCase))
+        return Swal.fire('Error', 'Password must contain at least one lowercase', 'error')
+      else if (!password.password.match(specialCharacter)) {
+        return Swal.fire('Error', 'Password must contain at least one special character', 'error')
+      }
+      const result = await AxiosLib.post('/api/changePassword', password)
+      if (result.status === 200) {
+        Swal.fire('Success', 'Edit password success', 'success')
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        Swal.fire('Error', 'Password not match', 'error')
+      }
+    }
   }
+
   const fetchMySellPost = async () => {
     try {
-      const result = await AxiosLib.get(`/api/fetchMySellPost/${accounId}`)
+      const result = await AxiosLib.get(`/api/fetchMySellPost/${accounId.id}`)
       setPosts(result.data)
       setIsLoading(false)
     } catch (error) {
@@ -50,8 +88,7 @@ export const Profile = () => {
     fetchAccount()
     fetchMySellPost()
   }, [])
-  // console.log(account)
-  console.log(account)
+
   return (
     <>
       {isLoading ? (
@@ -60,7 +97,7 @@ export const Profile = () => {
         </div>
       ) : (
         <div>
-          <form onSubmit={onSubmitAccout}>
+          <form onSubmit={onSubmitAccount}>
             <img src="src/assets/Logo.png"></img>
             <div>
               <div>Email</div>
@@ -93,17 +130,17 @@ export const Profile = () => {
               ></input>
               <input type="submit" value="Confirm Edit"></input>
             </div>
-            <div>Edit</div>
           </form>
+
           <form onSubmit={OnSubmitPassword}>
             <div>Password</div>
             <input type="password" name="currentPassword"></input>
             <input type="password" name="newPassword" onChange={handleOnPasswordChange}></input>
             <input type="password" name="confirmPassword" onChange={handleOnPasswordChange}></input>
             <input type="submit" value="Change Password"></input>
-            <div></div>
           </form>
-          <div className="flex">
+
+          <div className="grid grid grid-cols-4">
             {posts.map((post, index) => {
               return (
                 <div key={index}>

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import Swal from 'sweetalert2'
 import { AxiosLib } from '../../lib/axios'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/user'
+import Swal from 'sweetalert2'
 
 export const SignUp = () => {
   const auth = useContext(AuthContext)
@@ -54,13 +54,11 @@ export const SignUp = () => {
         }
 
         const result = await AxiosLib.post('/signup', createNewUser)
-
         if (result.status === 201) return (window.location.href = '/login')
       } else {
         Swal.fire('Error', 'Password not match', 'error')
       }
     } catch (error) {
-      // console.log(error.response.status)
       if (error.response.status === 400 || error.response.status === 500 || error.response.status === 409)
         return Swal.fire('Error', error.response.data.message, 'error')
     }
@@ -107,9 +105,9 @@ export const SignUp = () => {
                   </label>
                   <input
                     type="Email"
-                    id="Email"
+                    id="email"
                     placeholder="Email"
-                    name="Email"
+                    name="email"
                     onChange={handleChange}
                     className="border-2 border-gray-400 border-solid h-10 w-80 px-2 "
                   />

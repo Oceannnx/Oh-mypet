@@ -6,6 +6,7 @@ import { AxiosLib } from '../../lib/axios'
 import { useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
+  const logo = 'src/assets/Logo.png'
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -38,7 +39,7 @@ export const Navbar = () => {
     <nav className="flex items-center justify-between bg-blue1">
       <div className="mx-12 my-4">
         <Link to="/">
-          <img src="src/assets/Logo.png" alt="Logo" width="96" />
+          <img src={logo} alt="Logo" width="96" />
         </Link>
       </div>
 
@@ -50,10 +51,8 @@ export const Navbar = () => {
         </div>
         <div className="flex justify-center dropdown dropdown-hover items-center mx-10">
           <span>
-            <label tabIndex={0} className="m-1 mx-10">
-              Aniamals
-            </label>
-            <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
+            <label className="m-1 mx-10">Aniamals</label>
+            <ul className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
               {Animals.map((animal, index) => {
                 return (
                   <li className="hover:bg-slate-400 rounded " key={animal.label + index}>
