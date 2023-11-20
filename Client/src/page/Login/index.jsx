@@ -62,8 +62,13 @@ export const Login = () => {
               <div className="items-center py-5 border bg-[#8ECDDD] mr-10 ml-10 my-5">
                 <h1 className="flex justify-center text-blue-900 text-lg">เข้าสู่ระบบ</h1>
                 <div className="flex justify-center items-center flex-col ">
+<<<<<<< HEAD
                   <label htmlFor="fName" className="py-3 "></label>
                   <input
+=======
+                  <label htmlFor="fName" className="py-1"></label>
+                  { <input
+>>>>>>> d0d6d3a83db665054752b589dd474f24a8a9a03a
                     type="text"
                     id="fName"
                     placeholder="FirstName"
