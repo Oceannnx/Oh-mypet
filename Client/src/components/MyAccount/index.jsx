@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { AxiosLib } from '../../lib/axios'
+import Swal from 'sweetalert2'
 
 export const MyAccount = (props) => {
   const { accountID } = props || ''
@@ -18,8 +19,18 @@ export const MyAccount = (props) => {
   const handleSubmitAccount = async (e) => {
     e.preventDefault()
     try {
-      await AxiosLib.post(`/api/editAccount`, account)
-      window.location.reload()
+      const result = await AxiosLib.post(`/api/editAccount`, account)
+      if (result.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Edit Account Success',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+        setTimeout(() => {
+          window.location.reload()
+        }, 1500)
+      }
     } catch (error) {
       console.log(error)
     }

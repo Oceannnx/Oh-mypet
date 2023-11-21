@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import parse from 'html-react-parser'
 
 export const FAQBox = (props) => {
   const { label, content } = props || { label: '', content: '' }
@@ -21,7 +22,7 @@ export const FAQBox = (props) => {
             )}
           </button>
         </div>
-        {toggle ? <div className="px-4 mb-4">{content}</div> : <></>}
+        {toggle ? <div className="px-4 mb-4">{parse(content)}</div> : <></>}
       </div>
     </section>
   )
