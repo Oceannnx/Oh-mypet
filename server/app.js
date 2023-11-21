@@ -196,6 +196,7 @@ app.get('/api/fetchsellpost', async (req, res) => {
             petLocation: 1,
             'user.fName': 1,
             'user.lName': 1,
+            'user._id': 1,
           },
         },
       ])
@@ -397,4 +398,13 @@ app.post('/api/changePassword', async (req, res) => {
     )
   res.status(200).send({ success: true })
 })
+
+app.post('/api/CheckOwner/:accountID', (req, res) => {
+  if (req.cookies.userID === req.params.accountID) {
+    return res.send({ owner: true })
+  } else {
+    return res.send({ owner: false })
+  }
+})
+
 // supabase password "ZriXNxs6PFojh1yI"

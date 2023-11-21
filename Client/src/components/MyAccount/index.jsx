@@ -5,6 +5,16 @@ import Swal from 'sweetalert2'
 export const MyAccount = (props) => {
   const { accountID } = props || ''
   const [account, setAccount] = React.useState({})
+  const [isOwner, setIsOwner] = React.useState(false)
+
+  const checkOwner = async () => {
+    try {
+      const result = await AxiosLib.post(`/api/checkOwner/${accountID}`)
+      setIsOwner(result.data.owner)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const fetchAccount = async () => {
     try {
       const result = await AxiosLib.get(`/api/account/${accountID}`)
@@ -37,19 +47,41 @@ export const MyAccount = (props) => {
   }
   useEffect(() => {
     fetchAccount()
+    checkOwner()
   }, [])
-  console.log(account)
   return (
     <>
-      <form onSubmit={handleSubmitAccount}>
-        <div> FirstName : </div>
-        <input name="fName" onChange={handleChangeAccount} type="text" value={account.fName} placeholder="First Name" />
-        <div> LastName : </div>
-        <input name="lName" onChange={handleChangeAccount} type="text" value={account.lName} placeholder="Last Name" />
-        <div> Email : </div>
-        <input name="email" onChange={handleChangeAccount} type="email" value={account.email} />
-        <input type="submit" value="Edit" />
-      </form>
+      {isOwner ? (
+        <div>
+          <form onSubmit={handleSubmitAccount}>
+            <div> FirstName : </div>
+            <input
+              name="fName"
+              onChange={handleChangeAccount}
+              type="text"
+              value={account.fName}
+              placeholder="First Name"
+            />
+            <div> LastName : </div>
+            <input
+              name="lName"
+              onChange={handleChangeAccount}
+              type="text"
+              value={account.lName}
+              placeholder="Last Name"
+            />
+            <div> Email : </div>
+            <input name="email" onChange={handleChangeAccount} type="email" value={account.email} />
+            <input type="submit" value="Edit" />
+          </form>
+        </div>
+      ) : (
+        <div>
+          <div> FirstName : {account.fName}</div>
+          <div> LastName : {account.lName}</div>
+          <div> Email : {account.email}</div>
+        </div>
+      )}
     </>
   )
 }

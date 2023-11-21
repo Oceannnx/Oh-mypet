@@ -6,7 +6,6 @@ import { MyAccount } from '../../components/MyAccount'
 
 export const Profile = () => {
   const accounId = useParams()
-  console.log(accounId.id)
 
   return (
     <>

@@ -6,7 +6,6 @@ export const PostList = (props) => {
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const { accountID } = props || ''
-  console.log(accountID)
   const fetchSellPost = async () => {
     try {
       const result = await AxiosLib.get(`/api/fetchMySellPost/${accountID}`)

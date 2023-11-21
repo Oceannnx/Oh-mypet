@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 export const Post = (props) => {
   const navigate = useNavigate()
-  const { fName, lName, title, price, location, postId, postDate } = props || {
+  const { userId, fName, lName, title, price, location, postId, postDate } = props || {
+    userId: '',
     fName: '',
     lName: '',
     uid: '',
@@ -30,19 +31,28 @@ export const Post = (props) => {
     }
   }, [postDate])
 
-  const handleOnClick = () => {
+  const handleOnClickPost = () => {
     navigate(`/sellpost/${postId}`)
   }
-
+  const handleOnClickUser = () => {
+    navigate(`/account/${userId}`)
+  }
   return (
     <>
-      <div className="m-10 p-4 border-2 w-96 h-96 min-w-0 " onClick={handleOnClick}>
-        <h1 className="font-bold text-lg">{fName + ' ' + lName}</h1>
+      <div className="m-10 p-4 border-2 w-96 h-auto min-w-0 ">
+        <div onClick={handleOnClickUser} className="underline cursor-pointer w-fit font-bold text-lg">
+          {fName + ' ' + lName}
+        </div>
         <div className="font-thin">{date}</div>
         <img className="mt-4" src="src\assets\Testimg.png" />
         <h1 className="mt-4 font-bold text-lg">{title}</h1>
         <div>Price : {price} $</div>
         <div className="text-sm font-light">{location}</div>
+        <div className="grid justify-items-end">
+          <div onClick={handleOnClickPost} className="text-blue-900 hover:text-blue-700 py- underline cursor-pointer">
+            ดูเพิ่มเติม
+          </div>
+        </div>
       </div>
     </>
   )

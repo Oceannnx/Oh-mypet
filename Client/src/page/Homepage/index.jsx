@@ -19,6 +19,7 @@ export const Homepage = () => {
   useEffect(() => {
     fetchSellPost()
   }, [])
+  console.log(posts)
   return (
     <>
       {isLoading ? (
@@ -31,6 +32,7 @@ export const Homepage = () => {
             return (
               <Post
                 key={index}
+                userId={post.user._id}
                 email={post.user.email}
                 fName={post.user.fName}
                 lName={post.user.lName}
