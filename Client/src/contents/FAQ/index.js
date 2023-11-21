@@ -1,18 +1,15 @@
 export const FAQContents = [
   {
     label: 'สมาชิก',
-    content: '<div>Test</div> <div className="bg-black">Test2</div> <div>Test3</div>',
+    content:
+      '<div>-วิธีสมัครสมาชิกทำอย่างไร</div> <div className="bg-white-100">-ขั้นตอนการเข้าสู่ระบบ</div> <div>-ฉันควรทำอย่างไร หากฉันลืมรหัสใช้งาน</div>',
   },
   {
     label: 'เกี่ยวกับเว็บไซต์',
-    content: '',
+    content: '<div>-ฉันไม่สามารถติดต่อผู้ขายได้</div> <div>-ฉันไม่สามารถกดดูรูปได้</div>',
   },
   {
     label: 'การดูเเลสัตว์',
-    content: '',
-  },
-  {
-    label: 'การดูเเลสัตว์',
-    content: '',
+    content: '<div>-การดูเเลรักษาหมา</div> <div>-การดูเเลรักษาเเมว</div>',
   },
 ]
