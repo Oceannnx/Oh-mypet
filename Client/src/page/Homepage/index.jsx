@@ -23,8 +23,8 @@ export const Homepage = () => {
   return (
     <>
       {isLoading ? (
-        <div className="h-screen bg-[#FFFDF3]">
-          <div className="animate-spin rounded-full h-30 w-30 border-t-2 border-b-2 border-blue1"></div>
+        <div className="flex justify-center items-center h-screen bg-[#FFFDF3]">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue1"></div>
         </div>
       ) : (
         <div className="grid grid-cols-4">

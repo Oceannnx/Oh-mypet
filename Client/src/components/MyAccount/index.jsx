@@ -72,14 +72,64 @@ export const MyAccount = (props) => {
             />
             <div> Email : </div>
             <input name="email" onChange={handleChangeAccount} type="email" value={account.email} />
+
+            <div> Address : </div>
+            <input
+              name="address"
+              onChange={handleChangeAccount}
+              type="text"
+              value={account.address === '' ? '-' : account.address}
+            />
+            <div> Telephone : </div>
+            <input
+              name="tel"
+              onChange={handleChangeAccount}
+              type="text"
+              value={account.tel === '' ? '-' : account.tel}
+            />
+            <div> Facebook : </div>
+            <input
+              name="facebook"
+              onChange={handleChangeAccount}
+              type="text"
+              value={account.facebook === '' ? '-' : account.facebook}
+            />
+            <div> Line : </div>
+            <input
+              name="line"
+              onChange={handleChangeAccount}
+              type="text"
+              value={account.line === '' ? '-' : account.line}
+            />
+            <div> Twitter : </div>
+            <input
+              name="twitter"
+              onChange={handleChangeAccount}
+              type="text"
+              value={account.twitter === '' ? '-' : account.twitter}
+            />
+            <div> Instagram : </div>
+            <input
+              name="instagram"
+              onChange={handleChangeAccount}
+              type="text"
+              value={account.instagram === '' ? '-' : account.in}
+            />
+
             <input type="submit" value="Edit" />
           </form>
         </div>
       ) : (
         <div>
-          <div> FirstName : {account.fName}</div>
-          <div> LastName : {account.lName}</div>
-          <div> Email : {account.email}</div>
+          <div>FirstName : {account.fName}</div>
+          <div>LastName : {account.lName}</div>
+          <div>Email : {account.email}</div>
+          <div>Telephone : {account.tel === '' ? '-' : account.tel}</div>
+          <div>Address : {account.address === '' ? '-' : account.address}</div>
+          <a href={account.facebook || ''}>Facebook </a>
+          <a href={account.line || ''}>Line</a>
+          <a href={account.twitter || ''}>Twitter</a>
+          <a href={account.instagram || ''}>Instagram</a>
         </div>
       )}
     </>

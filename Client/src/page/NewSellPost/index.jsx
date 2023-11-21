@@ -48,8 +48,9 @@ export const NewSellPost = () => {
         const result = await AxiosLib.post('/api/newsellpost', post)
         if (result.status === 201) {
           Swal.fire('Success', 'Post has been created', 'success')
-          setTimeout('', 1500)
-          window.location.href = '/'
+          setTimeout(() => {
+            window.location.href = '/'
+          }, 1500)
         }
       } catch (error) {
         console.log(error)
@@ -68,7 +69,7 @@ export const NewSellPost = () => {
             <div className="flex justify-start items-center flex-col">
               <div className="border-none">
                 <div>
-                  {/* <label htmlFor="title" className="mx-5">
+                  <label htmlFor="title" className="mx-5">
                     Title
                   </label>
                   <input
@@ -77,7 +78,7 @@ export const NewSellPost = () => {
                     id="title"
                     name="title"
                     className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
-                  /> */}
+                  />
                   <label htmlFor="petType" className="mx-2">
                     Type:
                   </label>

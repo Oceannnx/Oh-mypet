@@ -11,7 +11,7 @@ const url = process.env.DB_URL
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({ origin: 'http://localhost:5174', credentials: true }))
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 
 const cookieConfig = {
   httpOnly: true,
@@ -64,6 +64,12 @@ app.post('/signup', async (req, res) => {
       email,
       fName,
       lName,
+      tel: '',
+      facebook: '',
+      line: '',
+      twitter: '',
+      instagram: '',
+      address: '',
       password: await bcrypt.hash(password, 3),
     }
     await client.db('oh-mypet').collection('user').insertOne(user)
@@ -331,7 +337,7 @@ app.get('/api/fetchMySellPost/:id', async (req, res) => {
 
 app.post('/api/editAccount', async (req, res) => {
   try {
-    const { fName, lName, email } = req.body
+    const { fName, lName, email, tel, line, facebook, twitter, instagram, address } = req.body
     const result = await client
       .db('oh-mypet')
       .collection('user')
@@ -369,6 +375,12 @@ app.post('/api/editAccount', async (req, res) => {
             fName,
             lName,
             email,
+            tel,
+            facebook,
+            line,
+            twitter,
+            instagram,
+            address,
           },
         },
       )
