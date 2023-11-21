@@ -139,7 +139,7 @@ export const Navbar = () => {
             {IsLogin ? (
               <>
                 <div className="flex justify-center items-center">
-                  <Link to={'/account/'}>
+                  <Link to={'/account/me'}>
                     <div className="border-solid font-normal underline w-24  hover:text-[#FFFDF3]">{fName}</div>
                   </Link>
                 </div>

@@ -277,7 +277,10 @@ app.get('/api/navAccount/', async (req, res) => {
 app.get('/api/account/:id', async (req, res) => {
   try {
     const userID = req.cookies.userID
-    const paramsID = req.params.id
+    let paramsID = req.params.id || 'me'
+    if (paramsID === 'me') {
+      paramsID = userID
+    }
     const result = await client
       .db('oh-mypet')
       .collection('user')
@@ -301,13 +304,16 @@ app.get('/api/account/:id', async (req, res) => {
 
 app.get('/api/fetchMySellPost/:id', async (req, res) => {
   try {
+    let paramsID = req.params.id
+    if (paramsID === 'me') {
+      paramsID = req.cookies.userID
+    }
     const result = await client
       .db('oh-mypet')
       .collection('sellPost')
       .aggregate([
         {
-          $match: { userID: new ObjectId(req.params.id) },
-          // $match: { $expr: { $eq: ['userID', { $toObjectId: req.params.id }] } },
+          $match: { userID: new ObjectId(paramsID) },
         },
         {
           $lookup: {

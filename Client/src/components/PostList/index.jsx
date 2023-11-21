@@ -15,7 +15,6 @@ export const PostList = (props) => {
       console.log(error)
     }
   }
-
   useEffect(() => {
     fetchSellPost()
   }, [])
