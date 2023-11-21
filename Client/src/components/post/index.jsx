@@ -39,10 +39,8 @@ export const Post = (props) => {
   }
   return (
     <>
-      <div className="m-10 p-4 border-2 w-96 h-auto min-w-0 ">
-        <div onClick={handleOnClickUser} className="underline cursor-pointer w-fit font-bold text-lg">
-          {fName + ' ' + lName}
-        </div>
+      <div className="p-4 border-2 border-black rounded-xl w-96 h-96 min-w-0 " onClick={handleOnClickUser}>
+        <h1 className="font-bold text-lg">{fName + ' ' + lName}</h1>
         <div className="font-thin">{date}</div>
         <img className="mt-4" src="src\assets\Testimg.png" />
         <h1 className="mt-4 font-bold text-lg">{title}</h1>

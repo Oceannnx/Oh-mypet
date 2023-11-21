@@ -20,7 +20,7 @@ export const PostList = (props) => {
     fetchSellPost()
   }, [])
   return (
-    <>
+    <section>
       {isLoading ? (
         <div className="flex justify-center items-center h-screen bg-[#FFFDF3]">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue1"></div>
@@ -44,6 +44,6 @@ export const PostList = (props) => {
           })}
         </div>
       )}
-    </>
+    </section>
   )
 }
