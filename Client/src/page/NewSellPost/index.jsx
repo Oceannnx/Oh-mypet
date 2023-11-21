@@ -103,7 +103,7 @@ export const NewSellPost = () => {
                     name="petGene"
                     className="border-2 border-gray-400 border-solid h-10 w-60 px-2"
                   />
-                  {/* <label htmlFor="petAge" className="mx-2">
+                  <label htmlFor="petAge" className="mx-2">
                     Age:
                   </label>
                   <input
@@ -113,7 +113,7 @@ export const NewSellPost = () => {
                     id="petAge"
                     name="petAge"
                     className="border-2 border-gray-400 border-solid h-10 w-20 px-2"
-                  /> */}
+                  />
                 </div>
                 <div className="py-5">
                   <label htmlFor="petAge" className="mr-4 ml-[6px]">

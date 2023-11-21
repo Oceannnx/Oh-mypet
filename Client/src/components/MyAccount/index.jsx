@@ -113,7 +113,7 @@ export const MyAccount = (props) => {
               name="instagram"
               onChange={handleChangeAccount}
               type="text"
-              value={account.instagram === '' ? '-' : account.in}
+              value={account.instagram === '' ? '-' : account.instagram}
             />
 
             <input type="submit" value="Edit" />
