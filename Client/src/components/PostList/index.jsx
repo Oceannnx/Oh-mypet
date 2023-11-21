@@ -6,7 +6,7 @@ export const PostList = (props) => {
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const { accountID } = props || ''
-  console.log(accountID)
+
   const fetchSellPost = async () => {
     try {
       const result = await AxiosLib.get(`/api/fetchMySellPost/${accountID}`)
@@ -21,7 +21,7 @@ export const PostList = (props) => {
     fetchSellPost()
   }, [])
   return (
-    <>
+    <section>
       {isLoading ? (
         <div className="flex justify-center items-center h-screen bg-[#FFFDF3]">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue1"></div>
@@ -45,6 +45,6 @@ export const PostList = (props) => {
           })}
         </div>
       )}
-    </>
+    </section>
   )
 }
