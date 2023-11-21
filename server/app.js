@@ -51,6 +51,7 @@ app.get('/api/user/me', async (req, res) => {
 })
 
 app.post('/signup', async (req, res) => {
+  //TODO: validate email and password
   try {
     const { email, fName, lName, password } = req.body
     if (email === '' || password === '') {
@@ -279,6 +280,7 @@ app.get('/api/account/:id', async (req, res) => {
         {
           $project: {
             _id: 0,
+            password: 0,
           },
         },
       ])
@@ -328,28 +330,34 @@ app.get('/api/fetchMySellPost/:id', async (req, res) => {
 
 app.post('/api/editAccount', async (req, res) => {
   try {
+    const { fName, lName, email } = req.body
     const result = await client
       .db('oh-mypet')
       .collection('user')
       .aggregate([
         {
-          $match: { _id: new ObjectId(req.cookies.userID) },
+          $match: { email: email },
         },
         {
           $project: {
-            email: 1,
             _id: 0,
+            password: 0,
           },
         },
       ])
       .toArray()
-    if (result !== null) {
-      return res.status(400).send({ message: 'Email Already Exists', success: false })
-    } else if (req.cookies.userID === null || req.cookies.userID === '') {
-      return res.status(403).send({ message: '', success: false })
+    if (result.length > 0 && result[0].email !== email) {
+      return res.status(409).send({ message: 'Email Already Exists', success: false })
+    } else if (
+      fName === '' ||
+      lName === '' ||
+      email === '' ||
+      email === null ||
+      fName.indexOf(' ') >= 0 ||
+      lName.indexOf(' ') >= 0
+    ) {
+      return res.status(400).send({ message: 'Bad Request', success: false })
     }
-
-    const { fName, lName, email } = req.body
     await client
       .db('oh-mypet')
       .collection('user')
