@@ -46,8 +46,7 @@ app.get('/api/user/me', async (req, res) => {
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
   }
-  // return res.status(200).send({ message: '', success: true })
-  return res.status(200).send({ message: '', success: true })
+  return res.status(200).send({ message: '', success: true, fName: result.fName })
 })
 
 app.post('/signup', async (req, res) => {

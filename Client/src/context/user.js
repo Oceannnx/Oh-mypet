@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 export const ContextValue = {
-  id: '',
+  fName: '',
   IsLogin: false,
 }
 
