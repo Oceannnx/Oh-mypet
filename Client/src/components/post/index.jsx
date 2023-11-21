@@ -6,6 +6,7 @@ export const Post = (props) => {
   const { fName, lName, title, price, location, postId, postDate } = props || {
     fName: '',
     lName: '',
+    uid: '',
     title: '',
     price: '',
     location: '',
