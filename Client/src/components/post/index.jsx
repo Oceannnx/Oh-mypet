@@ -30,7 +30,6 @@ export const Post = (props) => {
       setDate(date.toLocaleString('th-TH', { month: 'long', day: '2-digit', year: 'numeric' }))
     }
   }, [postDate])
-
   const handleOnClickPost = () => {
     navigate(`/sellpost/${postId}`)
   }
@@ -39,13 +38,16 @@ export const Post = (props) => {
   }
   return (
     <>
-      <div className="p-4 border-2 border-black rounded-xl w-96 h-96 min-w-0 " onClick={handleOnClickUser}>
-        <h1 className="font-bold text-lg">{fName + ' ' + lName}</h1>
+      <div className="m-10 p-4 border-2 w-96 h-auto min-w-0 ">
+        <div onClick={handleOnClickUser} className="underline cursor-pointer w-fit font-bold text-lg">
+          {fName + ' ' + lName}
+        </div>
         <div className="font-thin">{date}</div>
         <img className="mt-4" src="src\assets\Testimg.png" />
         <h1 className="mt-4 font-bold text-lg">{title}</h1>
         <div>Price : {price} $</div>
         <div className="text-sm font-light">{location}</div>
+
         <div className="grid justify-items-end">
           <div onClick={handleOnClickPost} className="text-blue-900 hover:text-blue-700 py- underline cursor-pointer">
             ดูเพิ่มเติม

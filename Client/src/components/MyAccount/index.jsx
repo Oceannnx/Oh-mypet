@@ -126,10 +126,12 @@ export const MyAccount = (props) => {
           <div>Email : {account.email}</div>
           <div>Telephone : {account.tel === '' ? '-' : account.tel}</div>
           <div>Address : {account.address === '' ? '-' : account.address}</div>
-          <a href={account.facebook || ''}>Facebook </a>
-          <a href={account.line || ''}>Line</a>
-          <a href={account.twitter || ''}>Twitter</a>
-          <a href={account.instagram || ''}>Instagram</a>
+          <div className="flex">
+            <img className="w-8 mx-1" src="\src\assets\facebook.png" href={account.facebook || ''}></img>
+            <img className="w-8 mx-1" src="\src\assets\line.png" href={account.line || ''}></img>
+            <img className="w-8 mx-1" src="\src\assets\twitter.png" href={account.twitter || ''}></img>
+            <img className="w-8 mx-1" src="\src\assets\instagram.png" href={account.instagram || ''}></img>
+          </div>
         </div>
       )}
     </>

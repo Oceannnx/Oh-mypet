@@ -321,7 +321,6 @@ app.get('/api/fetchMySellPost/:id', async (req, res) => {
         },
         {
           $project: {
-            'user._id': 0,
             'user.email': 0,
             'user.password': 0,
           },

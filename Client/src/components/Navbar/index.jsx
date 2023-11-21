@@ -69,7 +69,7 @@ export const Navbar = () => {
         <div className="flex justify-center dropdown dropdown-hover items-center mx-10">
           <span>
             <label tabIndex={0} className="m-1 mx-10">
-              Post
+              +Post
             </label>
             <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
               <Link to="/newsellpost">
