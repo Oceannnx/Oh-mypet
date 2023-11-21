@@ -46,8 +46,7 @@ app.get('/api/user/me', async (req, res) => {
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
   }
-  // return res.status(200).send({ message: '', success: true })
-  return res.status(200).send({ message: '', success: true })
+  return res.status(200).send({ message: '', success: true, fName: result.fName })
 })
 
 app.post('/signup', async (req, res) => {
@@ -277,12 +276,14 @@ app.get('/api/navAccount/', async (req, res) => {
 
 app.get('/api/account/:id', async (req, res) => {
   try {
+    const userID = req.cookies.userID
+    const paramsID = req.params.id
     const result = await client
       .db('oh-mypet')
       .collection('user')
       .aggregate([
         {
-          $match: { $expr: { $eq: ['$_id', { $toObjectId: req.params.id }] } },
+          $match: { $expr: { $eq: ['$_id', { $toObjectId: paramsID }] } },
         },
         {
           $project: {
@@ -292,7 +293,7 @@ app.get('/api/account/:id', async (req, res) => {
         },
       ])
       .toArray()
-    return res.send(result)
+    return res.send({ data: result, is_owner: userID === req.params.id })
   } catch (error) {
     res.status(500).send({ success: false })
   }
@@ -408,14 +409,6 @@ app.post('/api/changePassword', async (req, res) => {
       },
     )
   res.status(200).send({ success: true })
-})
-
-app.post('/api/CheckOwner/:accountID', (req, res) => {
-  if (req.cookies.userID === req.params.accountID) {
-    return res.send({ owner: true })
-  } else {
-    return res.send({ owner: false })
-  }
 })
 
 // supabase password "ZriXNxs6PFojh1yI"

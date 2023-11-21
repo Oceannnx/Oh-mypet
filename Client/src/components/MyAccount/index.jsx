@@ -7,18 +7,11 @@ export const MyAccount = (props) => {
   const [account, setAccount] = React.useState({})
   const [isOwner, setIsOwner] = React.useState(false)
 
-  const checkOwner = async () => {
-    try {
-      const result = await AxiosLib.post(`/api/checkOwner/${accountID}`)
-      setIsOwner(result.data.owner)
-    } catch (error) {
-      console.log(error)
-    }
-  }
   const fetchAccount = async () => {
     try {
       const result = await AxiosLib.get(`/api/account/${accountID}`)
-      setAccount(result.data[0])
+      setAccount(result.data.data[0])
+      setIsOwner(result.data.is_owner)
     } catch (error) {
       console.log(error)
     }
@@ -47,7 +40,6 @@ export const MyAccount = (props) => {
   }
   useEffect(() => {
     fetchAccount()
-    checkOwner()
   }, [])
   return (
     <>
