@@ -5,10 +5,10 @@ export const Animals = [
   {
     label: 'Dog',
   },
-  {
-    label: 'Bird',
-  },
-  {
-    label: 'Fish',
-  },
+  // {
+  //   label: 'Bird',
+  // },
+  // {
+  //   label: 'Fish',
+  // },
 ]

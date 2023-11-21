@@ -1,7 +1,7 @@
 export const FAQContents = [
   {
     label: 'สมาชิก',
-    content: 'abc',
+    content: 'วิธีสมัครสมาชิกทำอย่างไร',
   },
   {
     label: 'เกี่ยวกับเว็บไซต์',
