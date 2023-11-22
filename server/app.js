@@ -397,8 +397,10 @@ app.post('/api/editAccount', async (req, res) => {
 })
 
 app.post('/api/changePassword', async (req, res) => {
-  const { currentPassword, newPassword } = req.body
-  if (currentPassword === '' || newPassword === '') {
+  const { currentPassword, newPassword, confirmPassword } = req.body
+  if (newPassword !== confirmPassword) {
+    return res.status(400).send({ message: 'New password and confirm password must be the same', success: false })
+  } else if (currentPassword === '' || newPassword === '') {
     return res.status(400).send({ message: 'Bad Request', success: false })
   } else if (currentPassword === newPassword) {
     return res.status(400).send({ message: 'New password must be different from current password', success: false })
