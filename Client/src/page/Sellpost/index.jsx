@@ -16,7 +16,7 @@ export const Sellpost = () => {
       console.log(error)
     }
   }
-
+  console.log(sellpost)
   useEffect(() => {
     fetchSellpost()
   }, [])
@@ -30,6 +30,10 @@ export const Sellpost = () => {
         </div>
       ) : (
         <div>
+          <div>
+            {sellpost[0].user.fName} {sellpost[0].user.lName}
+          </div>
+          <div>{sellpost[0].title}</div>
           <div>{sellpost[0].petAge}</div>
           <div>{BD.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
           <div>{sellpost[0].petDescription}</div>
@@ -41,9 +45,39 @@ export const Sellpost = () => {
           <div>{postDate.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
           <div>{sellpost[0].petPrice}</div>
           <div>{sellpost[0].petType}</div>
-          <div>{sellpost[0].title}</div>
-          <div>
-            {sellpost[0].user.fName} {sellpost[0].user.lName}
+          <a href="https://www.blacklistseller.com/report/report_search_page" className="text-red-600 text-3xl">
+            {' '}
+            Check Blacklist !!!
+          </a>
+          <div className="flex">
+            {sellpost[0].user.facebook === null ? (
+              <></>
+            ) : (
+              <a className="w-12 mx-1" href={sellpost[0].user.facebook}>
+                <img src="\src\assets\facebook.png"></img>
+              </a>
+            )}
+            {sellpost[0].user.line === null ? (
+              <></>
+            ) : (
+              <a className="w-12 mx-1" href={sellpost[0].user.line}>
+                <img src="\src\assets\line.png"></img>
+              </a>
+            )}
+            {sellpost[0].user.twitter === null ? (
+              <></>
+            ) : (
+              <a className="w-12 mx-1" href={sellpost[0].user.twitter}>
+                <img src="\src\assets\twitter.png"></img>
+              </a>
+            )}
+            {sellpost[0].user.instagram === null ? (
+              <></>
+            ) : (
+              <a className="w-12 mx-1" href={sellpost[0].user.instagram}>
+                <img src="\src\assets\instagram.png"></img>
+              </a>
+            )}
           </div>
           <Footer></Footer>
         </div>
