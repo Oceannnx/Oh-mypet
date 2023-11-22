@@ -27,7 +27,7 @@ export const Homepage = () => {
         </div>
       ) : (
         <div className="flex justify-center py-8">
-          <div className="mx-8 flex flex-wrap gap-4 justify-center">
+          <div className="mx-5 flex flex-wrap">
             {posts.map((post, index) => {
               return (
                 <Post

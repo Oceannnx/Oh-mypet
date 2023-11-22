@@ -39,7 +39,7 @@ export const Post = (props) => {
   }
   return (
     <>
-      <div className="m-10 p-4 border-2 w-96 h-auto min-w-0 ">
+      <div className="m-10 p-4 border-2 w-96 h-[472px] min-w-0 ">
         <div className="flex " onClick={handleOnClickUser}>
           <img
             className="rounded-lg w-11 h-11 cursor-pointer"
@@ -49,18 +49,19 @@ export const Post = (props) => {
             {fName + ' ' + lName}
           </div>
         </div>
-
-        <div className="font-thin">{date}</div>
-        <div className="grid justify-items-center">
-          <img className="mt-4" src={petImage} />
+        <div className="font-thin my-2">{date}</div>
+        <div className="grid justify-items-center items-center h-[238px] ">
+          <img className="max-h-[206px]" src={petImage} />
         </div>
-        <h1 className="mt-4 font-bold text-lg">{title}</h1>
-        <div>Price : {price} $</div>
-        <div className="text-sm font-light">{location}</div>
+        <div>
+          <h1 className="mt-4 font-bold text-lg">{title}</h1>
+          <div>Price : {price} $</div>
+          <div className="text-sm font-light">{location}</div>
 
-        <div className="grid justify-items-end">
-          <div onClick={handleOnClickPost} className="text-blue-900 hover:text-blue-700 py- underline cursor-pointer">
-            ดูเพิ่มเติม
+          <div className="grid justify-items-end">
+            <div onClick={handleOnClickPost} className="text-blue-900 hover:text-blue-700 py- underline cursor-pointer">
+              ดูเพิ่มเติม
+            </div>
           </div>
         </div>
       </div>

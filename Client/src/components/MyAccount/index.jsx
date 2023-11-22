@@ -63,7 +63,7 @@ export const MyAccount = (props) => {
               account.fName[0] + account.lName[0]
             }`}
           ></img>
-          <form onSubmit={handleSubmitAccount}>
+          <form onSubmit={handleSubmitAccount} className=" bg-[#FFFDF3]">
             <div> FirstName : </div>
             <input
               name="fName"
