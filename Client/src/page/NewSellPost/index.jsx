@@ -4,10 +4,12 @@ import Swal from 'sweetalert2'
 import { AxiosLib } from '../../lib/axios'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/user'
+import { uploadImage } from '../../lib/supabase'
 
 export const NewSellPost = () => {
   const auth = useContext(AuthContext)
   const IsLogin = auth?.authContext.IsLogin || false
+  const [image, setImage] = useState()
   if (!IsLogin) {
     window.location.href = '/login'
   }
@@ -39,13 +41,14 @@ export const NewSellPost = () => {
       post.petBD === '' ||
       post.petPrice === '' ||
       post.petLocation === '' ||
-      post.petImages === '' ||
+      image === null ||
       post.petDescription === ''
     ) {
       return Swal.fire('Error', 'Please fill all the information', 'error')
     } else {
       try {
-        const result = await AxiosLib.post('/api/newsellpost', post)
+        const imagesURL = await uploadImage(image)
+        const result = await AxiosLib.post('/api/newsellpost', { ...post, petImages: imagesURL })
         if (result.status === 201) {
           Swal.fire('Success', 'Post has been created', 'success')
           setTimeout(() => {
@@ -102,17 +105,6 @@ export const NewSellPost = () => {
                     id="petGene"
                     name="petGene"
                     className="border-2 border-gray-400 border-solid h-10 w-60 px-2"
-                  />
-                  <label htmlFor="petAge" className="mx-2">
-                    Age:
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    placeholder="Age"
-                    id="petAge"
-                    name="petAge"
-                    className="border-2 border-gray-400 border-solid h-10 w-20 px-2"
                   />
                 </div>
                 <div className="py-5">
@@ -192,7 +184,15 @@ export const NewSellPost = () => {
                   <label htmlFor="petImages" className="mr-2">
                     Images:
                   </label>
-                  <input type="file" name="petImages" id="petImages" accept="image/*" />
+                  <input
+                    type="file"
+                    onChange={(e) => {
+                      setImage(e.target.files[0])
+                    }}
+                    name="petImages"
+                    id="petImages"
+                    accept="image/*"
+                  />
                 </div>
                 <div className=" py-3">
                   <label htmlFor="petDescription" className=" flex justify-start">
