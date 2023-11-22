@@ -275,7 +275,9 @@ app.get('/api/account/:id', async (req, res) => {
   try {
     const userID = req.cookies.userID
     let paramsID = req.params.id || 'me'
-    if (paramsID === 'me') {
+    if ((userID === undefined || userID === '') && paramsID === 'me') {
+      return res.status(403).send({ success: false })
+    } else if (paramsID === 'me') {
       paramsID = userID
     }
     const result = await client

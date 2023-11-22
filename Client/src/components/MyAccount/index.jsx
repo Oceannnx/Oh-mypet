@@ -14,7 +14,18 @@ export const MyAccount = (props) => {
       setAccount(result.data.data[0])
       setIsOwner(result.data.is_owner)
     } catch (error) {
-      console.log(error)
+      if (error.response.status === 403) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Forbidden',
+          text: 'Please Login',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+        setTimeout(() => {
+          window.location.href = '/'
+        }, 1500)
+      }
     }
   }
   const handleChangeAccount = (e) => {
