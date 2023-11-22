@@ -296,7 +296,7 @@ app.get('/api/account/:id', async (req, res) => {
         },
       ])
       .toArray()
-    return res.send({ data: result, is_owner: userID === req.params.id })
+    return res.send({ data: result, is_owner: userID === paramsID })
   } catch (error) {
     res.status(500).send({ success: false })
   }
@@ -414,7 +414,7 @@ app.post('/api/changePassword', async (req, res) => {
         },
       },
     )
-  res.status(200).send({ success: true })
+  return res.status(200).send({ success: true })
 })
 
 // supabase password "ZriXNxs6PFojh1yI"
