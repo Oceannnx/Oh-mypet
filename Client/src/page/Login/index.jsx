@@ -50,25 +50,6 @@ export const Login = () => {
                 <div className="flex justify-center items-center flex-col ">
                   <label htmlFor="fName" className="py-3 "></label>
                   =======
-                  <label htmlFor="fName" className="py-1"></label>
-                  {/* <input
-                      type="text"
-                      id="fName"
-                      placeholder="FirstName"
-                      name="fName"
-                      onChange={handleChange}
-                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2 "
-                    />
-                    <label htmlFor="fName" className="py-3 "></label>
-                    <input
-                      type="text"
-                      id="lName"
-                      placeholder="LastName"
-                      name="lName"
-                      onChange={handleChange}
-                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2 py-5"
-                    /> */}
-                  <label htmlFor="fName" className="py-3 "></label>
                   <input
                     type="Email"
                     id="Email"
@@ -86,17 +67,8 @@ export const Login = () => {
                     onChange={handleChange}
                     className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
                   />
-                  <label htmlFor="fName" className="py-3 "></label>
-                  {/* <input
-                      type="password"
-                      id="confirmpassword"
-                      placeholder="Confirm password"
-                      name="confirmPassword"
-                      onChange={handleChange}
-                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
-                    /> */}
-                  <Link to="/login" className="text-blue-900 hover:text-blue-700 py-2">
-                    Already have account?
+                  <Link to="/signup" className="text-blue-900 hover:text-blue-700 py-2">
+                    New to Oh-MyPet? Sign up
                   </Link>
                   <input type="Submit" className="btn  bg-[#FFFDF3]bg-[#FFFDF3] py-1 my-2 " name="submit-btn"></input>
                 </div>
