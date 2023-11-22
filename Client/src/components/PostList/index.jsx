@@ -37,6 +37,7 @@ export const PostList = (props) => {
                 title={post.title}
                 price={post.petPrice}
                 location={post.petLocation}
+                petImage={post.petImages}
                 postDate={post.petPostDate}
                 postId={post._id}
               />
