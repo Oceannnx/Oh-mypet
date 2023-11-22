@@ -17,15 +17,11 @@ function App() {
   const handleLogin = useCallback(async () => {
     try {
       const result = await AxiosLib.get('/api/user/me')
-
-      console.log(result)
-
       if (result.status === 200) {
         setAuthContext({ fName: result.data.fName, IsLogin: true })
       }
     } catch (error) {
       setAuthContext({ fName: '', IsLogin: false })
-      console.log(error)
     }
   }, [])
 
@@ -45,6 +41,7 @@ function App() {
           <Route path="/sellpost/:postId" element={<Sellpost />} />
           <Route path="/account/:id" element={<Profile />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="*" element={<h1>404 not found</h1>} />
         </Routes>
       </AuthContext.Provider>
     </>
