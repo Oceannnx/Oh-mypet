@@ -190,15 +190,8 @@ app.get('/api/fetchsellpost', async (req, res) => {
         },
         {
           $project: {
-            title: 1,
-            petType: 1,
-            petName: 1,
-            petPostDate: 1,
-            petPrice: 1,
-            petLocation: 1,
-            'user.fName': 1,
-            'user.lName': 1,
-            'user._id': 1,
+            'user.email': 0,
+            'user.password': 0,
           },
         },
       ])

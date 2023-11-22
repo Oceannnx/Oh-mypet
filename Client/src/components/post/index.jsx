@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const Post = (props) => {
   const navigate = useNavigate()
-  const { userId, fName, lName, title, price, location, postId, postDate } = props || {
+  const { userId, fName, lName, title, price, location, petImage, postId, postDate } = props || {
     userId: '',
     fName: '',
     lName: '',
@@ -11,6 +11,7 @@ export const Post = (props) => {
     title: '',
     price: '',
     location: '',
+    petImage: '',
     postId: '',
     postDate: '',
   }
@@ -39,11 +40,20 @@ export const Post = (props) => {
   return (
     <>
       <div className="m-10 p-4 border-2 w-96 h-auto min-w-0 ">
-        <div onClick={handleOnClickUser} className="underline cursor-pointer w-fit font-bold text-lg">
-          {fName + ' ' + lName}
+        <div className="flex " onClick={handleOnClickUser}>
+          <img
+            className="rounded-lg w-11 h-11 cursor-pointer"
+            src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
+          ></img>
+          <div className="grid items-center underline cursor-pointer w-fit font-bold text-lg ml-3">
+            {fName + ' ' + lName}
+          </div>
         </div>
+
         <div className="font-thin">{date}</div>
-        <img className="mt-4" src="src\assets\Testimg.png" />
+        <div className="grid justify-items-center">
+          <img className="mt-4" src={petImage} />
+        </div>
         <h1 className="mt-4 font-bold text-lg">{title}</h1>
         <div>Price : {price} $</div>
         <div className="text-sm font-light">{location}</div>

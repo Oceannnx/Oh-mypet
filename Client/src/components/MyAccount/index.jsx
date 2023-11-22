@@ -57,6 +57,12 @@ export const MyAccount = (props) => {
     <>
       {isOwner ? (
         <div>
+          <img
+            className="rounded-lg"
+            src={`https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
+              account.fName[0] + account.lName[0]
+            }`}
+          ></img>
           <form onSubmit={handleSubmitAccount}>
             <div> FirstName : </div>
             <input
