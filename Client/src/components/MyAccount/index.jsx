@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { AxiosLib } from '../../lib/axios'
 import Swal from 'sweetalert2'
+import { ChangePassword } from '../ChangePassword'
 
 export const MyAccount = (props) => {
   const { accountID } = props || ''
@@ -12,6 +13,7 @@ export const MyAccount = (props) => {
       const result = await AxiosLib.get(`/api/account/${accountID}`)
       setAccount(result.data.data[0])
       setIsOwner(result.data.is_owner)
+      console.log(result.data.is_owner)
     } catch (error) {
       console.log(error)
     }
@@ -19,6 +21,7 @@ export const MyAccount = (props) => {
   const handleChangeAccount = (e) => {
     setAccount({ ...account, [e.target.name]: e.target.value })
   }
+  // console.log(isOwner)
   const handleSubmitAccount = async (e) => {
     e.preventDefault()
     try {
@@ -110,6 +113,7 @@ export const MyAccount = (props) => {
 
             <input type="submit" value="Edit" />
           </form>
+          <ChangePassword />
         </div>
       ) : (
         <div>
@@ -119,10 +123,18 @@ export const MyAccount = (props) => {
           <div>Telephone : {account.tel === '' ? '-' : account.tel}</div>
           <div>Address : {account.address === '' ? '-' : account.address}</div>
           <div className="flex">
-            <img className="w-8 mx-1" src="\src\assets\facebook.png" href={account.facebook || ''}></img>
-            <img className="w-8 mx-1" src="\src\assets\line.png" href={account.line || ''}></img>
-            <img className="w-8 mx-1" src="\src\assets\twitter.png" href={account.twitter || ''}></img>
-            <img className="w-8 mx-1" src="\src\assets\instagram.png" href={account.instagram || ''}></img>
+            <a className="w-8 mx-1" href={account.facebook || ''}>
+              <img src="\src\assets\facebook.png"></img>
+            </a>
+            <a className="w-8 mx-1" href={account.line || ''}>
+              <img src="\src\assets\line.png"></img>
+            </a>
+            <a className="w-8 mx-1" href={account.twitter || ''}>
+              <img src="\src\assets\twitter.png"></img>
+            </a>
+            <a className="w-8 mx-1" href={account.instagram || ''}>
+              <img src="\src\assets\instagram.png"></img>
+            </a>
           </div>
         </div>
       )}
