@@ -13,7 +13,6 @@ export const MyAccount = (props) => {
       const result = await AxiosLib.get(`/api/account/${accountID}`)
       setAccount(result.data.data[0])
       setIsOwner(result.data.is_owner)
-      console.log(result.data.is_owner)
     } catch (error) {
       console.log(error)
     }
@@ -21,7 +20,6 @@ export const MyAccount = (props) => {
   const handleChangeAccount = (e) => {
     setAccount({ ...account, [e.target.name]: e.target.value })
   }
-  // console.log(isOwner)
   const handleSubmitAccount = async (e) => {
     e.preventDefault()
     try {
