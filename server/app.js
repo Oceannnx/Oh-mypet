@@ -47,7 +47,6 @@ app.get('/api/user/me', async (req, res) => {
 })
 
 app.post('/signup', async (req, res) => {
-  //TODO: validate email and password
   try {
     const { email, fName, lName, password } = req.body
     if (email === '' || password === '') {
