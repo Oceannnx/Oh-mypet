@@ -13,7 +13,6 @@ import { AuthContext, ContextValue } from './context/user'
 
 function App() {
   const [authContext, setAuthContext] = useState(ContextValue)
-
   const handleLogin = useCallback(async () => {
     try {
       const result = await AxiosLib.get('/api/user/me')
