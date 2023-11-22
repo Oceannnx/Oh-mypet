@@ -33,16 +33,13 @@ app.get('/', (req, res) => {
 
 app.get('/api/user/me', async (req, res) => {
   const userID = req.cookies.userID
-
   if (userID === null || userID === '') {
     return res.status(403).send({ message: '', success: false })
   }
-
   const result = await client
     .db('oh-mypet')
     .collection('user')
     .findOne({ _id: new ObjectId(userID) })
-
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
   }
