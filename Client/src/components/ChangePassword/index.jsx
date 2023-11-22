@@ -36,18 +36,16 @@ export const ChangePassword = () => {
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmitPassword} className=" bg-[#FFFDF3]">
         <div>Change Password</div>
-        <form onSubmit={handleSubmitPassword}>
-          <label htmlFor="CurrentPassword">Current Password</label>
-          <input
-            type="password"
-            onChange={handleChangePassword}
-            placeholder="Current password"
-            name="CurrentPassword"
-            id="CurrentPassword"
-          />
-        </form>
+        <label htmlFor="CurrentPassword">Current Password</label>
+        <input
+          type="password"
+          onChange={handleChangePassword}
+          placeholder="Current password"
+          name="CurrentPassword"
+          id="CurrentPassword"
+        />
         <div>
           <label htmlFor="NewPassword">New Password</label>
           <input type="password" onChange={handleChangePassword} placeholder="New password" name="confirmPassword" />
