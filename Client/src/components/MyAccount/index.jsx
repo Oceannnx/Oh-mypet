@@ -47,7 +47,12 @@ export const MyAccount = (props) => {
         }, 1500)
       }
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: error.response.data.message || 'Error',
+        showConfirmButton: false,
+        timer: 1500,
+      })
     }
   }
   useEffect(() => {
@@ -56,14 +61,14 @@ export const MyAccount = (props) => {
   return (
     <>
       {isOwner ? (
-        <div>
+        <div className=" bg-[#FFFDF3]">
           <img
             className="rounded-lg"
             src={`https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
               account.fName[0] + account.lName[0]
             }`}
           ></img>
-          <form onSubmit={handleSubmitAccount} className=" bg-[#FFFDF3]">
+          <form onSubmit={handleSubmitAccount}>
             <div> FirstName : </div>
             <input
               name="fName"

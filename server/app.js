@@ -389,13 +389,31 @@ app.post('/api/editAccount', async (req, res) => {
 
 app.post('/api/changePassword', async (req, res) => {
   const { currentPassword, newPassword, confirmPassword } = req.body
-  if (newPassword !== confirmPassword) {
-    return res.status(400).send({ message: 'New password and confirm password must be the same', success: false })
+  const result = await client
+    .db('oh-mypet')
+    .collection('user')
+    .aggregate([
+      {
+        $match: { _id: new ObjectId(req.cookies.userID) },
+      },
+      {
+        $project: {
+          _id: 0,
+          password: 1,
+        },
+      },
+    ])
+    .toArray()
+  if (!(await bcrypt.compare(currentPassword, result[0].password))) {
+    return res.status(400).send({ message: 'Current password is incorrect', success: false })
+  } else if (newPassword !== confirmPassword) {
+    return res.status(400).send({ message: 'password must be the same', success: false })
   } else if (currentPassword === '' || newPassword === '') {
     return res.status(400).send({ message: 'Bad Request', success: false })
   } else if (currentPassword === newPassword) {
     return res.status(400).send({ message: 'New password must be different from current password', success: false })
   }
+
   await client
     .db('oh-mypet')
     .collection('user')
