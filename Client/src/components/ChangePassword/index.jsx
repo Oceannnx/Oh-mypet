@@ -58,28 +58,45 @@ export const ChangePassword = () => {
       <form onSubmit={handleSubmitPassword} className=" bg-[#FFFDF3]">
         <div className="grid grid-cols-2">
           <div className="flex justify-center items-center flex-col">
-            <div>Change Password</div>
-            <label htmlFor="CurrentPassword">Current Password</label>
-            <input
-              type="password"
-              onChange={handleChangePassword}
-              placeholder="Current password"
-              name="currentPassword"
-            />
-            <div>
-              <label htmlFor="NewPassword">New Password</label>
-              <input type="password" onChange={handleChangePassword} placeholder="New password" name="newPassword" />
-            </div>
-            <div>
-              <label htmlFor="ConfirmPassword">Confirm Password</label>
+            <div className="flex justify-start items-start flex-col ">
+              <div>
+                <div>Change Password</div>
+                <label htmlFor="CurrentPassword">Current Password</label>
+                <input
+                  type="password"
+                  onChange={handleChangePassword}
+                  placeholder="Current password"
+                  name="currentPassword"
+                  className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-4 my-1"
+                />
+              </div>
+              <div>
+                <label htmlFor="NewPassword">New Password</label>
+                <input
+                  type="password"
+                  onChange={handleChangePassword}
+                  placeholder="New password"
+                  name="newPassword"
+                  className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-10 my-1"
+                />
+              </div>
+              <div>
+                <label htmlFor="ConfirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  onChange={handleChangePassword}
+                  placeholder="Confirm password"
+                  name="confirmPassword"
+                  className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-3 my-1"
+                />
+              </div>
               <input
-                type="password"
-                onChange={handleChangePassword}
-                placeholder="Confirm password"
-                name="confirmPassword"
+                type="button"
+                onClick={handleSubmitPassword}
+                value="Change Password"
+                className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2"
               />
             </div>
-            <input type="button" onClick={handleSubmitPassword} value="Change Password" />
           </div>
           <div className="grid flex-warps flex-row justtify-items-center items-center">
             <div className="grid h-96 items-center">

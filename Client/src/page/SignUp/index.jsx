@@ -126,7 +126,11 @@ export const SignUp = () => {
                     <Link to="/login" className="text-blue-900 hover:text-blue-700 py-1">
                       Already have account?
                     </Link>
-                    <input type="Submit" className="btn  bg-[#FFFDF3] py-1 my-2" name="submit-btn"></input>
+                    <input
+                      type="Submit"
+                      className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2"
+                      name="submit-btn"
+                    ></input>
                   </div>
                 </div>
                 <div className="grid flex-warps flex-row justtify-items-center items-center">
