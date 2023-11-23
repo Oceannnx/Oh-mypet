@@ -45,11 +45,14 @@ export const Post = (props) => {
             className="rounded-lg w-11 h-11 cursor-pointer"
             src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
           ></img>
-          <div className="grid items-center underline cursor-pointer w-fit font-bold text-lg ml-3">
-            {fName + ' ' + lName}
+          <div className="">
+            <div className="grid items-center underline cursor-pointer w-fit font-bold text-lg ml-3">
+              {fName + ' ' + lName}
+            </div>
+            <div className="text-sm font-thin ml-3">{date}</div>
           </div>
         </div>
-        <div className="font-thin my-2">{date}</div>
+
         <div className="grid justify-items-center items-center h-[238px] ">
           <img className="max-h-[206px]" src={petImage} />
         </div>
