@@ -73,8 +73,8 @@ export const NewSellPost = () => {
             <div className="flex justify-start items-center flex-col py-5">
               <div className="border-none">
                 <div>
-                  <label htmlFor="title" className="mx-5">
-                    Title
+                  <label htmlFor="title" className="mr-5 ">
+                    Title:
                   </label>
                   <input
                     type="text"
@@ -83,10 +83,10 @@ export const NewSellPost = () => {
                     name="title"
                     className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
                   />
-                  <label htmlFor="petType" className="mr-4">
+                  <label htmlFor="petType" className="mr-4 ml-[45px]">
                     Type:
                   </label>
-                  <select name="petType" id="petType" className="border-2 border-gray-400 border-solid h-10 w-40 px-2">
+                  <select name="petType" id="petType" className="border-2 border-gray-400 border-solid h-10 w-30 px-2">
                     <option disabled selected hidden>
                       Type
                     </option>
@@ -96,16 +96,6 @@ export const NewSellPost = () => {
                     <option value="fish">Fish</option>
                     <option value="other">Other</option>
                   </select>
-                  <label htmlFor="petGene" className="mx-2 ml-[55px]">
-                    Gene:
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Gene"
-                    id="petGene"
-                    name="petGene"
-                    className="border-2 border-gray-400 border-solid h-10 w-60 px-2"
-                  />
                 </div>
                 <div className="py-5">
                   <label htmlFor="petAge" className="mr-4 ml-[6px]">
@@ -117,9 +107,9 @@ export const NewSellPost = () => {
                     placeholder="Age"
                     id="petAge"
                     name="petAge"
-                    className="border-2 border-gray-400 border-solid h-10 w-40 px-2"
+                    className="border-2 border-gray-400 border-solid h-10 w-20 px-2"
                   />
-                  <label htmlFor="petBD" className="mx-2 ml-[75px]">
+                  <label htmlFor="petBD" className="mx-2 ">
                     Date of Birth:
                   </label>
                   <input
@@ -128,6 +118,16 @@ export const NewSellPost = () => {
                     id="petBD"
                     name="petBD"
                     className="border-2 border-gray-400 border-solid h-10 w-40 px-2"
+                  />
+                  <label htmlFor="petGene" className="mx-2 ml-[15px]">
+                    Gene:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Gene"
+                    id="petGene"
+                    name="petGene"
+                    className="border-2 border-gray-400 border-solid h-10 w-20 px-2"
                   />
                 </div>
                 <div>
