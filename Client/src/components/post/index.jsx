@@ -46,9 +46,7 @@ export const Post = (props) => {
             src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
           ></img>
           <div className="">
-            <div className="grid items-center underline cursor-pointer w-fit font-bold text-lg ml-3">
-              {fName + ' ' + lName}
-            </div>
+            <div className="grid items-center cursor-pointer w-fit font-bold text-lg ml-3">{fName + ' ' + lName}</div>
             <div className="text-sm font-thin ml-3">{date}</div>
           </div>
         </div>
