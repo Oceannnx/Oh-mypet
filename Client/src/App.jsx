@@ -35,7 +35,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/:animal" element={<Homepage />} />
+          <Route path="/filter/:animals" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/newsellpost" element={<NewSellPost />} />
