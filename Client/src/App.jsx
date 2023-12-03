@@ -10,6 +10,7 @@ import { Sellpost } from './page/Sellpost'
 import { Profile } from './page/Profile'
 import { AxiosLib } from './lib/axios'
 import { AuthContext, ContextValue } from './context/user'
+import { Advidence } from './page/Advidence'
 
 function App() {
   const [authContext, setAuthContext] = useState(ContextValue)
@@ -38,6 +39,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/newsellpost" element={<NewSellPost />} />
+          <Route path="/advidence" element={<Advidence />} />
           <Route path="/sellpost/:postId" element={<Sellpost />} />
           <Route path="/account/:id" element={<Profile />} />
           <Route path="/faq" element={<FAQ />} />
