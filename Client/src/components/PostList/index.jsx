@@ -1,4 +1,4 @@
-import { Post } from '../post'
+import { Post } from '../Post'
 import { AxiosLib } from '../../lib/axios'
 import { useEffect, useState } from 'react'
 
