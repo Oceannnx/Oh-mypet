@@ -1,5 +1,5 @@
 import { Footer } from '../../components/Footer'
-import { Post } from '../../components/post'
+import { Post } from '../../components/Post'
 import { AxiosLib } from '../../lib/axios'
 import { useEffect, useState } from 'react'
 
