@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AxiosLib } from '../../lib/axios'
+import Swal from 'sweetalert2'
 
 export const Post = (props) => {
   const navigate = useNavigate()
@@ -15,9 +17,40 @@ export const Post = (props) => {
     postId: '',
     postDate: '',
   }
-  const [date, setDate] = React.useState('')
+  const [date, setDate] = useState('')
+  const [isOwner, setIsOwner] = useState(false)
 
-  React.useEffect(() => {
+  const fetchAccount = async () => {
+    try {
+      const result = await AxiosLib.get('api/user/me')
+      if (result.data.id === userId) {
+        setIsOwner(true)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const deletePost = async () => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this post!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+    })
+    if (result.isConfirmed) {
+      Swal.fire('Deleted!', 'Your post has been deleted.', 'success')
+      try {
+        await AxiosLib.delete(`api/deletePost/${postId}`)
+        window.location.reload()
+      } catch (error) {
+        console.log(error)
+      }
+      window.location.reload()
+    }
+  }
+  useEffect(() => {
     if (parseInt((Date.now() - Date.parse(postDate)) / 1000 / 60) < 1) {
       setDate('Recently')
     } else if (parseInt((Date.now() - Date.parse(postDate)) / 1000 / 60) < 60) {
@@ -37,9 +70,25 @@ export const Post = (props) => {
   const handleOnClickUser = () => {
     navigate(`/account/${userId}`)
   }
+  useEffect(() => {
+    fetchAccount()
+  }, [])
+
   return (
     <>
       <div className="m-10 p-4 border-2 w-96 h-[472px] min-w-0 ">
+        {isOwner ? (
+          <div>
+            <button
+              className="border-2 border-slate-100 bg-slate-100 rounded-full px-2 py-1 text-red-600 hover:bg-red-600 hover:text-white float-right mr-2 mb-2"
+              onClick={deletePost}
+            >
+              X
+            </button>
+          </div>
+        ) : (
+          ''
+        )}
         <div className="flex " onClick={handleOnClickUser}>
           <img
             className="rounded-lg w-11 h-11 cursor-pointer"

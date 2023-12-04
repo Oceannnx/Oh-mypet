@@ -427,4 +427,15 @@ app.post('/api/changePassword', async (req, res) => {
   return res.status(200).send({ success: true })
 })
 
+app.delete('/api/deletePost/:postID', (req, res) => {
+  try {
+    const postId = req.params.postID
+    client
+      .db('oh-mypet')
+      .collection('sellPost')
+      .deleteOne({ _id: new ObjectId(postId) })
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})
 // supabase password "ZriXNxs6PFojh1yI"
