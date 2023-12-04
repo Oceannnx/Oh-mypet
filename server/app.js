@@ -43,7 +43,7 @@ app.get('/api/user/me', async (req, res) => {
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
   }
-  return res.status(200).send({ message: '', success: true, fName: result.fName })
+  return res.status(200).send({ message: '', success: true, fName: result.fName, id: result._id.toString() })
 })
 
 app.post('/signup', async (req, res) => {
@@ -413,7 +413,6 @@ app.post('/api/changePassword', async (req, res) => {
   } else if (currentPassword === newPassword) {
     return res.status(400).send({ message: 'New password must be different from current password', success: false })
   }
-
   await client
     .db('oh-mypet')
     .collection('user')
