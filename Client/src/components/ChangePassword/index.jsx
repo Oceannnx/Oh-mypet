@@ -120,7 +120,7 @@ export const ChangePassword = () => {
               ) : (
                 <div className="text-red-600">Password must contain at least one lowercase</div>
               )}
-              {password.newPassword.match(/[^\s]/g) ? (
+              {password.newPassword.match(/[^\w\s]/g) ? (
                 <div className="text-green-600">Password must contain at least one special character</div>
               ) : (
                 <div className="text-red-600">Password must contain at least one special character</div>

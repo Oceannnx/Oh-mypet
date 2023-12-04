@@ -35,7 +35,7 @@ export const SignUp = () => {
         return Swal.fire('Error', 'Password must contain at least one uppercase', 'error')
       else if (!register.password.match(/[a-z]/g))
         return Swal.fire('Error', 'Password must contain at least one lowercase', 'error')
-      else if (!register.password.match(/[^\s]/g))
+      else if (!register.password.match(/pattern/g))
         return Swal.fire('Error', 'Password must contain at least one special character', 'error')
       else if (register.password.includes(' ')) return Swal.fire('Error', 'Password cannot contain space', 'error')
       const createNewUser = {
@@ -155,7 +155,7 @@ export const SignUp = () => {
                     ) : (
                       <div className="text-red-600">Password must contain at least one lowercase</div>
                     )}
-                    {register.password.match(/[^\s]/g) ? (
+                    {register.password.match(/[^\w\s]/g) ? (
                       <div className="text-green-600">Password must contain at least one special character</div>
                     ) : (
                       <div className="text-red-600">Password must contain at least one special character</div>
