@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 import { AxiosLib } from '../../lib/axios'
 
 export const ChangePassword = () => {
-  const [password, setPassword] = React.useState({
+  const [password, setPassword] = useState({
     currentPassword: '',
     newPassword: '',
     confirmPassword: '',
   })
+  const [isEdit, setIsEdit] = useState(false)
+  const handleEdit = () => {
+    setIsEdit(!isEdit)
+  }
   const handleChangePassword = (e) => {
     setPassword({ ...password, [e.target.name]: e.target.value })
   }
@@ -55,80 +59,93 @@ export const ChangePassword = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmitPassword} className=" bg-[#FFFDF3]">
-        <div className="grid grid-cols-2">
-          <div className="flex justify-center items-center flex-col">
-            <div className="flex justify-start items-start flex-col ">
+      {isEdit ? (
+        <div>
+          <form onSubmit={handleSubmitPassword} className=" bg-[#FFFDF3]">
+            <div className="grid grid-rows-2 w-fit">
               <div>
-                <div>Change Password</div>
-                <label htmlFor="CurrentPassword">Current Password</label>
-                <input
-                  type="password"
-                  onChange={handleChangePassword}
-                  placeholder="Current password"
-                  name="currentPassword"
-                  className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-4 my-1"
-                />
+                <div className="flex justify-start items-start flex-col ">
+                  <div>
+                    <div>Change Password</div>
+                    <label htmlFor="CurrentPassword">Current Password</label>
+                    <input
+                      type="password"
+                      onChange={handleChangePassword}
+                      placeholder="Current password"
+                      name="currentPassword"
+                      className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-4 my-1"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="NewPassword">New Password</label>
+                    <input
+                      type="password"
+                      onChange={handleChangePassword}
+                      placeholder="New password"
+                      name="newPassword"
+                      className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-10 my-1"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="ConfirmPassword">Confirm Password</label>
+                    <input
+                      type="password"
+                      onChange={handleChangePassword}
+                      placeholder="Confirm password"
+                      name="confirmPassword"
+                      className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-3 my-1"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="button"
+                      onClick={handleSubmitPassword}
+                      value="Change Password"
+                      className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2 mx-4"
+                    />
+                    <button className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2" onClick={handleEdit}>
+                      Cancle
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label htmlFor="NewPassword">New Password</label>
-                <input
-                  type="password"
-                  onChange={handleChangePassword}
-                  placeholder="New password"
-                  name="newPassword"
-                  className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-10 my-1"
-                />
+              <div className="flex flex-warps flex-row justtify-items-center items-center">
+                <div>
+                  {password.newPassword.length < 8 ? (
+                    <div className="text-red-600">Password must more than 8 Charactors</div>
+                  ) : (
+                    <div className="text-green-600">Password must more than 8 Charactors</div>
+                  )}
+                  {password.newPassword.match(/[0-9]/g) ? (
+                    <div className="text-green-600">Password must contain at least one number</div>
+                  ) : (
+                    <div className="text-red-600">Password must contain at least one number</div>
+                  )}
+                  {password.newPassword.match(/[A-Z]/g) ? (
+                    <div className="text-green-600">Password must contain at least one uppercase</div>
+                  ) : (
+                    <div className="text-red-600">Password must contain at least one uppercase</div>
+                  )}
+                  {password.newPassword.match(/[a-z]/g) ? (
+                    <div className="text-green-600">Password must contain at least one lowercase</div>
+                  ) : (
+                    <div className="text-red-600">Password must contain at least one lowercase</div>
+                  )}
+                  {password.newPassword.match(/[^\w\s]/g) ? (
+                    <div className="text-green-600">Password must contain at least one special character</div>
+                  ) : (
+                    <div className="text-red-600">Password must contain at least one special character</div>
+                  )}
+                </div>
               </div>
-              <div>
-                <label htmlFor="ConfirmPassword">Confirm Password</label>
-                <input
-                  type="password"
-                  onChange={handleChangePassword}
-                  placeholder="Confirm password"
-                  name="confirmPassword"
-                  className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-3 my-1"
-                />
-              </div>
-              <input
-                type="button"
-                onClick={handleSubmitPassword}
-                value="Change Password"
-                className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2"
-              />
             </div>
-          </div>
-          <div className="grid flex-warps flex-row justtify-items-center items-center">
-            <div className="grid h-96 items-center">
-              {password.newPassword.length < 8 ? (
-                <div className="text-red-600">Password must more than 8 Charactors</div>
-              ) : (
-                <div className="text-green-600">Password must more than 8 Charactors</div>
-              )}
-              {password.newPassword.match(/[0-9]/g) ? (
-                <div className="text-green-600">Password must contain at least one number</div>
-              ) : (
-                <div className="text-red-600">Password must contain at least one number</div>
-              )}
-              {password.newPassword.match(/[A-Z]/g) ? (
-                <div className="text-green-600">Password must contain at least one uppercase</div>
-              ) : (
-                <div className="text-red-600">Password must contain at least one uppercase</div>
-              )}
-              {password.newPassword.match(/[a-z]/g) ? (
-                <div className="text-green-600">Password must contain at least one lowercase</div>
-              ) : (
-                <div className="text-red-600">Password must contain at least one lowercase</div>
-              )}
-              {password.newPassword.match(/[^\w\s]/g) ? (
-                <div className="text-green-600">Password must contain at least one special character</div>
-              ) : (
-                <div className="text-red-600">Password must contain at least one special character</div>
-              )}
-            </div>
-          </div>
+          </form>
         </div>
-      </form>
+      ) : (
+        <button className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2" onClick={handleEdit}>
+          Change Password
+        </button>
+      )}
     </>
   )
 }
