@@ -25,24 +25,26 @@ export const PostList = (props) => {
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue1"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-4 bg-[#FFFDF3]">
-          {posts.map((post, index) => {
-            return (
-              <Post
-                key={index}
-                userId={post.user._id}
-                email={post.user.email}
-                fName={post.user.fName}
-                lName={post.user.lName}
-                title={post.title}
-                price={post.petPrice}
-                location={post.petLocation}
-                petImage={post.petImages}
-                postDate={post.petPostDate}
-                postId={post._id}
-              />
-            )
-          })}
+        <div className="flex justify-start py-8">
+          <div className="mx-5 flex flex-wrap">
+            {posts.map((post, index) => {
+              return (
+                <Post
+                  key={index}
+                  userId={post.user._id}
+                  email={post.user.email}
+                  fName={post.user.fName}
+                  lName={post.user.lName}
+                  title={post.title}
+                  price={post.petPrice}
+                  location={post.petLocation}
+                  petImage={post.petImages}
+                  postDate={post.petPostDate}
+                  postId={post._id}
+                />
+              )
+            })}
+          </div>
         </div>
       )}
     </section>
