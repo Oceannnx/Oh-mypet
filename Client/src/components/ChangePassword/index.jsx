@@ -96,16 +96,22 @@ export const ChangePassword = () => {
                       className="border-2 border-gray-400 border-solid h-8 w-80 px-2 mx-3 my-1"
                     />
                   </div>
-                  <div>
-                    <input
-                      type="button"
-                      onClick={handleSubmitPassword}
-                      value="Change Password"
-                      className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2 mx-4"
-                    />
-                    <button className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2" onClick={handleEdit}>
-                      Cancle
-                    </button>
+                  <div></div>
+                  <div className="w-max">
+                    <div>
+                      <input
+                        type="button"
+                        onClick={handleSubmitPassword}
+                        value="Change Password"
+                        className="btn bg-[#FFFDF3] text-green-400  hover:bg-green-400 hover:text-[#FFFDF3] py-1 my-2 mx-4"
+                      />
+                      <button
+                        className="btn bg-[#FFFDF3] text-red-600  hover:bg-red-600 hover:text-[#FFFDF3] py-1 my-2"
+                        onClick={handleEdit}
+                      >
+                        Cancle
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
