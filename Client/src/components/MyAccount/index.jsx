@@ -77,7 +77,9 @@ export const MyAccount = (props) => {
               {isEdit ? (
                 <div>
                   <div className="flex justify-center">
-                    <button onClick={handleEdit}>Cancle</button>
+                    <button className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2" onClick={handleEdit}>
+                      Cancle
+                    </button>
                   </div>
                   <form onSubmit={handleSubmitAccount}>
                     <div> FirstName : </div>
@@ -156,12 +158,18 @@ export const MyAccount = (props) => {
                       className="border-2 border-gray-400 border-solid h-10 w-60"
                     />
                     <div className="flex justify-center">
-                      <input type="submit" value="Confirm Edit" />
+                      <input
+                        className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2"
+                        type="submit"
+                        value="Confirm Edit"
+                      />
                     </div>
                   </form>
                 </div>
               ) : (
-                <button onClick={handleEdit}> Edit</button>
+                <button className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2" onClick={handleEdit}>
+                  Edit
+                </button>
               )}
             </div>
           </div>
