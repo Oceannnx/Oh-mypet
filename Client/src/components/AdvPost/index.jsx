@@ -1,11 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { NewComment } from '../NewComment'
+import { AllComment } from '../AllComment'
 
 export const AdvPost = (props) => {
   const navigate = useNavigate()
   const [date, setDate] = useState('')
-  const { postDate, postDesc, title, fName, lName, userId } = props || {
+  const { advPostID, postDate, postDesc, title, fName, lName, userId } = props || {
+    advPostID: '',
     postDate: '',
     postDesc: '',
     title: '',
@@ -31,7 +34,6 @@ export const AdvPost = (props) => {
       setDate(date.toLocaleString('th-TH', { month: 'long', day: '2-digit', year: 'numeric' }))
     }
   }, [])
-
   return (
     <>
       <div className="border-4 w-1/2 min-w-[33%] p-5 m-5">
@@ -49,6 +51,8 @@ export const AdvPost = (props) => {
         </div>
         <div className="text-2xl">{title}</div>
         <div className="text-lg">{postDesc}</div>
+        <NewComment advPostID={advPostID} />
+        <AllComment advPostID={advPostID} />
       </div>
     </>
   )

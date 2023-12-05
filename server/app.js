@@ -562,3 +562,42 @@ app.post('/api/newComment', async (req, res) => {
     return res.status(500).send({ success: false })
   }
 })
+app.get('/api/fetchComment/:id', async (req, res) => {
+  try {
+    const result = await client
+      .db('oh-mypet')
+      .collection('comment')
+      .aggregate([
+        {
+          $match: { advPostID: new ObjectId(req.params.id) },
+        },
+        {
+          $lookup: {
+            from: 'user',
+            localField: 'userID',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+        {
+          $unwind: '$user',
+        },
+        {
+          $project: {
+            'user.fName': 1,
+            'user.lName': 1,
+            'user.email': 1,
+            'user._id': 1,
+            comment: 1,
+            commentDate: 1,
+          },
+        },
+      ])
+      .sort({ commentDate: -1 })
+      .limit(100)
+      .toArray()
+    return res.send(result)
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})

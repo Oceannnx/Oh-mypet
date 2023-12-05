@@ -14,7 +14,6 @@ export const Advidence = () => {
       console.log(error)
     }
   }
-
   useEffect(() => {
     fetchAdvPost()
   }, [])
@@ -31,6 +30,7 @@ export const Advidence = () => {
               userId={advPost.user._id}
               fName={advPost.user.fName}
               lName={advPost.user.lName}
+              advPostID={advPost._id}
             />
           )
         })}
