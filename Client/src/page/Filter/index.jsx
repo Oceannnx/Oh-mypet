@@ -1,25 +1,30 @@
-import { Footer } from '../../components/Footer'
-import { Post } from '../../components/Post'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { AxiosLib } from '../../lib/axios'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { Post } from '../../components/Post'
 
-export const Homepage = () => {
+export const Filter = () => {
+  const { animals } = useParams()
   const [posts, setPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const fetchSellPost = async () => {
+  const fetchFilterSellPost = async () => {
     try {
-      const result = await AxiosLib.get('/api/fetchsellpost')
+      const result = await AxiosLib.get(`/api/fetchFilterSellPost/${animals}`)
       setPosts(result.data)
       setIsLoading(false)
     } catch (error) {
       console.log(error)
     }
   }
+  console.log(posts)
+
   useEffect(() => {
-    fetchSellPost()
-  }, [])
+    fetchFilterSellPost()
+  }, [animals])
+
   return (
-    <section>
+    <>
       {isLoading ? (
         <div className="h-screen bg-[#FFFDF3] flex justify-center items-center">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue1"></div>
@@ -36,7 +41,6 @@ export const Homepage = () => {
                   fName={post.user.fName}
                   lName={post.user.lName}
                   title={post.title}
-                  petType={post.petType}
                   price={post.petPrice}
                   location={post.petLocation}
                   petImage={post.petImages}
@@ -48,7 +52,6 @@ export const Homepage = () => {
           </div>
         </div>
       )}
-      <Footer />
-    </section>
+    </>
   )
 }

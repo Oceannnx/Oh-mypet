@@ -11,6 +11,7 @@ import { Profile } from './page/Profile'
 import { AxiosLib } from './lib/axios'
 import { AuthContext, ContextValue } from './context/user'
 import { Advidence } from './page/Advidence'
+import { Filter } from './page/Filter'
 
 function App() {
   const [authContext, setAuthContext] = useState(ContextValue)
@@ -35,7 +36,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/filter/:animals" element={<Homepage />} />
+          <Route path="/filter/:animals" element={<Filter />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/newsellpost" element={<NewSellPost />} />

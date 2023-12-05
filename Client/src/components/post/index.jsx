@@ -5,12 +5,13 @@ import Swal from 'sweetalert2'
 
 export const Post = (props) => {
   const navigate = useNavigate()
-  const { userId, fName, lName, title, price, location, petImage, postId, postDate } = props || {
+  const { userId, fName, lName, title, petType, price, location, petImage, postId, postDate } = props || {
     userId: '',
     fName: '',
     lName: '',
     uid: '',
     title: '',
+    petType: '',
     price: '',
     location: '',
     petImage: '',
@@ -105,6 +106,7 @@ export const Post = (props) => {
         </div>
         <div>
           <h1 className="mt-4 font-bold text-lg">{title}</h1>
+          <div>Type :{petType}</div>
           <div>Price : {price} $</div>
           <div className="text-sm font-light">{location}</div>
 

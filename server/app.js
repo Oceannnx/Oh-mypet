@@ -438,3 +438,40 @@ app.delete('/api/deletePost/:postID', (req, res) => {
     res.status(500).send({ success: false })
   }
 })
+
+app.get('/api/fetchFilterSellPost/:animal', async (req, res) => {
+  try {
+    const animal = req.params.animal
+    const result = await client
+      .db('oh-mypet')
+      .collection('sellPost')
+      .aggregate([
+        {
+          $match: { petType: animal },
+        },
+        {
+          $lookup: {
+            from: 'user',
+            localField: 'userID',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+        {
+          $unwind: '$user',
+        },
+        {
+          $project: {
+            'user.email': 0,
+            'user.password': 0,
+          },
+        },
+      ])
+      .sort({ petPostDate: -1 })
+      .limit(100)
+      .toArray()
+    return res.send(result)
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})
