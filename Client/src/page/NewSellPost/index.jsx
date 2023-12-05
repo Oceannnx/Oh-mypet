@@ -202,7 +202,7 @@ export const NewSellPost = () => {
                     name="petDescription"
                     id="petDescription"
                     placeholder="Description"
-                    className="border-2 border-gray-400 border-solid h-[150px] w-[575px] px-2"
+                    className="border-2 border-gray-400 resize-none border-solid h-[150px] w-[575px] px-2"
                   ></textarea>
                 </div>
                 <div className="flex justify-center items-center py-3">

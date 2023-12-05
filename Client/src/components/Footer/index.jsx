@@ -3,7 +3,7 @@ import { Animals } from '../../contents/Navbar'
 
 export const Footer = () => {
   return (
-    <footer className="grid grid-cols-[5fr_2fr_2fr_1fr] bg-blue1">
+    <footer className="grid grid-cols-[5fr_2fr_2fr_1fr] bg-primaryColor">
       <div className="flex items-center">
         <img src="src/assets/Logo.png" alt="Logo" className="ml-16 w-32 object-cover my-3" />
       </div>
