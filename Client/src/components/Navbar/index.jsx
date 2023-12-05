@@ -28,7 +28,7 @@ export const Navbar = () => {
   }, [])
   return (
     <>
-      <nav className="lg:hidden bg-blue1">
+      <nav className="lg:hidden bg-primaryColor">
         <div className="flex justify-between">
           <div className="px-12 py-4">
             <Link to="/">
@@ -86,7 +86,7 @@ export const Navbar = () => {
           </div>
         ) : null}
       </nav>
-      <nav className="lg:flex hidden items-center justify-between bg-blue1">
+      <nav className="lg:flex hidden items-center justify-between bg-primaryColor">
         <div className="px-12 py-4">
           <Link to="/">
             <img src={logo} alt="Logo" width="96px" />
