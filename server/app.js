@@ -438,4 +438,3 @@ app.delete('/api/deletePost/:postID', (req, res) => {
     res.status(500).send({ success: false })
   }
 })
-// supabase password "ZriXNxs6PFojh1yI"
