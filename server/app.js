@@ -535,3 +535,30 @@ app.get('/api/fetchAdvPost', async (req, res) => {
     res.status(500).send({ success: false })
   }
 })
+
+app.post('/api/newComment', async (req, res) => {
+  const { comment, advPostID } = req.body
+  if (comment === '') {
+    return res.status(400).send({
+      message: 'Enter Comment',
+      success: false,
+    })
+  }
+  try {
+    await client
+      .db('oh-mypet')
+      .collection('comment')
+      .insertOne({
+        userID: new ObjectId(req.cookies.userID),
+        advPostID: new ObjectId(advPostID),
+        comment,
+        commentDate: new Date(Date.now()),
+      })
+    return res.status(201).send({
+      message: 'New Comment Success',
+      success: true,
+    })
+  } catch (error) {
+    return res.status(500).send({ success: false })
+  }
+})
