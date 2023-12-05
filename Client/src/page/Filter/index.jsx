@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { AxiosLib } from '../../lib/axios'
 import { useState } from 'react'
 import { Post } from '../../components/Post'
+import { Footer } from '../../components/Footer'
 
 export const Filter = () => {
   const { animals } = useParams()
@@ -52,6 +53,7 @@ export const Filter = () => {
           </div>
         </div>
       )}
+      <Footer />
     </>
   )
 }
