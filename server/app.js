@@ -601,3 +601,15 @@ app.get('/api/fetchComment/:id', async (req, res) => {
     res.status(500).send({ success: false })
   }
 })
+app.delete('/api/deleteComment/:commentID', (req, res) => {
+  try {
+    const commentID = req.params.commentID
+    client
+      .db('oh-mypet')
+      .collection('comment')
+      .deleteOne({ _id: new ObjectId(commentID) })
+    return res.status(200)
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})

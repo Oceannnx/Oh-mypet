@@ -24,10 +24,12 @@ export const AllComment = (props) => {
           <Comment
             key={index}
             comment={comment.comment}
+            commentId={comment._id}
             commentDate={comment.commentDate}
             fName={comment.user.fName}
             lName={comment.user.lName}
             userId={comment.user._id}
+            email={comment.user.email}
           />
         )
       })}
