@@ -497,3 +497,41 @@ app.post('/api/newAdvPost', (req, res) => {
     return res.status(500).send({ success: false })
   }
 })
+
+app.get('/api/fetchAdvPost', async (req, res) => {
+  try {
+    const result = await client
+      .db('oh-mypet')
+      .collection('advPost')
+      .aggregate([
+        {
+          $lookup: {
+            from: 'user',
+            localField: 'userID',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+        {
+          $unwind: '$user',
+        },
+        {
+          $project: {
+            'user.fName': 1,
+            'user.lName': 1,
+            'user.email': 1,
+            'user._id': 1,
+            title: 1,
+            postDesc: 1,
+            postDate: 1,
+          },
+        },
+      ])
+      .sort({ postDate: -1 })
+      .limit(100)
+      .toArray()
+    return res.send(result)
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})
