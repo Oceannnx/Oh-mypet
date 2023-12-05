@@ -43,7 +43,9 @@ app.get('/api/user/me', async (req, res) => {
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
   }
-  return res.status(200).send({ message: '', success: true, fName: result.fName, email: result.email })
+  return res
+    .status(200)
+    .send({ message: '', success: true, fName: result.fName, lName: result.lName, email: result.email })
 })
 
 app.post('/signup', async (req, res) => {
@@ -472,5 +474,26 @@ app.get('/api/fetchFilterSellPost/:animal', async (req, res) => {
     return res.send(result)
   } catch (error) {
     res.status(500).send({ success: false })
+  }
+})
+
+app.post('/api/newAdvPost', (req, res) => {
+  const { title, postDesc } = req.body
+  try {
+    client
+      .db('oh-mypet')
+      .collection('advPost')
+      .insertOne({
+        userID: new ObjectId(req.cookies.userID),
+        title,
+        postDesc,
+        postDate: new Date(Date.now()),
+      })
+    return res.status(201).send({
+      message: 'New Adv Success',
+      success: true,
+    })
+  } catch (error) {
+    return res.status(500).send({ success: false })
   }
 })

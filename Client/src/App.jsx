@@ -12,6 +12,7 @@ import { AxiosLib } from './lib/axios'
 import { AuthContext, ContextValue } from './context/user'
 import { Advidence } from './page/Advidence'
 import { Filter } from './page/Filter'
+import { NewAvdPost } from './page/NewAvdPost'
 
 function App() {
   const [authContext, setAuthContext] = useState(ContextValue)
@@ -19,7 +20,7 @@ function App() {
     try {
       const result = await AxiosLib.get('/api/user/me')
       if (result.status === 200) {
-        setAuthContext({ fName: result.data.fName, IsLogin: true, email: result.data.email })
+        setAuthContext({ fName: result.data.fName, lName: result.data.lName, IsLogin: true, email: result.data.email })
       }
     } catch (error) {
       setAuthContext({ fName: '', IsLogin: false, email: '' })
@@ -40,6 +41,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/newsellpost" element={<NewSellPost />} />
+          <Route path="/newadvpost" element={<NewAvdPost />} />
           <Route path="/advidence" element={<Advidence />} />
           <Route path="/sellpost/:postId" element={<Sellpost />} />
           <Route path="/account/:id" element={<Profile />} />
