@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AxiosLib } from '../../lib/axios'
 import Swal from 'sweetalert2'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/user'
 
 export const Post = (props) => {
   const navigate = useNavigate()
-  const { userId, fName, lName, title, petType, price, location, petImage, postId, postDate } = props || {
+  const auth = useContext(AuthContext)
+  const { userId, email, fName, lName, title, petType, price, location, petImage, postId, postDate } = props || {
     userId: '',
+    email: '',
     fName: '',
     lName: '',
-    uid: '',
     title: '',
     petType: '',
     price: '',
@@ -21,16 +24,6 @@ export const Post = (props) => {
   const [date, setDate] = useState('')
   const [isOwner, setIsOwner] = useState(false)
 
-  const fetchAccount = async () => {
-    try {
-      const result = await AxiosLib.get('api/user/me')
-      if (result.data.id === userId) {
-        setIsOwner(true)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
   const deletePost = async () => {
     const result = await Swal.fire({
       title: 'Are you sure?',
@@ -52,6 +45,9 @@ export const Post = (props) => {
     }
   }
   useEffect(() => {
+    if (auth?.authContext?.email === email) {
+      setIsOwner(true)
+    }
     if (parseInt((Date.now() - Date.parse(postDate)) / 1000 / 60) < 1) {
       setDate('Recently')
     } else if (parseInt((Date.now() - Date.parse(postDate)) / 1000 / 60) < 60) {
@@ -64,16 +60,14 @@ export const Post = (props) => {
       const date = new Date(postDate)
       setDate(date.toLocaleString('th-TH', { month: 'long', day: '2-digit', year: 'numeric' }))
     }
-  }, [postDate])
+  }, [])
+
   const handleOnClickPost = () => {
     navigate(`/sellpost/${postId}`)
   }
   const handleOnClickUser = () => {
     navigate(`/account/${userId}`)
   }
-  useEffect(() => {
-    fetchAccount()
-  }, [])
 
   return (
     <>

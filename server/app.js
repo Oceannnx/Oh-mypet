@@ -43,7 +43,7 @@ app.get('/api/user/me', async (req, res) => {
   if (result === null) {
     return res.status(403).send({ message: '', success: false })
   }
-  return res.status(200).send({ message: '', success: true, fName: result.fName, id: result._id.toString() })
+  return res.status(200).send({ message: '', success: true, fName: result.fName, email: result.email })
 })
 
 app.post('/signup', async (req, res) => {
@@ -198,7 +198,6 @@ app.get('/api/fetchsellpost', async (req, res) => {
       .limit(100)
       .toArray()
     return res.send(result)
-    // return res.status(200).send(result)
   } catch (error) {
     return res.status(500).send({ success: false })
   }
@@ -319,7 +318,7 @@ app.get('/api/fetchMySellPost/:id', async (req, res) => {
         },
         {
           $project: {
-            'user.email': 0,
+            'user._id': 0,
             'user.password': 0,
           },
         },
