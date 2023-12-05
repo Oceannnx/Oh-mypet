@@ -19,7 +19,7 @@ export const Advidence = () => {
   }, [])
   return (
     <>
-      <div className="flex flex-col justify-items-center">
+      <div className="flex bg-secondaryColor flex-col justify-items-center">
         {advPosts.map((advPost, index) => {
           return (
             <AdvPost

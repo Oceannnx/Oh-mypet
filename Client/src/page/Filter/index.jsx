@@ -30,7 +30,7 @@ export const Filter = () => {
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue1"></div>
         </div>
       ) : (
-        <div className="flex justify-center py-8">
+        <div className="flex bg-secondaryColor justify-center py-8">
           <div className="mx-5 flex flex-wrap">
             {posts.map((post, index) => {
               return (

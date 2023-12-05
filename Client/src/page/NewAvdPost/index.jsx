@@ -31,7 +31,7 @@ export const NewAvdPost = () => {
   }
   return (
     <>
-      <form className="flex justify-items-center items-center flex-col py-3" onSubmit={handleSubmit}>
+      <form className="flex bg-secondaryColor justify-items-center items-center flex-col py-3" onSubmit={handleSubmit}>
         <div className="text-3xl"> New Advidence Post</div>
         <div className=" py-3">
           <div className="flex  mb-4">
