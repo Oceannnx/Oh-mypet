@@ -36,10 +36,7 @@ export const Post = (props) => {
     if (result.isConfirmed) {
       Swal.fire('Deleted!', 'Your post has been deleted.', 'success')
       try {
-        const res = await AxiosLib.delete(`api/deletePost/${postId}`)
-        if (res.status === 200) {
-          window.location.reload()
-        }
+        await AxiosLib.delete(`api/deletePost/${postId}`)
       } catch (error) {
         console.log(error)
       }

@@ -608,7 +608,6 @@ app.delete('/api/deleteComment/:commentID', (req, res) => {
       .db('oh-mypet')
       .collection('comment')
       .deleteOne({ _id: new ObjectId(commentID) })
-    return res.status(200)
   } catch (error) {
     res.status(500).send({ success: false })
   }
