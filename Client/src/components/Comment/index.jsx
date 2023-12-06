@@ -9,6 +9,7 @@ import { AxiosLib } from '../../lib/axios'
 export const Comment = (props) => {
   const [date, setDate] = useState('')
   const [isOwner, setIsOwner] = useState(false)
+  const [isLoad, setIsLoad] = useState(false)
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
   const { comment, commentId, commentDate, email, fName, lName, userID } = props || {
@@ -35,7 +36,6 @@ export const Comment = (props) => {
       } catch (error) {
         console.log(error)
       }
-      window.location.reload()
     }
   }
   const handleOnClickUser = () => {
@@ -45,6 +45,7 @@ export const Comment = (props) => {
     if (auth?.authContext?.email === email) {
       setIsOwner(true)
     }
+    setIsLoad(true)
     if (parseInt((Date.now() - Date.parse(commentDate)) / 1000 / 60) < 1) {
       setDate('Recently')
     } else if (parseInt((Date.now() - Date.parse(commentDate)) / 1000 / 60) < 60) {
@@ -60,33 +61,40 @@ export const Comment = (props) => {
   }, [])
   return (
     <>
-      <div className="border p-3 my-3 relative">
-        <div className="flex pb-3">
-          <img
-            className="rounded-lg w-9 h-9 cursor-pointer"
-            src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
-          ></img>
-          <div className="">
-            <div onClick={handleOnClickUser} className="grid items-center cursor-pointer w-fit font-bold text-sm ml-3">
-              {fName + ' ' + lName}
+      {isLoad ? (
+        <div className="border p-3 my-3 relative">
+          <div className="flex pb-3">
+            <img
+              className="rounded-lg w-9 h-9 cursor-pointer"
+              src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
+            ></img>
+            <div className="">
+              <div
+                onClick={handleOnClickUser}
+                className="grid items-center cursor-pointer w-fit font-bold text-sm ml-3"
+              >
+                {fName + ' ' + lName}
+              </div>
+              <div className="text-sm font-thin ml-3">{date}</div>
             </div>
-            <div className="text-sm font-thin ml-3">{date}</div>
           </div>
+          <div className="text-m">{comment}</div>
+          {isOwner ? (
+            <div className="absolute top-2 right-2">
+              <button
+                className="border-2 border-slate-100 bg-slate-100 rounded-full px-2 py-1 text-red-600 hover:bg-red-600 hover:text-white float-right mr-2 mb-2"
+                onClick={deleteComment}
+              >
+                X
+              </button>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
-        <div className="text-m">{comment}</div>
-        {isOwner ? (
-          <div className="absolute top-2 right-2">
-            <button
-              className="border-2 border-slate-100 bg-slate-100 rounded-full px-2 py-1 text-red-600 hover:bg-red-600 hover:text-white float-right mr-2 mb-2"
-              onClick={deleteComment}
-            >
-              X
-            </button>
-          </div>
-        ) : (
-          ''
-        )}
-      </div>
+      ) : (
+        <div>Loading . . . </div>
+      )}
     </>
   )
 }
