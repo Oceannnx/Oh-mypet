@@ -37,26 +37,26 @@ export const Login = () => {
   return (
     <>
       <form onSubmit={handlesubmit} className="h-screen bg-[#FFFDF3] ">
-        <div className="border-2 border-[#FFFDF3]  ">
+        <div className="border-2 border-[#FFFDF3] py-10">
           <div className="grid grid-cols-2 py-5">
             <div className="flex justify-center items-center flex-col">
               <img src="src/assets/Logo.png" alt="Logo" width="200" />
               <h1 className="flex justify-center py-2 text-blue-900 text-xl">OH-MYPET</h1>
               <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
             </div>
-            <div className="border-2 bg-[#FFFDF3] border-[#FFFDF3] mr-5 ">
-              <div className="items-center py-5 border bg-[#8ECDDD] mr-10 ml-10 my-5">
-                <h1 className="flex justify-center text-blue-900 text-lg">Log in</h1>
+            <div className="border rounded-lg  bg-[#8ECDDD] mr-5 h-[350px] w-[500px] drop-shadow-md hover:drop-shadow-xl">
+              <div className="items-center py-5 mr-10 ml-10 my-5">
+                <h1 className="flex justify-center text-blue-900 text-xl">LogIn</h1>
                 <div className="flex justify-center items-center flex-col ">
                   <label htmlFor="fName" className="py-3 "></label>
-                  =======
+                  {/* ======= */}
                   <input
                     type="Email"
                     id="Email"
                     placeholder="Email"
                     name="email"
                     onChange={handleChange}
-                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                    className="border rounded-md border-gray-400 h-10 w-80 px-2"
                   />
                   <label htmlFor="fName" className="py-3 "></label>
                   <input
@@ -65,12 +65,16 @@ export const Login = () => {
                     placeholder="Password"
                     name="password"
                     onChange={handleChange}
-                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                    className="border rounded-md border-gray-400 h-10 w-80 px-2"
                   />
                   <Link to="/signup" className="text-blue-900 hover:text-blue-700 py-2">
                     New to Oh-MyPet? Sign up
                   </Link>
-                  <input type="Submit" className="btn  bg-[#FFFDF3]bg-[#FFFDF3] py-1 my-2 " name="submit-btn"></input>
+                  <input
+                    type="Submit"
+                    className="btn  bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2 "
+                    name="submit-btn"
+                  ></input>
                 </div>
               </div>
             </div>

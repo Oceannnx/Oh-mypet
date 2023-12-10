@@ -62,10 +62,10 @@ export const SignUp = () => {
               <h1 className="flex justify-center py-2 text-blue-900 text-xl">OH-MYPET</h1>
               <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
             </div>
-            <div className="border-2 bg-[#8ECDDD] border-[#8ECDDD] mr-5 ">
+            <div className="border rounded-lg  bg-[#8ECDDD] mr-5 h-[550px] w-[700px] drop-shadow-md hover:drop-shadow-xl">
               <div className="grid grid-cols-2">
                 <div>
-                  <h1 className="flex justify-center text-blue-900 text-lg">Sign Up</h1>
+                  <h1 className="flex justify-center text-blue-900 text-xl py-3">Sign Up</h1>
                   <div className="flex justify-center items-center flex-col">
                     <label htmlFor="fName" className="py-3 ">
                       FirstName
@@ -76,7 +76,7 @@ export const SignUp = () => {
                       placeholder="FirstName"
                       name="fName"
                       onChange={handleChange}
-                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                      className="border rounded-md border-gray-400 h-10 w-80 px-2"
                     />
                     <label htmlFor="lName" className="py-1">
                       LastName
@@ -87,7 +87,7 @@ export const SignUp = () => {
                       placeholder="LastName"
                       name="lName"
                       onChange={handleChange}
-                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                      className="border rounded-md border-gray-400 h-10 w-80 px-2"
                     />
                     <label htmlFor="email" className="py-1">
                       Email
@@ -98,7 +98,7 @@ export const SignUp = () => {
                       placeholder="Email"
                       name="email"
                       onChange={handleChange}
-                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2 "
+                      className="border rounded-md border-gray-400 h-10 w-80 px-2 "
                     />
                     <label htmlFor="password" className="py-1">
                       Password
@@ -109,7 +109,7 @@ export const SignUp = () => {
                       placeholder="Password"
                       name="password"
                       onChange={handleChange}
-                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                      className="border rounded-md border-gray-400 h-10 w-80 w-80 px-2"
                     />
 
                     <label htmlFor="confirmpassword" className="py-1">
@@ -121,7 +121,7 @@ export const SignUp = () => {
                       placeholder="Confirm password"
                       name="confirmPassword"
                       onChange={handleChange}
-                      className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                      className="border rounded-md border-gray-400 h-10 w-80 px-2"
                     />
                     <Link to="/login" className="text-blue-900 hover:text-blue-700 py-1">
                       Already have account?
@@ -136,29 +136,29 @@ export const SignUp = () => {
                 <div className="grid flex-warps flex-row justtify-items-center items-center">
                   <div className="grid h-96 items-center">
                     {register.password.length < 8 ? (
-                      <div className="text-red-600">Password must more than 8 Charactors</div>
+                      <div className="text-red-600">*Password must more than 8 Charactors</div>
                     ) : (
                       <div className="text-green-600">Password must more than 8 Charactors</div>
                     )}
                     {register.password.match(/[0-9]/g) ? (
                       <div className="text-green-600">Password must contain at least one number</div>
                     ) : (
-                      <div className="text-red-600">Password must contain at least one number</div>
+                      <div className="text-red-600">*Password must contain at least one number</div>
                     )}
                     {register.password.match(/[A-Z]/g) ? (
                       <div className="text-green-600">Password must contain at least one uppercase</div>
                     ) : (
-                      <div className="text-red-600">Password must contain at least one uppercase</div>
+                      <div className="text-red-600">*Password must contain at least one uppercase</div>
                     )}
                     {register.password.match(/[a-z]/g) ? (
                       <div className="text-green-600">Password must contain at least one lowercase</div>
                     ) : (
-                      <div className="text-red-600">Password must contain at least one lowercase</div>
+                      <div className="text-red-600">* must contain at least one lowercase</div>
                     )}
                     {register.password.match(/[^\w\s]/g) ? (
                       <div className="text-green-600">Password must contain at least one special character</div>
                     ) : (
-                      <div className="text-red-600">Password must contain at least one special character</div>
+                      <div className="text-red-600">*Password must contain at least one special character</div>
                     )}
                   </div>
                 </div>
