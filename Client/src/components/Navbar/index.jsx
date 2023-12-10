@@ -32,7 +32,7 @@ export const Navbar = () => {
         <div className="flex justify-between">
           <div className="px-12 py-4">
             <Link to="/">
-              <img src={logo} alt="Logo" width="72px" />
+              <img src="src/assets/Logo.png" alt="Logo" width="72px" />
             </Link>
           </div>
           <div className="flex justify-center items-center px-12 py-4">

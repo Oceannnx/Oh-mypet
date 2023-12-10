@@ -11,7 +11,7 @@ const url = process.env.DB_URL
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+app.use(cors({ origin: 'http://localhost:5176', credentials: true }))
 
 const cookieConfig = {
   httpOnly: true,

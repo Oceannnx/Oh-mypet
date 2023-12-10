@@ -31,7 +31,10 @@ export const NewAvdPost = () => {
   }
   return (
     <>
-      <form className="flex bg-secondaryColor justify-items-center items-center flex-col py-3" onSubmit={handleSubmit}>
+      <form
+        className="h-screen flex bg-secondaryColor justify-items-center items-center flex-col py-3"
+        onSubmit={handleSubmit}
+      >
         <div className="text-3xl"> New Advidence Post</div>
         <div className=" py-3">
           <div className="flex  mb-4">
@@ -48,7 +51,7 @@ export const NewAvdPost = () => {
           <div className="flex flex-col">
             <input
               type="text"
-              className="border-2 border-gray-400 text-xl mb-3 p-2"
+              className="border-2 border-gray-400 text-lg mb-3 p-2 "
               placeholder="What's going on?"
               name="title"
               onChange={handleChange}
@@ -56,8 +59,8 @@ export const NewAvdPost = () => {
             <textarea
               name="postDesc"
               id="postDesc"
-              placeholder="can you tell me about your problem?"
-              className="border-2 border-gray-400 resize-none border-solid h-[150px] w-[575px] px-2"
+              placeholder="Can you tell me about your problem?"
+              className="border-2 border-gray-400 resize-none border-solid h-[150px] w-[575px] px-2 text-lg"
               onChange={handleChange}
             ></textarea>
           </div>
