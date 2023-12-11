@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <footer>
       <div className="bg-primaryColor">
-        <div className="grid grid-cols-[4fr_2fr_2fr_1fr] ">
+        <div className="grid grid-cols-[4fr_2fr_2fr_1fr]">
           <div className="flex items-center">
             <img src="src/assets/Logo.png" alt="Logo" className="ml-16 w-32 object-cover my-3" />
           </div>
@@ -14,7 +14,7 @@ export const Footer = () => {
               <Link to="/">
                 <h1 className="font-bold text-lg">Main menu</h1>
               </Link>
-              <li className="dropdown dropdown-right dropdown-hover items-center">
+              <li className="dropdown dropdown-top dropdown-hover items-center">
                 Animal
                 <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
                   {Animals.map((animal, index) => {
@@ -29,7 +29,7 @@ export const Footer = () => {
               <Link to="/advidence">
                 <li>Advidence</li>
               </Link>
-              <div className="dropdown dropdown-right dropdown-hover items-center">
+              <div className="dropdown dropdown-top dropdown-hover items-center">
                 <span>
                   <label tabIndex={0}>Post</label>
                   <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
