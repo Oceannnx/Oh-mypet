@@ -13,6 +13,7 @@ import { AuthContext, ContextValue } from './context/user'
 import { Advidence } from './page/Advidence'
 import { Filter } from './page/Filter'
 import { NewAvdPost } from './page/NewAvdPost'
+import { Contact } from './page/Contact'
 
 function App() {
   const [authContext, setAuthContext] = useState(ContextValue)
@@ -46,6 +47,7 @@ function App() {
           <Route path="/sellpost/:postId" element={<Sellpost />} />
           <Route path="/account/:id" element={<Profile />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<h1>404 not found</h1>} />
         </Routes>
       </AuthContext.Provider>
