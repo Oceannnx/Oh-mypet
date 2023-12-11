@@ -28,7 +28,7 @@ export const Navbar = () => {
   }, [])
   return (
     <>
-      <nav className="lg:hidden bg-primaryColor">
+      <nav className="lg:hidden bg-primaryColor z-10">
         <div className="flex justify-between">
           <div className="px-12 py-4">
             <Link to="/">
