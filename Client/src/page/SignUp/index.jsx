@@ -62,7 +62,7 @@ export const SignUp = () => {
               <h1 className="flex justify-center py-2 text-blue-900 text-xl">OH-MYPET</h1>
               <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
             </div>
-            <div className="border rounded-lg  bg-[#8ECDDD] mr-5 h-[550px] w-[700px] drop-shadow-md hover:drop-shadow-xl">
+            <div className="border rounded-lg  bg-[#8ECDDD] mr-5 h-[550px] w-[700px] drop-shadow-mddrop-shadow-md hover:drop-shadow-xl">
               <div className="grid grid-cols-2">
                 <div>
                   <h1 className="flex justify-center text-blue-900 text-xl py-3">Sign Up</h1>

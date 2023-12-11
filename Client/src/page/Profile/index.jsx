@@ -9,7 +9,9 @@ export const Profile = () => {
 
   return (
     <>
-      <MyAccount accountID={accounId.id} />
+      <div className="bg-[#FFFDF3] flex justify-center py-5">
+        <MyAccount accountID={accounId.id} />
+      </div>
       <PostList accountID={accounId.id} />
       <Footer></Footer>
     </>

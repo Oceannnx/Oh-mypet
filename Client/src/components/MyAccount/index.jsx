@@ -194,13 +194,17 @@ export const MyAccount = (props) => {
           </div>
         </div>
       ) : (
-        <div>
-          <div>FirstName : {account.fName}</div>
-          <div>LastName : {account.lName}</div>
-          <div>Email : {account.email}</div>
-          <div>Telephone : {account.tel === '' ? '-' : account.tel}</div>
-          <div>Address : {account.address === '' ? '-' : account.address}</div>
-          <div className="flex">
+        <div className="border rounded-md border-gray-400 py-5 bg-[#8ECDDD] drop-shadow-md ">
+          <div className="border rounded-md border-gray-400 mx-5 bg-[#FFFDF3]">FirstName : {account.fName}</div>
+          <div className="border rounded-md border-gray-400 my-3 mx-5 bg-[#FFFDF3]">LastName : {account.lName}</div>
+          <div className="border rounded-md border-gray-400 my-3 mx-5 bg-[#FFFDF3]">Email : {account.email}</div>
+          <div className="border rounded-md border-gray-400 my-3 mx-5 bg-[#FFFDF3]">
+            Telephone : {account.tel === '' ? '-' : account.tel}
+          </div>
+          <div className="border rounded-md border-gray-400 my-3 mx-5 bg-[#FFFDF3]">
+            Address : {account.address === '' ? '-' : account.address}
+          </div>
+          <div className="flex justify-center py-3 ">
             <a className="w-8 mx-1" href={account.facebook || ''}>
               <img src="\src\assets\facebook.png"></img>
             </a>
