@@ -68,7 +68,7 @@ export const NewSellPost = () => {
           onChange={handleChange}
           className="h-screen bg-[#FFFDF3] flex justify-start items-center flex-col py-5"
         >
-          <div className="border-2 bg-[#FFFDF3] border-[#FFFDF3] py-[20px]">
+          <div className="border rounded-md border-gray-400 bg-[#E0F1F5] py-[20px] w-[600px]">
             <h1 className="flex justify-center items-center text-blue-900 text-2xl">Sell Post</h1>
             <div className="flex justify-start items-center flex-col py-5">
               <div className="border-none">
