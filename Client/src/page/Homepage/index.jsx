@@ -26,24 +26,13 @@ export const Homepage = () => {
         </div>
       ) : (
         <div className="bg-[#FFFDF3] py-[30px]">
-          {/* <div className="flex justify-center">
-            <div className="border rounded-lg border-gray-400 w-[1320px] h-[413px] bg-[#E0F1F5] drop-shadow-lg">
-              <div className="grid grid-cols-2">
-                <div className="flex justify-center items-center py-[200px] text-2xl text-blue-900">
-                  <h1>WELCOME TO OH-MYPET</h1>
-                </div>
-                <div className="flex justify-start mt-[-100px] my-5 ">
-                  <img src="src/assets/dog.png" alt="Logo" className=""></img>
-                </div>
-                <img src="src/assets/dog.png" alt="Logo" className="mt-[-83px]"></img>
-              </div>
-            </div>
-          </div> */}
           <div className="flex justify-center">
-            <div className="border rounded-lg border-gray-400 w-[1320px] bg-[#E0F1F5] drop-shadow-lg grid grid-cols-2">
-              <div className="flex justify-center py-[200px] bg-[url('src/assets/bg-cat.jpg')] bg-cover"></div>
-              <div className="flex justify-center bg-[url('src/assets/bg-dog2.jpg')] bg-cover">
-                {/* <img src="src/assets/dogg.png" alt="Logo" className="absolute bottom-0 h-[320px]"></img> */}
+            <div className="md:grid md:grid-cols-2 md:m-0 m-6 grid-cols-1 border rounded-lg border-gray-400 w-[1320px] bg-[#E0F1F5] drop-shadow-lg">
+              <div className="flex justify-center items-center md:py-[200px] py-[25px] md:text-2xl text-xl text-blue-900">
+                <h1>WELCOME TO OH-MYPET</h1>
+              </div>
+              <div className="flex justify-center relative">
+                <img src="src/assets/dogg.png" alt="Logo" className="md:absolute bottom-0 h-[320px]"></img>
               </div>
             </div>
           </div>
