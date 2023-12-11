@@ -31,8 +31,12 @@ export const Homepage = () => {
               <div className="flex justify-center items-center md:py-[200px] py-[25px] md:text-2xl text-xl text-blue-900">
                 <h1>WELCOME TO OH-MYPET</h1>
               </div>
-              <div className="flex justify-center bg-[url('src/assets/bg-dog2.jpg')] bg-cover">
-                {/* <img src="src/assets/dogg.png" alt="Logo" className="md:absolute bottom-0 h-[320px]"></img> */}
+              <div className="md:bg-[url('src/assets/bg-dog2.jpg')] md:bg-cover">
+                <img
+                  src="src/assets/bg-dog2.jpg"
+                  alt="Logo"
+                  className="md:hidden rounded-b-lg aspect-auto object-contain"
+                ></img>
               </div>
             </div>
           </div>
