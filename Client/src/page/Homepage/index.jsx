@@ -41,11 +41,9 @@ export const Homepage = () => {
           </div> */}
           <div className="flex justify-center">
             <div className="border rounded-lg border-gray-400 w-[1320px] bg-[#E0F1F5] drop-shadow-lg grid grid-cols-2">
-              <div className="flex justify-center items-center py-[200px] text-2xl text-blue-900">
-                <h1>WELCOME TO OH-MYPET</h1>
-              </div>
-              <div className="flex justify-center relative">
-                <img src="src/assets/dogg.png" alt="Logo" className="absolute bottom-0 h-[320px]"></img>
+              <div className="flex justify-center py-[200px] bg-[url('src/assets/bg-cat.jpg')] bg-cover"></div>
+              <div className="flex justify-center bg-[url('src/assets/bg-dog2.jpg')] bg-cover">
+                {/* <img src="src/assets/dogg.png" alt="Logo" className="absolute bottom-0 h-[320px]"></img> */}
               </div>
             </div>
           </div>

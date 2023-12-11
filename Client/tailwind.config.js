@@ -10,6 +10,10 @@ export default {
         primaryColor: '#8ECDDD',
         secondaryColor: '#FFFDF3',
       },
+      backgroundImage: {
+        'bg-dog2': "url('src/assets/bg-dog2.jpg')",
+        'bg-cat': "url('src/assets/bg-cat.jpg')",
+      },
     },
   },
   plugins: [require('daisyui')],
