@@ -93,7 +93,7 @@ export const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex mx-12">
+        <div className="flex mx-12 ">
           <div className="flex justify-center items-center">
             <Link to="/" className="px-4 py-2">
               Home
@@ -116,7 +116,7 @@ export const Navbar = () => {
           <div className="flex justify-center items-center">
             <Link to="/advidence">Advidence</Link>
           </div>
-          <div className="flex justify-center dropdown dropdown-hover items-center mx-10">
+          <div className="flex justify-center dropdown dropdown-hover items-center mx-10 border rounded-full ">
             <span>
               <label tabIndex={0} className="m-1 mx-10">
                 Post
@@ -158,7 +158,7 @@ export const Navbar = () => {
                 </div>
                 <div>
                   <Link to="/signup">
-                    <div className="btn border-solid font-normal w-24 ml-4 hover:bg-[#FFFDF3]">Sign Up</div>
+                    <div className="btn border rounded-full font-normal w-24 ml-4 hover:bg-[#FFFDF3]">Sign Up</div>
                   </Link>
                 </div>
               </>

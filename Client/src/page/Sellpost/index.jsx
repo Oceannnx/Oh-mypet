@@ -32,31 +32,35 @@ export const Sellpost = () => {
         ) : (
           <div>
             <div className="grid grid-cols-2">
-              <div className="flex justify-center">
-                <div className="flex justify-center py-5">
+              <div className="flex justify-start py-5">
+                <div className="flex justify-center">
                   {sellpost[0].user.fName} {sellpost[0].user.lName}
                 </div>
-                <div className="flex justify-center items-center py-5">
+                <div className=" flex justify-center items-center">
                   <img src={sellpost[0].petImages}></img>
                 </div>
               </div>
               <div>
-                <div>{sellpost[0].title}</div>
-                <div>{sellpost[0].petAge}</div>
-                <div>{BD.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                <div>{sellpost[0].petDescription}</div>
-                <div>{sellpost[0].petGender}</div>
-                <div>{sellpost[0].petGene}</div>
-                <div>{sellpost[0].petLocation}</div>
-                <div>{sellpost[0].petName}</div>
-                <div>{postDate.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                <div>{sellpost[0].petPrice}</div>
-                <div>{sellpost[0].petType}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].title}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].petAge}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">
+                  {BD.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].petDescription}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].petGender}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].petGene}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].petLocation}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].petName}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">
+                  {postDate.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].petPrice}</div>
+                <div className="border rounded-md border-gray-400 my-3 w-[300px]">{sellpost[0].petType}</div>
                 <a href="https://www.blacklistseller.com/report/report_search_page" className="text-red-600 text-3xl">
                   {' '}
                   Check Blacklist !!!
                 </a>
-                <div className="flex">
+                <div className="flex my-3">
                   {sellpost[0].user.facebook === null ? (
                     <></>
                   ) : (
