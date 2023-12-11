@@ -70,7 +70,7 @@ export const Post = (props) => {
 
   return (
     <>
-      <div className="m-10 p-4 border rounded-md border-gray-400 bg-white drop-shadow-md hover:drop-shadow-xl w-96 h-[472px] min-w-0 ">
+      <div className="p-4 border rounded-md border-gray-400 bg-white drop-shadow-md hover:drop-shadow-xl w-96 h-[472px] min-w-0 ">
         {isOwner ? (
           <div>
             <button
