@@ -27,9 +27,23 @@ export const Footer = () => {
           <Link to="/advidence">
             <li>Advidence</li>
           </Link>
-          <Link to="/post">
-            <li>Post</li>
-          </Link>
+          <div className="dropdown dropdown-right dropdown-hover items-center">
+            <span>
+              <label tabIndex={0}>Post</label>
+              <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
+                <Link to="/newsellpost">
+                  <li className="hover:bg-slate-400 rounded">
+                    <a>Sell</a>
+                  </li>
+                </Link>
+                <Link to="/newadvpost">
+                  <li className="hover:bg-slate-400 rounded">
+                    <a>Advidence</a>
+                  </li>
+                </Link>
+              </ul>
+            </span>
+          </div>
         </ul>
       </div>
 
