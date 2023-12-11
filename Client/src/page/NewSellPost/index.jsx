@@ -68,8 +68,8 @@ export const NewSellPost = () => {
           onChange={handleChange}
           className="h-screen bg-[#FFFDF3] flex justify-start items-center flex-col py-5"
         >
-          <div className="border-2 bg-[#FFFDF3] border-[#FFFDF3] py-[20px]">
-            <h1 className="flex justify-center items-center text-blue-900 text-2xl">Sell Post</h1>
+          <div className="border rounded-md border-gray-400 bg-[#E0F1F5] py-[20px] w-[600px]">
+            <h1 className="flex justify-center items-center text-blue-900 text-3xl">Sell Post</h1>
             <div className="flex justify-start items-center flex-col py-5">
               <div className="border-none">
                 <div>
@@ -81,12 +81,16 @@ export const NewSellPost = () => {
                     placeholder="Title"
                     id="title"
                     name="title"
-                    className="border-2 border-gray-400 border-solid h-10 w-80 px-2"
+                    className="border rounded-md border-gray-400 border-solid h-10 w-80 px-2"
                   />
                   <label htmlFor="petType" className="mr-4 ml-[45px]">
                     Type:
                   </label>
-                  <select name="petType" id="petType" className="border-2 border-gray-400 border-solid h-10 w-30 px-2">
+                  <select
+                    name="petType"
+                    id="petType"
+                    className="border rounded-md border-gray-400 border-solid h-10 w-30 px-2"
+                  >
                     <option disabled selected hidden>
                       Type
                     </option>
@@ -107,7 +111,7 @@ export const NewSellPost = () => {
                     placeholder="Age"
                     id="petAge"
                     name="petAge"
-                    className="border-2 border-gray-400 border-solid h-10 w-20 px-2"
+                    className="border rounded-md border-gray-400 border-solid h-10 w-20 px-2"
                   />
                   <label htmlFor="petBD" className="mx-2 ">
                     Date of Birth:
@@ -117,7 +121,7 @@ export const NewSellPost = () => {
                     placeholder="Date of Birth"
                     id="petBD"
                     name="petBD"
-                    className="border-2 border-gray-400 border-solid h-10 w-40 px-2"
+                    className="border rounded-md border-gray-400 border-solid h-10 w-40 px-2"
                   />
                   <label htmlFor="petGene" className="mx-2 ml-[15px]">
                     Gene:
@@ -127,7 +131,7 @@ export const NewSellPost = () => {
                     placeholder="Gene"
                     id="petGene"
                     name="petGene"
-                    className="border-2 border-gray-400 border-solid h-10 w-20 px-2"
+                    className="border rounded-md border-gray-400order-solid h-10 w-20 px-2"
                   />
                 </div>
                 <div>
@@ -139,7 +143,7 @@ export const NewSellPost = () => {
                     placeholder="Pet Name"
                     id="petName"
                     name="petName"
-                    className="border-2 border-gray-400 border-solid h-10 w-60 px-2"
+                    className="border rounded-md border-gray-400 border-solid h-10 w-60 px-2"
                   />
                   <label htmlFor="petGender" className="mx-2 ml-10">
                     Gender:
@@ -147,7 +151,7 @@ export const NewSellPost = () => {
                   <select
                     name="petGender"
                     id="petGender"
-                    className="border-2 border-gray-400 border-solid h-10 w-40 px-2"
+                    className="border rounded-md border-gray-400 border-solid h-10 w-40 px-2"
                   >
                     <option disabled selected hidden>
                       Gender
@@ -161,7 +165,7 @@ export const NewSellPost = () => {
                       Price:
                     </label>
                     <input
-                      className="border-2 border-gray-400 border-solid h-10 w-40 px-2"
+                      className="border rounded-md border-gray-400 border-solid h-10 w-40 px-2"
                       type="number"
                       min="0"
                       placeholder="Price"
@@ -176,7 +180,7 @@ export const NewSellPost = () => {
                       placeholder="Location"
                       id="petLocation"
                       name="petLocation"
-                      className="border-2 border-gray-400 border-solid h-10 w-[265px] px-2 mr-2"
+                      className="border rounded-md border-gray-400 border-solid h-10 w-[265px] px-2 mr-2"
                     />
                   </div>
                 </div>
@@ -202,7 +206,7 @@ export const NewSellPost = () => {
                     name="petDescription"
                     id="petDescription"
                     placeholder="Description"
-                    className="border-2 border-gray-400 resize-none border-solid h-[150px] w-[575px] px-2"
+                    className="border rounded-md border-gray-400 resize-none border-solid h-[150px] w-[575px] px-2"
                   ></textarea>
                 </div>
                 <div className="flex justify-center items-center py-3">
