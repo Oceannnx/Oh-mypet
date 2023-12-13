@@ -137,7 +137,7 @@ export const Navbar = () => {
           </div>
         ) : null}
       </nav>
-      <nav className="lg:flex hidden items-center justify-between bg-primaryColor">
+      <nav className="lg:flex hidden items-center justify-between bg-primaryColor text-xl">
         <div className="px-12 py-4">
           <Link to="/">
             <img src={logo} alt="Logo" width="96px" />
@@ -146,8 +146,9 @@ export const Navbar = () => {
 
         <div className="flex mx-12 ">
           <div className="flex justify-center items-center">
-            <Link to="/" className="px-4 py-2">
+            <Link className="group px-8 transition duration-300" to="/">
               Home
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
             </Link>
           </div>
           <div className="flex justify-center dropdown dropdown-hover items-center mx-10">
@@ -156,7 +157,7 @@ export const Navbar = () => {
               <ul className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
                 {Animals.map((animal, index) => {
                   return (
-                    <li className="hover:bg-slate-400 rounded " key={animal.label + index}>
+                    <li className="hover:bg-slate-400 rounded text-base" key={animal.label + index}>
                       <Link to={animal.path}>{animal.label}</Link>
                     </li>
                   )
@@ -165,21 +166,24 @@ export const Navbar = () => {
             </span>
           </div>
           <div className="flex justify-center items-center">
-            <Link to="/advidence">Advidence</Link>
+            <Link className="group px-8 transition duration-300" to="/advidence">
+              Advidence
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+            </Link>
           </div>
-          <div className="flex justify-center dropdown dropdown-hover items-center mx-10 border rounded-full ">
+          <div className="flex justify-center dropdown dropdown-hover items-center mx-10 ">
             <span>
               <label tabIndex={0} className="m-1 mx-10">
                 Post
               </label>
-              <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
+              <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36">
                 <Link to="/newsellpost">
-                  <li className="hover:bg-slate-400 rounded">
+                  <li className="hover:bg-slate-400 rounded text-base">
                     <a>Sell</a>
                   </li>
                 </Link>
                 <Link to="/newadvpost">
-                  <li className="hover:bg-slate-400 rounded">
+                  <li className="hover:bg-slate-400 rounded text-base">
                     <a>Advidence</a>
                   </li>
                 </Link>
@@ -190,26 +194,34 @@ export const Navbar = () => {
             {IsLogin ? (
               <>
                 <div className="flex justify-center items-center">
-                  <Link to={'/account/me'}>
-                    <div className="border-solid font-normal underline w-24  hover:text-[#FFFDF3]">{fName}</div>
+                  <Link to={'/account/me'} className="group px-8 transition duration-300">
+                    {fName}
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </Link>
                 </div>
-                <div>
-                  <button className="btn border-solid font-normal w-24 hover:bg-[#FFFDF3]" onClick={HandleLogout}>
+                <div className="flex justify-center items-center text-center">
+                  <button className="group px-8 transition duration-300" onClick={HandleLogout}>
                     Logout
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </button>
                 </div>
               </>
             ) : (
               <>
-                <div>
+                <div className="flex justify-center items-center text-center">
                   <Link to="/login">
-                    <div className="btn border-solid font-normal w-24 hover:bg-[#FFFDF3]">Login</div>
+                    <div className="group px-8 transition duration-300">
+                      Login
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+                    </div>
                   </Link>
                 </div>
-                <div>
+                <div className="flex justify-center items-center text-center">
                   <Link to="/signup">
-                    <div className="btn border rounded-full font-normal w-24 ml-4 hover:bg-[#FFFDF3]">Sign Up</div>
+                    <div className="group px-8 transition duration-300">
+                      Sign Up
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+                    </div>
                   </Link>
                 </div>
               </>
