@@ -202,31 +202,62 @@ export const MyAccount = (props) => {
               </div>
             </div>
           ) : (
-            <div className="border rounded-md border-gray-400 py-5 bg-[#8ECDDD] drop-shadow-md ">
-              <div className="border rounded-md border-gray-400 mx-5 bg-[#FFFDF3]">FirstName : {account.fName}</div>
-              <div className="border rounded-md border-gray-400 my-3 mx-5 bg-[#FFFDF3]">LastName : {account.lName}</div>
-              <div className="border rounded-md border-gray-400 my-3 mx-5 bg-[#FFFDF3]">Email : {account.email}</div>
-              <div className="border rounded-md border-gray-400 my-3 mx-5 bg-[#FFFDF3]">
-                Telephone : {account.tel === '' ? '-' : account.tel}
+            <>
+              <div className="flex justify-center">
+                <img
+                  className="flex justify-center items-center rounded-lg mx-3 my-3"
+                  src={`https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
+                    account.fName[0] + account.lName[0]
+                  }`}
+                ></img>
               </div>
-              <div className="border rounded-md border-gray-400 my-3 mx-5 bg-[#FFFDF3]">
-                Address : {account.address === '' ? '-' : account.address}
+              <div className="border rounded-md border-gray-400 py-5 w-72 bg-[#8ECDDD] drop-shadow-md ">
+                <div className="border rounded-md border-gray-400 mx-5 p-3 bg-[#FFFDF3]">
+                  FirstName : {account.fName}
+                </div>
+                <div className="border rounded-md border-gray-400 my-3 mx-5 p-3 bg-[#FFFDF3]">
+                  LastName : {account.lName}
+                </div>
+                <div className="border rounded-md border-gray-400 my-3 mx-5 p-3 bg-[#FFFDF3]">
+                  Email : {account.email}
+                </div>
+                <div className="border rounded-md border-gray-400 my-3 mx-5 p-3 bg-[#FFFDF3]">
+                  Telephone : {account.tel === '' ? '-' : account.tel}
+                </div>
+                <div className="border rounded-md border-gray-400 my-3 mx-5 p-3 bg-[#FFFDF3]">
+                  Address : {account.address === '' ? '-' : account.address}
+                </div>
+                {account.facebook === null &&
+                account.line === null &&
+                account.twitter === null &&
+                account.instagram === null ? (
+                  <div className="text-center text-red-600">- No contact - </div>
+                ) : (
+                  <div className="flex justify-center py-3 ">
+                    {account.facebook === null ? null : (
+                      <a className="w-8 mx-1" href={account.facebook}>
+                        <img src="\src\assets\facebook.png"></img>
+                      </a>
+                    )}
+                    {account.line === null ? null : (
+                      <a className="w-8 mx-1" href={account.line}>
+                        <img src="\src\assets\line.png"></img>
+                      </a>
+                    )}
+                    {account.twitter === null ? null : (
+                      <a className="w-8 mx-1" href={account.twitter}>
+                        <img src="\src\assets\twitter.png"></img>
+                      </a>
+                    )}
+                    {account.instagram === null ? null : (
+                      <a className="w-8 mx-1" href={account.instagram}>
+                        <img src="\src\assets\instagram.png"></img>
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
-              <div className="flex justify-center py-3 ">
-                <a className="w-8 mx-1" href={account.facebook || ''}>
-                  <img src="\src\assets\facebook.png"></img>
-                </a>
-                <a className="w-8 mx-1" href={account.line || ''}>
-                  <img src="\src\assets\line.png"></img>
-                </a>
-                <a className="w-8 mx-1" href={account.twitter || ''}>
-                  <img src="\src\assets\twitter.png"></img>
-                </a>
-                <a className="w-8 mx-1" href={account.instagram || ''}>
-                  <img src="\src\assets\instagram.png"></img>
-                </a>
-              </div>
-            </div>
+            </>
           )}
         </div>
       )}
