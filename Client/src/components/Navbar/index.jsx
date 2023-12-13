@@ -13,6 +13,8 @@ export const Navbar = () => {
   const IsLogin = auth?.authContext.IsLogin || false
   const fName = auth?.authContext.fName || ''
   const [toggle, setToggle] = useState(false)
+  const [animalToggle, setAnimalToggle] = useState(false)
+  const [postToggle, setPostToggle] = useState(false)
 
   const HandleLogout = async () => {
     try {
@@ -51,34 +53,83 @@ export const Navbar = () => {
         </div>
         {toggle ? (
           <div>
-            <div className="flex justify-center items-center">
-              <Link to="/" className="px-4 py-2">
-                Home
-              </Link>
+            <div className="flex justify-center items-center px-4 py-2 text-2xl">
+              <Link to="/">Home</Link>
+            </div>
+            <div className="flex justify-center items-center  px-4 py-2 w-full ">
+              <div
+                onClick={() => {
+                  setAnimalToggle(!animalToggle)
+                }}
+                className="flex flex-col justify-center items-center px-4 py-2 text-2xl w-full"
+              >
+                Animal
+                {animalToggle ? (
+                  <div className="mt-4 underline w-full">
+                    {Animals.map((animal, index) => {
+                      return (
+                        <div className="py-2 text-xl text-center" key={animal.label + index}>
+                          <Link to={animal.path}>{animal.label}</Link>
+                        </div>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  ''
+                )}
+              </div>
+            </div>
+            <div className="flex justify-center items-center px-4 py-2 text-2xl">
+              <Link to="/advidence">Advidence</Link>
+            </div>
+            <div>
+              <div className="flex justify-center items-center py-2 w-full">
+                <div
+                  onClick={() => {
+                    setPostToggle(!postToggle)
+                    //add classname
+                  }}
+                  className="flex flex-col justify-center items-center px-4 py-2 text-2xl w-full "
+                >
+                  Post
+                  {postToggle ? (
+                    <div className=" mt-4 underline w-full">
+                      <Link to="/newsellpost">
+                        <div className="py-2 text-xl text-center">Sell</div>
+                      </Link>
+                      <Link to="/newadvpost">
+                        <div className="py-2 text-xl text-center">Advidence</div>
+                      </Link>
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              </div>
             </div>
             {IsLogin ? (
               <>
-                <div className="flex justify-center items-center">
-                  <Link to={'/account/'}>
-                    <div className="border-solid font-normal underline w-24  hover:text-[#FFFDF3]">{fName}</div>
+                <div className="flex justify-center items-center px-4 py-2 text-center">
+                  <Link to={'/account/me'}>
+                    <div className="border-solid font-normal underline w-24 text-2xl">{fName}</div>
                   </Link>
                 </div>
-                <div>
-                  <button className="btn border-solid font-normal w-24 hover:bg-[#FFFDF3]" onClick={HandleLogout}>
+                <div className="flex justify-center items-center py-4">
+                  <button className="text-center border-solid font-normal w-24 text-2xl" onClick={HandleLogout}>
                     Logout
                   </button>
                 </div>
               </>
             ) : (
               <>
-                <div>
+                <div className="flex justify-center items-center px-4 py-2">
                   <Link to="/login">
-                    <div className="btn border-solid font-normal w-24 hover:bg-[#FFFDF3]">Login</div>
+                    <div className="text-center border-solid font-normal w-24 text-2xl">Login</div>
                   </Link>
                 </div>
-                <div>
+                <div className="flex justify-center items-center px-4 py-2">
                   <Link to="/signup">
-                    <div className="btn border-solid font-normal w-24 ml-4 hover:bg-[#FFFDF3]">Sign Up</div>
+                    <div className="text-center border-solid font-normal w-24 text-2xl">Sign Up</div>
                   </Link>
                 </div>
               </>
