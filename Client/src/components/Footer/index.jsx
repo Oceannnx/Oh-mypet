@@ -53,7 +53,7 @@ export const Footer = () => {
             <ul>
               <h1 className="font-bold text-lg">Help</h1>
               <Link to="/contact">
-                <li>Contact Us</li>
+                <li>Our Team</li>
               </Link>
               <Link to="/faq">
                 <li>FAQ</li>
