@@ -6,6 +6,17 @@ import Swal from 'sweetalert2'
 
 export const NewAvdPost = () => {
   const auth = useContext(AuthContext)
+  if (!auth?.authContext?.IsLogin) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Please login first.',
+      icon: 'error',
+      confirmButtonText: 'OK',
+    })
+    setTimeout(() => {
+      window.location.href = '/login'
+    }, 1500)
+  }
   const [advPost, setAdvPost] = useState([])
   const handleChange = (e) => {
     setAdvPost({ ...advPost, [e.target.name]: e.target.value })
