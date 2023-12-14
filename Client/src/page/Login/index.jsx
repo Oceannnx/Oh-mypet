@@ -36,7 +36,7 @@ export const Login = () => {
   }
   return (
     <>
-      <form onSubmit={handlesubmit} className="h-screen bg-[#FFFDF3] ">
+      <form onSubmit={handlesubmit} className="h-screen flex justify-center bg-[#FFFDF3] ">
         <div className="border-2 border-[#FFFDF3] py-10">
           <div className="grid grid-col-1 justify-items-center xl:grid-cols-2 py-5">
             <div className="flex justify-center items-center flex-col">
