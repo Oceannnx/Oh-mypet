@@ -56,14 +56,14 @@ export const SignUp = () => {
     <>
       <form onSubmit={handleRegister} className="h-screen bg-[#FFFDF3] ">
         <div className="border-2 border-[#FFFDF3]  ">
-          <div className="grid grid-cols-2 py-5">
+          <div className="grid grid-cols-1 justify-items-center xl:grid-cols-2 py-5">
             <div className="flex justify-center items-center flex-col">
               <img src="src/assets/Logo.png" alt="Logo" width="200" />
               <h1 className="flex justify-center py-2 text-blue-900 text-xl">OH-MYPET</h1>
               <h1 className="flex justify-center text-blue-900">เเหล่งรวมร้านค้าสุนัขเเละเเมว</h1>
             </div>
             <div className="border rounded-lg  bg-[#8ECDDD] mr-5 h-[550px] w-[700px] drop-shadow-mddrop-shadow-md hover:drop-shadow-xl">
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-1 xl:grid-cols-2">
                 <div>
                   <h1 className="flex justify-center text-blue-900 text-xl py-3">Sign Up</h1>
                   <div className="flex justify-center items-center flex-col">
@@ -133,7 +133,7 @@ export const SignUp = () => {
                     ></input>
                   </div>
                 </div>
-                <div className="grid flex-warps flex-row justtify-items-center items-center">
+                <div className="hidden xl:grid flex-warps flex-row justtify-items-center items-center">
                   <div className="grid h-96 items-center">
                     {register.password.length < 8 ? (
                       <div className="text-red-600">*Password must more than 8 Charactors</div>
