@@ -9,10 +9,18 @@ import { uploadImage } from '../../lib/supabase'
 export const NewSellPost = () => {
   const auth = useContext(AuthContext)
   const IsLogin = auth?.authContext.IsLogin || false
-  const [image, setImage] = useState()
-  if (!IsLogin) {
-    window.location.href = '/login'
+  if (IsLogin === false) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Please login first.',
+      icon: 'error',
+      confirmButtonText: 'OK',
+    })
+    setTimeout(() => {
+      window.location.href = '/login'
+    }, 1500)
   }
+  const [image, setImage] = useState()
   const [post, setPet] = useState({
     title: '',
     petType: '',
@@ -223,7 +231,7 @@ export const NewSellPost = () => {
           </div>
         </form>
       ) : (
-        (window.location.href = '/login')
+        ''
       )}
     </>
   )

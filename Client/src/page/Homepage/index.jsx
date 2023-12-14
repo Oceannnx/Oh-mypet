@@ -40,7 +40,7 @@ export const Homepage = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center bg-secondaryColor py-8 md:m-3 m-6">
+          <div className="flex justify-around flex-wrap lg:grid grid-cols-4 justify-items-center auto-cols-auto gap-y-10 bg-secondaryColor py-8 md:m-3 m-6">
             {posts.map((post, index) => {
               return (
                 <Post
