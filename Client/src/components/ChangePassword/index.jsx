@@ -59,101 +59,95 @@ export const ChangePassword = () => {
 
   return (
     <>
-      {isEdit ? (
-        <div className="flex justify-end">
-          <form onSubmit={handleSubmitPassword} className=" ">
-            <div className=" w-fit py-[80px] px-[75px]">
-              <div className="border rounded-md border-slate-950 h-[300px] w-[350px]">
-                <div className="flex justify-center  flex-col ">
-                  <div className="mx-3">
-                    <div className="flex justify-center text-lg">Change Password</div>
-                    <label htmlFor="CurrentPassword">Current Password</label>
-                    <input
-                      type="password"
-                      onChange={handleChangePassword}
-                      placeholder="Current password"
-                      name="currentPassword"
-                      className="flex justify-center border rounded-md border-gray-400  h-8 w-80 px-2 my-1"
-                    />
-                  </div>
-                  <div className="mx-3">
-                    <label htmlFor="NewPassword">New Password</label>
-                    <input
-                      type="password"
-                      onChange={handleChangePassword}
-                      placeholder="New password"
-                      name="newPassword"
-                      className="border rounded-md border-gray-400 h-8 w-80 px-2  my-1"
-                    />
-                  </div>
-                  <div className="mx-3">
-                    <label htmlFor="ConfirmPassword">Confirm Password</label>
-                    <input
-                      type="password"
-                      onChange={handleChangePassword}
-                      placeholder="Confirm password"
-                      name="confirmPassword"
-                      className="border rounded-md border-gray-400 h-8 w-80 px-2 my-1"
-                    />
-                  </div>
-                  <div></div>
-                  <div className="w-max mx-5">
-                    <div>
-                      <input
-                        type="button"
-                        onClick={handleSubmitPassword}
-                        value="Change Password"
-                        className="btn bg-[#FFFDF3] text-green-400  hover:bg-green-400 hover:text-[#FFFDF3] py-1 my-2 mx-4"
-                      />
-                      <button
-                        className="btn bg-[#FFFDF3] text-red-600  hover:bg-red-600 hover:text-[#FFFDF3] py-1 my-2"
-                        onClick={handleEdit}
-                      >
-                        Cancle
-                      </button>
-                    </div>
-                  </div>
+      <div className="flex justify-center">
+        <form onSubmit={handleSubmitPassword} className=" ">
+          <div className=" w-fit py-[80px] px-[75px]">
+            <div className="border rounded-md border-slate-950 h-[300px] w-[350px]">
+              <div className="flex justify-center  flex-col ">
+                <div className="mx-3">
+                  <div className="flex justify-center text-lg">Change Password</div>
+                  <label htmlFor="CurrentPassword">Current Password</label>
+                  <input
+                    type="password"
+                    onChange={handleChangePassword}
+                    placeholder="Current password"
+                    name="currentPassword"
+                    className="flex justify-center border rounded-md border-gray-400  h-8 w-80 px-2 my-1"
+                  />
                 </div>
-              </div>
-              <div className="border rounded-md border-slate-950 h-[230px] w-[350px] my-5">
-                <div className="flex flex-warps flex-row justtify-items-center items-center py-3 mx-3 ">
+                <div className="mx-3">
+                  <label htmlFor="NewPassword">New Password</label>
+                  <input
+                    type="password"
+                    onChange={handleChangePassword}
+                    placeholder="New password"
+                    name="newPassword"
+                    className="border rounded-md border-gray-400 h-8 w-80 px-2  my-1"
+                  />
+                </div>
+                <div className="mx-3">
+                  <label htmlFor="ConfirmPassword">Confirm Password</label>
+                  <input
+                    type="password"
+                    onChange={handleChangePassword}
+                    placeholder="Confirm password"
+                    name="confirmPassword"
+                    className="border rounded-md border-gray-400 h-8 w-80 px-2 my-1"
+                  />
+                </div>
+                <div></div>
+                <div className="w-max mx-5">
                   <div>
-                    {password.newPassword.length < 8 ? (
-                      <div className="text-red-600">*Password must more than 8 Charactors</div>
-                    ) : (
-                      <div className="text-green-600">*Password must more than 8 Charactors</div>
-                    )}
-                    {password.newPassword.match(/[0-9]/g) ? (
-                      <div className="text-green-600">*Password must contain at least one number</div>
-                    ) : (
-                      <div className="text-red-600">*Password must contain at least one number</div>
-                    )}
-                    {password.newPassword.match(/[A-Z]/g) ? (
-                      <div className="text-green-600">*Password must contain at least one uppercase</div>
-                    ) : (
-                      <div className="text-red-600">*Password must contain at least one uppercase</div>
-                    )}
-                    {password.newPassword.match(/[a-z]/g) ? (
-                      <div className="text-green-600">*Password must contain at least one lowercase</div>
-                    ) : (
-                      <div className="text-red-600">*Password must contain at least one lowercase</div>
-                    )}
-                    {password.newPassword.match(/[^\w\s]/g) ? (
-                      <div className="text-green-600">*Password must contain at least one special character</div>
-                    ) : (
-                      <div className="text-red-600">*Password must contain at least one special character</div>
-                    )}
+                    <input
+                      type="button"
+                      onClick={handleSubmitPassword}
+                      value="Change Password"
+                      className="btn bg-[#FFFDF3] text-green-400  hover:bg-green-400 hover:text-[#FFFDF3] py-1 my-2 mx-4"
+                    />
+                    <button
+                      className="btn bg-[#FFFDF3] text-red-600  hover:bg-red-600 hover:text-[#FFFDF3] py-1 my-2"
+                      onClick={handleEdit}
+                    >
+                      Cancle
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-      ) : (
-        <button className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3]  my-2" onClick={handleEdit}>
-          Change Password
-        </button>
-      )}
+            <div className="border rounded-md border-slate-950 h-[230px] w-[350px] my-5">
+              <div className="flex flex-warps flex-row justtify-items-center items-center py-3 mx-3 ">
+                <div>
+                  {password.newPassword.length < 8 ? (
+                    <div className="text-red-600">*Password must more than 8 Charactors</div>
+                  ) : (
+                    <div className="text-green-600">*Password must more than 8 Charactors</div>
+                  )}
+                  {password.newPassword.match(/[0-9]/g) ? (
+                    <div className="text-green-600">*Password must contain at least one number</div>
+                  ) : (
+                    <div className="text-red-600">*Password must contain at least one number</div>
+                  )}
+                  {password.newPassword.match(/[A-Z]/g) ? (
+                    <div className="text-green-600">*Password must contain at least one uppercase</div>
+                  ) : (
+                    <div className="text-red-600">*Password must contain at least one uppercase</div>
+                  )}
+                  {password.newPassword.match(/[a-z]/g) ? (
+                    <div className="text-green-600">*Password must contain at least one lowercase</div>
+                  ) : (
+                    <div className="text-red-600">*Password must contain at least one lowercase</div>
+                  )}
+                  {password.newPassword.match(/[^\w\s]/g) ? (
+                    <div className="text-green-600">*Password must contain at least one special character</div>
+                  ) : (
+                    <div className="text-red-600">*Password must contain at least one special character</div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </>
   )
 }
