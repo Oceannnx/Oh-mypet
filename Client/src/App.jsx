@@ -14,6 +14,7 @@ import { Advidence } from './page/Advidence'
 import { Filter } from './page/Filter'
 import { NewAvdPost } from './page/NewAvdPost'
 import { Contact } from './page/Contact'
+import { NotFound } from './page/NotFound'
 
 function App() {
   const [authContext, setAuthContext] = useState(ContextValue)
@@ -48,7 +49,7 @@ function App() {
           <Route path="/account/:id" element={<Profile />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<h1>404 not found</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AuthContext.Provider>
     </>
