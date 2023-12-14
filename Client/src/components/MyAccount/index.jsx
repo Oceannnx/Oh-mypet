@@ -7,9 +7,15 @@ export const MyAccount = (props) => {
   const { accountID } = props || ''
   const [account, setAccount] = React.useState({})
   const [isOwner, setIsOwner] = React.useState(false)
-  const [isEdit, setIsEdit] = React.useState(false)
+  const [editAccount, setEditAccount] = React.useState(true)
   const [isLoad, setIsLoad] = React.useState(false)
 
+  const togglePassword = () => {
+    setEditAccount(true)
+  }
+  const toggleEdit = () => {
+    setEditAccount(false)
+  }
   const fetchAccount = async () => {
     try {
       const result = await AxiosLib.get(`/api/account/${accountID}`)
@@ -30,9 +36,6 @@ export const MyAccount = (props) => {
         }, 1500)
       }
     }
-  }
-  const handleEdit = () => {
-    setIsEdit(!isEdit)
   }
   const handleChangeAccount = (e) => {
     setAccount({ ...account, [e.target.name]: e.target.value })
@@ -71,134 +74,145 @@ export const MyAccount = (props) => {
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
         </div>
       ) : (
-        <div>
+        <div className="w-full">
           {isOwner ? (
-            <div className=" bg-[#FFFDF4]">
-              <div className="grid grid-cols-3 py-8">
-                <div className="grid grid-cols-2 mx-10 ">
-                  <img
-                    className="flex justify-center items-center rounded-lg mx-3 my-3"
-                    src={`https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
-                      account.fName[0] + account.lName[0]
-                    }`}
-                  ></img>
+            <div className="grid xl:grid-cols-2 grid-cols-1 py-8">
+              <div className="flex justify-center items-center">
+                <img
+                  className="flex justify-center items-center rounded-lg mx-3 my-3 xl:w-1/2"
+                  src={`https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
+                    account.fName[0] + account.lName[0]
+                  }`}
+                ></img>
+              </div>
+              <div>
+                <div className="grid xl:flex justify-items-center px-4 text-2xl xl:divide-x-2  ">
+                  <button
+                    onClick={togglePassword}
+                    className="group transition duration-300 xl:pr-4 focus:text-primaryColor w-fit"
+                  >
+                    Edit Profile
+                    <span className="block max-w-0 group-focus:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+                  </button>
+                  <button
+                    onClick={toggleEdit}
+                    className="group px-8 transition duration-300 xl:pl-4 focus:text-primaryColor w-fit"
+                  >
+                    Change Password
+                    <span className="block max-w-0 group-focus:max-w-full group-focus:bg-sky-600 transition-all duration-500 h-0.5"></span>
+                  </button>
+                </div>
+                {editAccount ? (
                   <div>
-                    {isEdit ? (
-                      <div className="border rounded-md border-slate-950 h-[400px] w-[580px] my-[160px] mx-[-210px]">
-                        <form className="flex flex-col  " onSubmit={handleSubmitAccount}>
-                          <div className="flex flex-row py-3 mx-4">
-                            <div className="mx-4">
-                              <div> FirstName : </div>
-                              <input
-                                name="fName"
-                                onChange={handleChangeAccount}
-                                type="text"
-                                value={account.fName}
-                                placeholder="First Name"
-                                className="border rounded-md border-gray-400 h-8 w-60"
-                              />
-                              <div> LastName : </div>
-                              <input
-                                name="lName"
-                                onChange={handleChangeAccount}
-                                type="text"
-                                value={account.lName}
-                                placeholder="Last Name"
-                                className="border rounded-md border-gray-400 h-8 w-60"
-                              />
-                              <div> Email : </div>
-                              <input
-                                name="email"
-                                onChange={handleChangeAccount}
-                                type="email"
-                                value={account.email}
-                                placeholder="Email"
-                                className="border rounded-md border-gray-400 h-8 w-60"
-                              />
-
-                              <div> Address : </div>
-                              <input
-                                name="address"
-                                onChange={handleChangeAccount}
-                                type="text"
-                                value={account.address === '' ? '-' : account.address}
-                                placeholder="Address"
-                                className="border rounded-md border-gray-400 h-8 w-60"
-                              />
-                              <div> Telephone : </div>
-                              <input
-                                name="tel"
-                                onChange={handleChangeAccount}
-                                type="text"
-                                value={account.tel === '' ? '-' : account.tel}
-                                placeholder="Telephone"
-                                className="border rounded-md border-gray-400 h-8 w-60"
-                              />
-                            </div>
-                            <div className="mx-4">
-                              <div> Facebook : </div>
-                              <input
-                                name="facebook"
-                                onChange={handleChangeAccount}
-                                type="text"
-                                value={account.facebook === '' ? '-' : account.facebook}
-                                placeholder="Facebook"
-                                className="border rounded-md border-gray-400 h-8 w-60"
-                              />
-                              <div> Line : </div>
-                              <input
-                                name="line"
-                                onChange={handleChangeAccount}
-                                type="text"
-                                value={account.line === '' ? '-' : account.line}
-                                placeholder="Line"
-                                className="border rounded-md border-gray-400 h-8 w-60"
-                              />
-                              <div> Twitter : </div>
-                              <input
-                                name="twitter"
-                                onChange={handleChangeAccount}
-                                type="text"
-                                value={account.twitter === '' ? '-' : account.twitter}
-                                placeholder="Twitter"
-                                className="border rounded-md border-gray-400 h-8 w-60"
-                              />
-                              <div> Instagram : </div>
-                              <input
-                                name="instagram"
-                                onChange={handleChangeAccount}
-                                type="text"
-                                value={account.instagram === '' ? '-' : account.instagram}
-                                placeholder="Instagram"
-                                className="border rounded-md border-gray-400  h-8 w-60"
-                              />
-                            </div>
-                          </div>
-                          <div className="flex justify-center mx-4">
+                    <div className="flex justify-center xl:justify-start items-center">
+                      <form onSubmit={handleSubmitAccount}>
+                        <div className="flex flex-row py-3 ">
+                          <div className="mx-4">
+                            <div className="text-lg"> FirstName : </div>
                             <input
-                              className="btn bg-[#FFFDF3] text-green-400  hover:bg-green-400 hover:text-[#FFFDF3] py-1 my-2 mx-4"
-                              type="submit"
-                              value="Confirm Edit"
+                              name="fName"
+                              onChange={handleChangeAccount}
+                              type="text"
+                              value={account.fName}
+                              placeholder="First Name"
+                              className="border rounded-md border-gray-400 h-8 w-60 p-4"
                             />
-                            <button
-                              className="btn bg-[#FFFDF3] text-red-600  hover:bg-red-600 hover:text-[#FFFDF3] py-1 my-2"
-                              onClick={handleEdit}
-                            >
-                              Cancle
-                            </button>
+                            <div className="text-xl"> LastName : </div>
+                            <input
+                              name="lName"
+                              onChange={handleChangeAccount}
+                              type="text"
+                              value={account.lName}
+                              placeholder="Last Name"
+                              className="border rounded-md border-gray-400 h-8 w-60 p-4"
+                            />
+                            <div className="text-xl"> Email : </div>
+                            <input
+                              name="email"
+                              onChange={handleChangeAccount}
+                              type="email"
+                              value={account.email}
+                              placeholder="Email"
+                              className="border rounded-md border-gray-400 h-8 w-60 p-4"
+                            />
+
+                            <div className="text-xl"> Address : </div>
+                            <input
+                              name="address"
+                              onChange={handleChangeAccount}
+                              type="text"
+                              value={account.address === '' ? '-' : account.address}
+                              placeholder="Address"
+                              className="border rounded-md border-gray-400 h-8 w-60 p-4"
+                            />
+                            <div className="text-xl"> Telephone : </div>
+                            <input
+                              name="tel"
+                              onChange={handleChangeAccount}
+                              type="text"
+                              value={account.tel === '' ? '-' : account.tel}
+                              placeholder="Telephone"
+                              className="border rounded-md border-gray-400 h-8 w-60 p-4"
+                            />
                           </div>
-                        </form>
-                      </div>
-                    ) : (
-                      <button className="btn bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-3" onClick={handleEdit}>
-                        Edit Profile
-                      </button>
-                    )}
-                    <div className="">
-                      <ChangePassword />
+                          <div className="mx-4">
+                            <div className="text-xl"> Facebook : </div>
+                            <input
+                              name="facebook"
+                              onChange={handleChangeAccount}
+                              type="text"
+                              value={account.facebook === '' ? '-' : account.facebook}
+                              placeholder="Facebook"
+                              className="border rounded-md border-gray-400 h-8 w-60 p-4"
+                            />
+                            <div className="text-xl"> Line : </div>
+                            <input
+                              name="line"
+                              onChange={handleChangeAccount}
+                              type="text"
+                              value={account.line === '' ? '-' : account.line}
+                              placeholder="Line"
+                              className="border rounded-md border-gray-400 h-8 w-60 p-4"
+                            />
+                            <div className="text-xl"> Twitter : </div>
+                            <input
+                              name="twitter"
+                              onChange={handleChangeAccount}
+                              type="text"
+                              value={account.twitter === '' ? '-' : account.twitter}
+                              placeholder="Twitter"
+                              className="border rounded-md border-gray-400 h-8 w-60 p-4"
+                            />
+                            <div className="text-xl"> Instagram : </div>
+                            <input
+                              name="instagram"
+                              onChange={handleChangeAccount}
+                              type="text"
+                              value={account.instagram === '' ? '-' : account.instagram}
+                              placeholder="Instagram"
+                              className="border rounded-md border-gray-400  h-8 w-60 p-4"
+                            />
+                          </div>
+                        </div>
+                        <div className="mx-4">
+                          <button
+                            type="reset"
+                            className="btn bg-[#FFFDF3] text-red-600  hover:bg-red-600 hover:text-[#FFFDF3] py-1 my-2"
+                          >
+                            Cancle
+                          </button>
+                          <input
+                            className="btn bg-[#FFFDF3] text-green-400  hover:bg-green-400 hover:text-[#FFFDF3] py-1 my-2 mx-4"
+                            type="submit"
+                            value="Confirm Edit"
+                          />
+                        </div>
+                      </form>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <ChangePassword />
+                )}
               </div>
             </div>
           ) : (
