@@ -37,7 +37,7 @@ export const AdvPost = (props) => {
   return (
     <>
       <div className="flex justify-center">
-        <div className="border-4 w-1/2 min-w-[33%] p-5 m-5">
+        <div className="border-4 w-3/4 min-w-[33%] p-5 m-5">
           <div className="flex pb-3">
             <img
               className="rounded-lg w-11 h-11 cursor-pointer"
