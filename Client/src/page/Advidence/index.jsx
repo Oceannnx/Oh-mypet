@@ -23,7 +23,7 @@ export const Advidence = () => {
   }
   useEffect(() => {
     fetchAdvPost()
-  })
+  }, [])
   return (
     <>
       {isLoading ? (

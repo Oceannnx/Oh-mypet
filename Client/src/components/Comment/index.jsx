@@ -69,7 +69,7 @@ export const Comment = (props) => {
         <div className="border p-3 my-3 relative">
           <div className="flex pb-3">
             <img
-              className="rounded-lg w-9 h-9 cursor-pointer"
+              className="xl:rounded-lg rounded w-5 h-5 xl:w-8 xl:h-8 cursor-pointer"
               src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
             ></img>
             <div className="">
@@ -79,14 +79,14 @@ export const Comment = (props) => {
               >
                 {fName + ' ' + lName}
               </div>
-              <div className="text-sm font-thin ml-3">{date}</div>
+              <div className="text-xs font-thin ml-3">{date}</div>
             </div>
           </div>
-          <div className="text-m">{comment}</div>
+          <div className="text-sm">{comment}</div>
           {isOwner ? (
             <div className="absolute top-2 right-2">
               <button
-                className="border-2 border-slate-100 bg-slate-100 rounded-full px-2 py-1 text-red-600 hover:bg-red-600 hover:text-white float-right mr-2 mb-2"
+                className="border-2 border-slate-100 bg-slate-100 rounded-full xl:px-2 xl:py-1 text-red-600 hover:bg-red-600 hover:text-white float-right mr-2 mb-2 text-xs xl:text-lg"
                 onClick={deleteComment}
               >
                 X

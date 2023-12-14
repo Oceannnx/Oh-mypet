@@ -40,21 +40,21 @@ export const AdvPost = (props) => {
         <div className="border-4 w-3/4 min-w-[33%] p-5 m-5">
           <div className="flex pb-3">
             <img
-              className="rounded-lg w-11 h-11 cursor-pointer"
+              className="rounded-lg w-7 xl:w-11 cursor-pointer"
               src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
             ></img>
             <div className="">
               <div
                 onClick={handleOnClickUser}
-                className="grid items-center cursor-pointer w-fit font-bold text-lg ml-3"
+                className="grid items-center cursor-pointer w-fit font-bold text-base xl:text-lg ml-3"
               >
                 {fName + ' ' + lName}
               </div>
-              <div className="text-sm font-thin ml-3">{date}</div>
+              <div className="font-thin text-xs xl:text-sm ml-3">{date}</div>
             </div>
           </div>
-          <div className="text-2xl">{title}</div>
-          <div className="text-lg">{postDesc}</div>
+          <div className="text-base xl:text-2xl">{title}</div>
+          <div className="text-sm xl:text-lg">{postDesc}</div>
           <NewComment advPostID={advPostID} />
           <AllComment advPostID={advPostID} />
         </div>
