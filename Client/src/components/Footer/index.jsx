@@ -9,7 +9,7 @@ export const Footer = () => {
           <div className="flex items-center">
             <img src="src/assets/Logo.png" alt="Logo" className="ml-16 w-32 object-cover my-3" />
           </div>
-          <div className="flex my-4 justify-center">
+          <div className="flex my-4 justify-center border rounded-md border-gray-500 bg-[#F0F0F0] w-[150px]">
             <ul>
               <Link to="/">
                 <h1 className="font-bold text-lg">Main menu</h1>
@@ -49,7 +49,7 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="flex my-4 justify-center">
+          <div className="flex my-4 justify-center border rounded-md border-gray-500 bg-[#F0F0F0] w-[150px]">
             <ul>
               <h1 className="font-bold text-lg">Help</h1>
               <Link to="/contact">
