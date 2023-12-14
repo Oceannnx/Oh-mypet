@@ -38,7 +38,7 @@ export const Login = () => {
     <>
       <form onSubmit={handlesubmit} className="h-screen bg-[#FFFDF3] ">
         <div className="border-2 border-[#FFFDF3] py-10">
-          <div className="grid grid-cols-2 py-5">
+          <div className="grid grid-col-1 justify-items-center xl:grid-cols-2 py-5">
             <div className="flex justify-center items-center flex-col">
               <img src="src/assets/Logo.png" alt="Logo" width="200" />
               <h1 className="flex justify-center py-2 text-blue-900 text-xl">OH-MYPET</h1>
