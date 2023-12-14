@@ -16,7 +16,7 @@ export const Footer = () => {
               </Link>
               <li className="dropdown dropdown-top dropdown-hover items-center">
                 Animal
-                <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
+                <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
                   {Animals.map((animal, index) => {
                     return (
                       <li className="hover:bg-slate-400 rounded" key={animal.label + index}>
