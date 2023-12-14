@@ -33,7 +33,7 @@ export const AllComment = (props) => {
             commentDate={comment.commentDate}
             fName={comment.user.fName}
             lName={comment.user.lName}
-            userId={comment.user._id}
+            userID={comment.user._id}
             email={comment.user.email}
           />
         )
