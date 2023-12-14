@@ -1,6 +1,7 @@
 import { Post } from '../Post'
 import { AxiosLib } from '../../lib/axios'
 import { useEffect, useState } from 'react'
+import { Footer } from '../Footer'
 
 export const PostList = (props) => {
   const [posts, setPosts] = useState([])
@@ -45,6 +46,7 @@ export const PostList = (props) => {
           })}
         </div>
       )}
+      <Footer></Footer>
     </section>
   )
 }
