@@ -223,7 +223,7 @@ export const MyAccount = (props) => {
               </div>
             </div>
           ) : (
-            <>
+            <div className="grid justify-center">
               <div className="flex justify-center">
                 <img
                   className="flex justify-center items-center rounded-lg mx-3 my-3"
@@ -232,12 +232,12 @@ export const MyAccount = (props) => {
                   }`}
                 ></img>
               </div>
-              <div className="border rounded-md border-gray-400 py-5 w-72 bg-[#8ECDDD] drop-shadow-md ">
+              <div className="border rounded-md border-gray-400 py-5 w-fit bg-[#8ECDDD] drop-shadow-md ">
                 <div className="border rounded-md border-gray-400 mx-5 p-3 bg-[#FFFDF3]">
-                  FirstName : {account.fName}
+                  Firstname : {account.fName}
                 </div>
                 <div className="border rounded-md border-gray-400 my-3 mx-5 p-3 bg-[#FFFDF3]">
-                  LastName : {account.lName}
+                  Lastname : {account.lName}
                 </div>
                 <div className="border rounded-md border-gray-400 my-3 mx-5 p-3 bg-[#FFFDF3]">
                   Email : {account.email}
@@ -252,33 +252,33 @@ export const MyAccount = (props) => {
                 account.line === null &&
                 account.twitter === null &&
                 account.instagram === null ? (
-                  <div className="text-center text-red-600">- No contact - </div>
+                  <div className="text-center text-red-600"> - No contact - </div>
                 ) : (
                   <div className="flex justify-center py-3 ">
                     {account.facebook === null ? null : (
-                      <a className="w-8 mx-1" href={account.facebook}>
+                      <a className=" mx-4 w-12" href={account.facebook}>
                         <img src="\src\assets\facebook.png"></img>
                       </a>
                     )}
                     {account.line === null ? null : (
-                      <a className="w-8 mx-1" href={account.line}>
+                      <a className="w-12 mx-4" href={account.line}>
                         <img src="\src\assets\line.png"></img>
                       </a>
                     )}
                     {account.twitter === null ? null : (
-                      <a className="w-8 mx-1" href={account.twitter}>
+                      <a className="w-12 mx-4" href={account.twitter}>
                         <img src="\src\assets\twitter.png"></img>
                       </a>
                     )}
                     {account.instagram === null ? null : (
-                      <a className="w-8 mx-1" href={account.instagram}>
+                      <a className="w-12 mx-4" href={account.instagram}>
                         <img src="\src\assets\instagram.png"></img>
                       </a>
                     )}
                   </div>
                 )}
               </div>
-            </>
+            </div>
           )}
         </div>
       )}
