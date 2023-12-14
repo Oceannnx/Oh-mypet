@@ -9,14 +9,14 @@ export const Footer = () => {
           <div className="flex items-center">
             <img src="src/assets/Logo.png" alt="Logo" className="ml-16 w-32 object-cover my-3" />
           </div>
-          <div className="flex my-4 justify-center">
+          <div className="flex my-4 justify-center border rounded-md border-gray-500 bg-[#F0F0F0] w-[150px]">
             <ul>
               <Link to="/">
                 <h1 className="font-bold text-lg">Main menu</h1>
               </Link>
-              <li className="dropdown dropdown-top dropdown-hover items-center">
+              <li className="dropdown dropdown-top dropdown-hover items-center hover:text-[#8ECDDD]">
                 Animal
-                <ul tabIndex={0} className="dropdown-content z-[1] bg-gray-300 menu p-2 shadow w-36 rounded">
+                <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
                   {Animals.map((animal, index) => {
                     return (
                       <li className="hover:bg-slate-400 rounded" key={animal.label + index}>
@@ -27,11 +27,13 @@ export const Footer = () => {
                 </ul>
               </li>
               <Link to="/advidence">
-                <li>Advidence</li>
+                <li className="hover:text-[#8ECDDD]">Advidence</li>
               </Link>
               <div className="dropdown dropdown-top dropdown-hover items-center">
                 <span>
-                  <label tabIndex={0}>Post</label>
+                  <label tabIndex={0} className="hover:text-[#8ECDDD]">
+                    Post
+                  </label>
                   <ul tabIndex={0} className="dropdown-content z-[1] bg-[#F0F0F0] menu p-2 shadow w-36 rounded">
                     <Link to="/newsellpost">
                       <li className="hover:bg-slate-400 rounded">
@@ -49,14 +51,14 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="flex my-4 justify-center">
+          <div className="flex my-4 justify-center border rounded-md border-gray-500 bg-[#F0F0F0] w-[150px]">
             <ul>
-              <h1 className="font-bold text-lg">Help</h1>
+              <h1 className="font-bold text-lg ">Help</h1>
               <Link to="/contact">
-                <li>Our Team</li>
+                <li className="hover:text-[#8ECDDD]">Contact Us</li>
               </Link>
               <Link to="/faq">
-                <li>FAQ</li>
+                <li className="hover:text-[#8ECDDD]">FAQ</li>
               </Link>
             </ul>
           </div>
