@@ -6,6 +6,7 @@ import { ChangePassword } from '../ChangePassword'
 export const MyAccount = (props) => {
   const { accountID } = props || ''
   const [account, setAccount] = React.useState({})
+  const [tempAccount, setTempAccount] = React.useState({})
   const [isOwner, setIsOwner] = React.useState(false)
   const [editAccount, setEditAccount] = React.useState(true)
   const [isLoad, setIsLoad] = React.useState(false)
@@ -16,10 +17,16 @@ export const MyAccount = (props) => {
   const toggleEdit = () => {
     setEditAccount(false)
   }
+  const handleReset = () => {
+    console.log(tempAccount)
+    console.log(account)
+    setAccount(tempAccount)
+  }
   const fetchAccount = async () => {
     try {
       const result = await AxiosLib.get(`/api/account/${accountID}`)
       setAccount(result.data.data[0])
+      setTempAccount(result.data.data[0])
       setIsOwner(result.data.is_owner)
       setIsLoad(true)
     } catch (error) {
@@ -105,10 +112,10 @@ export const MyAccount = (props) => {
                 {editAccount ? (
                   <div>
                     <div className="flex justify-center xl:justify-start items-center">
-                      <form onSubmit={handleSubmitAccount}>
+                      <div>
                         <div className="flex flex-row py-3 ">
                           <div className="mx-4">
-                            <div className="text-lg"> FirstName : </div>
+                            <div className="text-xl"> Firstname : </div>
                             <input
                               name="fName"
                               onChange={handleChangeAccount}
@@ -117,7 +124,7 @@ export const MyAccount = (props) => {
                               placeholder="First Name"
                               className="border rounded-md border-gray-400 h-8 w-60 p-4"
                             />
-                            <div className="text-xl"> LastName : </div>
+                            <div className="text-xl"> Lastname : </div>
                             <input
                               name="lName"
                               onChange={handleChangeAccount}
@@ -141,7 +148,7 @@ export const MyAccount = (props) => {
                               name="address"
                               onChange={handleChangeAccount}
                               type="text"
-                              value={account.address === '' ? '-' : account.address}
+                              value={account.address === '' ? '' : account.address}
                               placeholder="Address"
                               className="border rounded-md border-gray-400 h-8 w-60 p-4"
                             />
@@ -149,8 +156,8 @@ export const MyAccount = (props) => {
                             <input
                               name="tel"
                               onChange={handleChangeAccount}
-                              type="text"
-                              value={account.tel === '' ? '-' : account.tel}
+                              type="tel"
+                              value={account.tel === '' ? '' : account.tel}
                               placeholder="Telephone"
                               className="border rounded-md border-gray-400 h-8 w-60 p-4"
                             />
@@ -161,7 +168,7 @@ export const MyAccount = (props) => {
                               name="facebook"
                               onChange={handleChangeAccount}
                               type="text"
-                              value={account.facebook === '' ? '-' : account.facebook}
+                              value={account.facebook === '' ? '' : account.facebook}
                               placeholder="Facebook"
                               className="border rounded-md border-gray-400 h-8 w-60 p-4"
                             />
@@ -170,7 +177,7 @@ export const MyAccount = (props) => {
                               name="line"
                               onChange={handleChangeAccount}
                               type="text"
-                              value={account.line === '' ? '-' : account.line}
+                              value={account.line === '' ? '' : account.line}
                               placeholder="Line"
                               className="border rounded-md border-gray-400 h-8 w-60 p-4"
                             />
@@ -179,7 +186,7 @@ export const MyAccount = (props) => {
                               name="twitter"
                               onChange={handleChangeAccount}
                               type="text"
-                              value={account.twitter === '' ? '-' : account.twitter}
+                              value={account.twitter === '' ? '' : account.twitter}
                               placeholder="Twitter"
                               className="border rounded-md border-gray-400 h-8 w-60 p-4"
                             />
@@ -188,7 +195,7 @@ export const MyAccount = (props) => {
                               name="instagram"
                               onChange={handleChangeAccount}
                               type="text"
-                              value={account.instagram === '' ? '-' : account.instagram}
+                              value={account.instagram === '' ? '' : account.instagram}
                               placeholder="Instagram"
                               className="border rounded-md border-gray-400  h-8 w-60 p-4"
                             />
@@ -196,18 +203,18 @@ export const MyAccount = (props) => {
                         </div>
                         <div className="mx-4">
                           <button
-                            type="reset"
+                            onClick={handleReset}
                             className="btn bg-[#FFFDF3] text-red-600  hover:bg-red-600 hover:text-[#FFFDF3] py-1 my-2"
                           >
                             Cancle
                           </button>
                           <input
                             className="btn bg-[#FFFDF3] text-green-400  hover:bg-green-400 hover:text-[#FFFDF3] py-1 my-2 mx-4"
-                            type="submit"
                             value="Confirm Edit"
+                            onClick={handleSubmitAccount}
                           />
                         </div>
-                      </form>
+                      </div>
                     </div>
                   </div>
                 ) : (
