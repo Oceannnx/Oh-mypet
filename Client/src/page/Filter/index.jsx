@@ -31,24 +31,26 @@ export const Filter = () => {
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue1"></div>
         </div>
       ) : (
-        <div className="flex justify-around flex-wrap xl:grid grid-cols-4 justify-items-center auto-cols-auto gap-y-10 bg-secondaryColor py-8 md:m-3 m-6">
-          {posts.map((post, index) => {
-            return (
-              <Post
-                key={index}
-                userId={post.user._id}
-                email={post.user.email}
-                fName={post.user.fName}
-                lName={post.user.lName}
-                title={post.title}
-                price={post.petPrice}
-                location={post.petLocation}
-                petImage={post.petImages}
-                postDate={post.petPostDate}
-                postId={post._id}
-              />
-            )
-          })}
+        <div className="flex bg-secondaryColor justify-center py-8">
+          <div className="mx-5 flex flex-wrap">
+            {posts.map((post, index) => {
+              return (
+                <Post
+                  key={index}
+                  userId={post.user._id}
+                  email={post.user.email}
+                  fName={post.user.fName}
+                  lName={post.user.lName}
+                  title={post.title}
+                  price={post.petPrice}
+                  location={post.petLocation}
+                  petImage={post.petImages}
+                  postDate={post.petPostDate}
+                  postId={post._id}
+                />
+              )
+            })}
+          </div>
         </div>
       )}
       <Footer />

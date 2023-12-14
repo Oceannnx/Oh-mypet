@@ -3,7 +3,7 @@ import { Animals } from '../../contents/Navbar'
 
 export const Footer = () => {
   return (
-    <footer className="hidden lg:grid">
+    <footer className="hidden md:grid">
       <div className="bg-primaryColor">
         <div className="grid grid-cols-[6fr_2fr_2fr_1fr]">
           <div className="flex items-center">
@@ -13,6 +13,15 @@ export const Footer = () => {
             <ul>
               <Link to="/">
                 <h1 className="font-bold text-lg flex justify-center">Main menu</h1>
+                <h1
+                  className="font-bold text-lg group transition duration-300 w-fit"
+                  onClick={() => {
+                    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                  }}
+                >
+                  Main menu
+                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+                </h1>
               </Link>
               <li className="dropdown dropdown-right dropdown-hover items-center py-3 select-none">
                 Animal
