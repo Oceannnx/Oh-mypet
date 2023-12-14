@@ -12,7 +12,6 @@ export const Footer = () => {
           <div className="flex my-4 justify-center ">
             <ul>
               <Link to="/">
-                <h1 className="font-bold text-lg flex justify-center">Main menu</h1>
                 <h1
                   className="font-bold text-lg group transition duration-300 w-fit"
                   onClick={() => {
