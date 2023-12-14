@@ -12,7 +12,7 @@ export const Footer = () => {
           <div className="flex my-4 justify-center border rounded-md border-gray-500 bg-[#F0F0F0] w-[150px]">
             <ul>
               <Link to="/">
-                <h1 className="font-bold text-lg">Main menu</h1>
+                <h1 className="font-bold text-lg flex justify-center">Main menu</h1>
               </Link>
               <li className="dropdown dropdown-top dropdown-hover items-center hover:text-[#8ECDDD]">
                 Animal
@@ -53,7 +53,7 @@ export const Footer = () => {
 
           <div className="flex my-4 justify-center border rounded-md border-gray-500 bg-[#F0F0F0] w-[150px]">
             <ul>
-              <h1 className="font-bold text-lg ">Help</h1>
+              <h1 className="font-bold text-lg flex justify-center">Help</h1>
               <Link to="/contact">
                 <li className="hover:text-[#8ECDDD]">Contact Us</li>
               </Link>
