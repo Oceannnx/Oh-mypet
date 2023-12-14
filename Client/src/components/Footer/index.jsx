@@ -3,7 +3,7 @@ import { Animals } from '../../contents/Navbar'
 
 export const Footer = () => {
   return (
-    <footer className="hidden md:grid">
+    <footer className="hidden lg:grid">
       <div className="bg-primaryColor">
         <div className="grid grid-cols-[6fr_2fr_2fr_1fr]">
           <div className="flex items-center">
