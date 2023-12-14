@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { AxiosLib } from '../../lib/axios'
 import { Comment } from '../Comment'
+import Swal from 'sweetalert2'
 
 export const AllComment = (props) => {
   const [comments, setComments] = useState([])
@@ -11,7 +12,11 @@ export const AllComment = (props) => {
       const result = await AxiosLib.get(`/api/fetchcomment/${advPostID}`)
       setComments(result.data)
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message,
+      })
     }
   }
   useEffect(() => {

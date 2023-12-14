@@ -37,7 +37,12 @@ export const NewAvdPost = () => {
         }, 1000)
       }
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        title: 'Error!',
+        text: error.message,
+        icon: 'error',
+        confirmButtonText: 'OK',
+      })
     }
   }
   return (

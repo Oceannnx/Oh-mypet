@@ -13,7 +13,6 @@ export const NewComment = (props) => {
   }
   const handleComment = async () => {
     const result = await AxiosLib.post('/api/newComment', { comment: comment, advPostID: advPostID })
-    console.log(result)
     if (result.status === 201) {
       Swal.fire({
         icon: 'success',

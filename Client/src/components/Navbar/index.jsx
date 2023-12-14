@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/user'
 import { AxiosLib } from '../../lib/axios'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const Navbar = () => {
   const logo = 'src/assets/Logo.png'
@@ -21,7 +22,11 @@ export const Navbar = () => {
       const result = await AxiosLib.post('/api/user/logout')
       if (result.status === 200) return navigate(0)
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message,
+      })
     }
   }
 

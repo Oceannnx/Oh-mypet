@@ -34,7 +34,11 @@ export const Comment = (props) => {
       try {
         await AxiosLib.delete(`api/deleteComment/${commentId}`)
       } catch (error) {
-        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.message,
+        })
       }
     }
   }

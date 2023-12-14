@@ -2,6 +2,7 @@ import { Post } from '../Post'
 import { AxiosLib } from '../../lib/axios'
 import { useEffect, useState } from 'react'
 import { Footer } from '../Footer'
+import Swal from 'sweetalert2'
 
 export const PostList = (props) => {
   const [posts, setPosts] = useState([])
@@ -13,7 +14,7 @@ export const PostList = (props) => {
       setPosts(result.data)
       setIsLoading(false)
     } catch (error) {
-      console.log(error)
+      Swal.fire({ icon: 'error', title: 'Oops...', text: error.message })
     }
   }
   useEffect(() => {

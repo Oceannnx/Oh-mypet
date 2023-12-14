@@ -3,11 +3,10 @@ import { MemberCard } from '../../components/MemberCard'
 import { Footer } from '../../components/Footer'
 
 export const Contact = () => {
-  console.log(Member)
   return (
     <>
       <div className="text-5xl flex justify-center m-10">Member</div>
-      <div className="mx-20 flex flex justify-center">
+      <div className="mx-20 flex justify-center">
         {Member.map((member, index) => {
           return (
             <MemberCard

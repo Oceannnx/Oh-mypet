@@ -64,7 +64,7 @@ export const NewSellPost = () => {
           }, 1500)
         }
       } catch (error) {
-        console.log(error)
+        Swal.fire('Error', error.message, 'error')
       }
     }
   }
@@ -218,11 +218,7 @@ export const NewSellPost = () => {
                   ></textarea>
                 </div>
                 <div className="flex justify-center items-center py-3">
-                  <button
-                    type="submit"
-                    className="btn  bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2 hover:bg-[#FFFDF3]"
-                    name="submit-btn"
-                  >
+                  <button type="submit" className="btn  bg-[#8ECDDD] hover:bg-[#FFFDF3] py-1 my-2" name="submit-btn">
                     Submit
                   </button>
                 </div>

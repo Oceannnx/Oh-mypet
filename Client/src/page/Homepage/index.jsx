@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 import { Footer } from '../../components/Footer'
 import { Post } from '../../components/Post'
 import { AxiosLib } from '../../lib/axios'
@@ -12,7 +13,7 @@ export const Homepage = () => {
       setPosts(result.data)
       setIsLoading(false)
     } catch (error) {
-      console.log(error)
+      Swal.fire({ icon: 'error', title: 'Oops...', text: error.message })
     }
   }
   useEffect(() => {

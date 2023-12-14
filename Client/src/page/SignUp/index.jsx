@@ -109,7 +109,7 @@ export const SignUp = () => {
                       placeholder="Password"
                       name="password"
                       onChange={handleChange}
-                      className="border rounded-md border-gray-400 h-10 w-80 w-80 px-2"
+                      className="border rounded-md border-gray-400 h-10 w-80 px-2"
                     />
 
                     <label htmlFor="confirmpassword" className="py-1">

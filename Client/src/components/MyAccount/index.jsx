@@ -18,8 +18,6 @@ export const MyAccount = (props) => {
     setEditAccount(false)
   }
   const handleReset = () => {
-    console.log(tempAccount)
-    console.log(account)
     setAccount(tempAccount)
   }
   const fetchAccount = async () => {

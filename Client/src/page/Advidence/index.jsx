@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Footer } from '../../components/Footer'
 import { AxiosLib } from '../../lib/axios'
 import { AdvPost } from '../../components/AdvPost'
+import Swal from 'sweetalert2'
 
 export const Advidence = () => {
   const [advPosts, setAdvPost] = useState([])
@@ -13,7 +14,11 @@ export const Advidence = () => {
       setAdvPost(result.data)
       setIsLoading(false)
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message,
+      })
     }
   }
   useEffect(() => {

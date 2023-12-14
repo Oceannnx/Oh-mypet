@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { AxiosLib } from '../../lib/axios'
 import { Footer } from '../../components/Footer'
 import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const Sellpost = () => {
   const [sellpost, setSellpost] = useState({})
@@ -13,10 +14,13 @@ export const Sellpost = () => {
       setSellpost(result.data)
       setIsLoading(false)
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message,
+      })
     }
   }
-  console.log(sellpost)
   useEffect(() => {
     fetchSellpost()
   }, [])

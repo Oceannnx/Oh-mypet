@@ -38,7 +38,11 @@ export const Post = (props) => {
       try {
         await AxiosLib.delete(`api/deletePost/${postId}`)
       } catch (error) {
-        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.message,
+        })
       }
       window.location.reload()
     }
