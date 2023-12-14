@@ -87,7 +87,6 @@ export const Navbar = () => {
                 <div
                   onClick={() => {
                     setPostToggle(!postToggle)
-                    //add classname
                   }}
                   className="flex flex-col justify-center items-center px-4 py-2 text-2xl w-full "
                 >
@@ -143,7 +142,6 @@ export const Navbar = () => {
             <img src={logo} alt="Logo" width="96px" />
           </Link>
         </div>
-
         <div className="flex mx-12 ">
           <div className="flex justify-center items-center">
             <Link className="group px-8 transition duration-300" to="/">
@@ -190,17 +188,17 @@ export const Navbar = () => {
               </ul>
             </span>
           </div>
-          <div className="grid grid-cols-2 divide-x">
+          <div className="grid grid-cols-2 divide-x divide-secondaryColor">
             {IsLogin ? (
               <>
-                <div className="flex justify-center items-center">
-                  <Link to={'/account/me'} className="group px-8 transition duration-300">
+                <div className="flex justify-center items-center py-3">
+                  <Link to={'/account/me'} className="group mx-8 transition duration-300">
                     {fName}
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </Link>
                 </div>
                 <div className="flex justify-center items-center text-center">
-                  <button className="group px-8 transition duration-300" onClick={HandleLogout}>
+                  <button className="group mx-8 transition duration-300" onClick={HandleLogout}>
                     Logout
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </button>
@@ -208,20 +206,16 @@ export const Navbar = () => {
               </>
             ) : (
               <>
-                <div className="flex justify-center items-center text-center">
-                  <Link to="/login">
-                    <div className="group px-8 transition duration-300">
-                      Login
-                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
-                    </div>
+                <div className="flex justify-center items-center text-center py-3">
+                  <Link className="group mx-8 transition duration-300" to="/login">
+                    Login
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </Link>
                 </div>
                 <div className="flex justify-center items-center text-center">
-                  <Link to="/signup">
-                    <div className="group px-8 transition duration-300">
-                      Sign Up
-                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
-                    </div>
+                  <Link className="group mx-8 transition duration-300" to="/signup">
+                    Sign Up
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </Link>
                 </div>
               </>
