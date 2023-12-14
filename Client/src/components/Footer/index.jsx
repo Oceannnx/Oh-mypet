@@ -12,9 +12,7 @@ export const Footer = () => {
           <div className="flex my-4 justify-center ">
             <ul>
               <Link to="/">
-<<<<<<< HEAD
                 <h1 className="font-bold text-lg flex justify-center">Main menu</h1>
-=======
                 <h1
                   className="font-bold text-lg group transition duration-300 w-fit"
                   onClick={() => {
@@ -24,7 +22,6 @@ export const Footer = () => {
                   Main menu
                   <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                 </h1>
->>>>>>> ede22fc76a207218b48d0e100312d20cc249ac2f
               </Link>
               <li className="dropdown dropdown-right dropdown-hover items-center py-3 select-none">
                 Animal
