@@ -58,22 +58,22 @@ export const Navbar = () => {
         </div>
         {toggle ? (
           <div>
-            <div className="flex justify-center items-center px-4 py-2 text-2xl">
+            <div className="flex justify-center items-center px-4 py-1 text-lg">
               <Link to="/">Home</Link>
             </div>
-            <div className="flex justify-center items-center  px-4 py-2 w-full ">
+            <div className="flex justify-center items-center  px-4 py-1 w-full ">
               <div
                 onClick={() => {
                   setAnimalToggle(!animalToggle)
                 }}
-                className="flex flex-col justify-center items-center px-4 py-2 text-2xl w-full"
+                className="flex flex-col justify-center items-center px-4 py-1 text-lg w-full"
               >
                 Animal
                 {animalToggle ? (
                   <div className="mt-4 underline w-full">
                     {Animals.map((animal, index) => {
                       return (
-                        <div className="py-2 text-xl text-center" key={animal.label + index}>
+                        <div className="py-1 text-lg text-center" key={animal.label + index}>
                           <Link to={animal.path}>{animal.label}</Link>
                         </div>
                       )
@@ -84,25 +84,25 @@ export const Navbar = () => {
                 )}
               </div>
             </div>
-            <div className="flex justify-center items-center px-4 py-2 text-2xl">
+            <div className="flex justify-center items-center px-4 py-1 text-lg">
               <Link to="/advidence">Advidence</Link>
             </div>
             <div>
-              <div className="flex justify-center items-center py-2 w-full">
+              <div className="flex justify-center items-center py-1 w-full">
                 <div
                   onClick={() => {
                     setPostToggle(!postToggle)
                   }}
-                  className="flex flex-col justify-center items-center px-4 py-2 text-2xl w-full "
+                  className="flex flex-col justify-center items-center px-4 py-1 text-lg w-full "
                 >
                   Post
                   {postToggle ? (
                     <div className=" mt-4 underline w-full">
                       <Link to="/newsellpost">
-                        <div className="py-2 text-xl text-center">Sell</div>
+                        <div className="py-1 text-lg text-center">Sell</div>
                       </Link>
                       <Link to="/newadvpost">
-                        <div className="py-2 text-xl text-center">Advidence</div>
+                        <div className="py-1 text-lg text-center">Advidence</div>
                       </Link>
                     </div>
                   ) : (
@@ -113,13 +113,13 @@ export const Navbar = () => {
             </div>
             {IsLogin ? (
               <>
-                <div className="flex justify-center items-center px-4 py-2 text-center">
+                <div className="flex justify-center items-center px-4 py-1 text-center">
                   <Link to={'/account/me'}>
-                    <div className="border-solid font-normal underline w-24 text-2xl">{fName}</div>
+                    <div className="border-solid font-normal underline w-24 text-lg">{fName}</div>
                   </Link>
                 </div>
-                <div className="flex justify-center items-center py-4">
-                  <button className="text-center border-solid font-normal w-24 text-2xl" onClick={HandleLogout}>
+                <div className="flex justify-center items-center pb-4 pt-1">
+                  <button className="text-center border-solid font-normal w-24 text-lg" onClick={HandleLogout}>
                     Logout
                   </button>
                 </div>
@@ -128,12 +128,12 @@ export const Navbar = () => {
               <>
                 <div className="flex justify-center items-center px-4 py-2">
                   <Link to="/login">
-                    <div className="text-center border-solid font-normal w-24 text-2xl">Login</div>
+                    <div className="text-center border-solid font-normal w-24 text-lg">Login</div>
                   </Link>
                 </div>
                 <div className="flex justify-center items-center px-4 py-2">
                   <Link to="/signup">
-                    <div className="text-center border-solid font-normal w-24 text-2xl">Sign Up</div>
+                    <div className="text-center border-solid font-normal w-24 text-lg">Sign Up</div>
                   </Link>
                 </div>
               </>
