@@ -46,7 +46,11 @@ export const NewComment = (props) => {
             onClick={handleOnchange}
           ></input>
 
-          <img onClick={handleComment} className="w-4 xl:w-8 round" src=".\src\assets\paper-plane.png"></img>
+          <img
+            onClick={handleComment}
+            className="w-4 xl:w-8 round cursor-pointer"
+            src=".\src\assets\paper-plane.png"
+          ></img>
         </div>
       ) : (
         <div className="fixed bottom-5 left-1/2 -translate-x-1/2 rounded-lg text-lg flex bg-primaryColor px-5 py-1">
