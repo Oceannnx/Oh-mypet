@@ -111,7 +111,7 @@ export const MyAccount = (props) => {
                   <div>
                     <div className="flex justify-center xl:justify-start items-center">
                       <div>
-                        <div className="flex flex-row py-3 ">
+                        <div className="xl:flex flex-row py-3 ">
                           <div className="mx-4">
                             <div className="text-xl"> Firstname : </div>
                             <input
