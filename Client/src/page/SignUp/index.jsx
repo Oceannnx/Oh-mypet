@@ -26,7 +26,9 @@ export const SignUp = () => {
   const handleRegister = async (e) => {
     try {
       e.preventDefault()
-      if (!register.email.includes('@')) return Swal.fire('Error', 'Please fill email correctly', 'error')
+      if (!register.fName || !register.lName || !register.email || !register.password || !register.confirmPassword) {
+        return Swal.fire('Error', 'Please fill all the field', 'error')
+      } else if (!register.email.includes('@')) return Swal.fire('Error', 'Please fill email correctly', 'error')
       else if (register.password.length < 8)
         return Swal.fire('Error', 'Password must be at least 8 characters', 'error')
       else if (!register.password.match(/[0-9]/g))
@@ -35,9 +37,11 @@ export const SignUp = () => {
         return Swal.fire('Error', 'Password must contain at least one uppercase', 'error')
       else if (!register.password.match(/[a-z]/g))
         return Swal.fire('Error', 'Password must contain at least one lowercase', 'error')
-      else if (!register.password.match(/pattern/g))
+      else if (!register.password.match(/[^\w\s]/g))
         return Swal.fire('Error', 'Password must contain at least one special character', 'error')
       else if (register.password.includes(' ')) return Swal.fire('Error', 'Password cannot contain space', 'error')
+      else if (register.password !== register.confirmPassword)
+        return Swal.fire('Error', 'Password must match the confirm password', 'error')
       const createNewUser = {
         email: register.email,
         fName: register.fName,

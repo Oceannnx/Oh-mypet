@@ -32,7 +32,7 @@ export const PostList = (props) => {
             return (
               <Post
                 key={index}
-                userId={post.user._id}
+                userId={post.userID}
                 email={post.user.email}
                 fName={post.user.fName}
                 lName={post.user.lName}

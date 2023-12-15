@@ -24,7 +24,6 @@ export const MemberCard = (props) => {
         <div className="m-1">Name : {name}</div>
         <div className="m-1">Student ID : {studentID}</div>
         <div className="m-1">Position : {position}</div>
-        <div className="m-1">{position}</div>
         <a className="w-8 m-1" href={GitHubLink || ''}>
           <div className="flex">
             <img src="\src\assets\github-mark-c791e9551fe4\github-mark\github-mark.png"></img>
