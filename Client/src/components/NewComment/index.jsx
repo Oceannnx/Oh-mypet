@@ -38,19 +38,16 @@ export const NewComment = (props) => {
             ></img>
             <div className="hidden md:flex items-center">{auth?.authContext?.fName}</div>
           </div>
-
           <input
             placeholder="What do you think?"
             className="w-3/4 xl:p-3 border rounded xl:text-lg text-xs px-2 py-1"
             type="text"
-            onClick={handleOnchange}
+            name="comment"
+            onChange={handleOnchange}
           ></input>
-
-          <img
-            onClick={handleComment}
-            className="w-4 xl:w-8 round cursor-pointer"
-            src=".\src\assets\paper-plane.png"
-          ></img>
+          <button onClick={handleComment}>
+            <img className="w-4 xl:w-8 round cursor-pointer" src=".\src\assets\paper-plane.png"></img>
+          </button>
         </div>
       ) : (
         <div className="fixed bottom-5 left-1/2 -translate-x-1/2 rounded-lg text-lg flex bg-primaryColor px-5 py-1">

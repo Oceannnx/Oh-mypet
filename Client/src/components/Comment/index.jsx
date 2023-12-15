@@ -31,6 +31,9 @@ export const Comment = (props) => {
     })
     if (result.isConfirmed) {
       Swal.fire('Deleted!', 'Your comment has been deleted.', 'success')
+      setTimeout(() => {
+        window.location.reload()
+      }, 1500)
       try {
         await AxiosLib.delete(`api/deleteComment/${commentId}`)
       } catch (error) {
