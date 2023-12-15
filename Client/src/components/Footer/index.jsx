@@ -63,7 +63,7 @@ export const Footer = () => {
 
           <div className="flex my-4 justify-center ">
             <ul>
-              <h1 className="font-bold text-lg flex justify-center">Help</h1>
+              <h1 className="font-bold text-lg">Help</h1>
               <Link to="/contact">
                 <li className="py-2 group transition duration-300">
                   Contact Us
