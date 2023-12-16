@@ -1,16 +1,20 @@
 const express = require('express')
 const cors = require('cors')
-const { test } = require('./controller/test/test.js')
 require('dotenv').config()
-
 const app = express()
-const port = process.env.PORT || 3000
+const cookieParser = require('cookie-parser')
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+const port = process.env.PORT
+
+const { test } = require('./controller/test/test.js')
+const { authMe } = require('./controller/Auth/Auth.js')
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 })
 
 app.get('/', test)
+app.get('/api/user/me', authMe)
