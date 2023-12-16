@@ -4,11 +4,12 @@ const authMe = async (req, res) => {
   try {
     const client = await dbConnect()
     const userID = req.cookies.userID
+    if (userID === null || userID === '') {
+      return res.status(403).send({ message: '', success: false })
+    }
     const result = await client.query('SELECT * FROM user WHERE _id = ?', [userID])
-    if (result[0].length === 0) {
-      res.send({
-        message: 'No user found',
-      })
+    if (result[0].length === null) {
+      return res.status(403).send({ message: '', success: false })
     }
     return res.status(200).send({
       message: '',
