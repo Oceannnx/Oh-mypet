@@ -21,6 +21,7 @@ const { navAccount } = require('./controller/navAccount/navAccount.js')
 const { Account } = require('./controller/Account/Account.js')
 const { editAccount } = require('./controller/editAccount/editAccount.js')
 const { changePassword } = require('./controller/changePassword/changePassword.js')
+const { deletePost } = require('./controller/deletePost/deletePost.js')
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
@@ -38,3 +39,4 @@ app.get('/api/navaccount', navAccount)
 app.get('/api/account/:id', Account)
 app.post('/api/editAccount', editAccount)
 app.post('/api/changePassword', changePassword)
+app.post('/api/deletePost/:id', deletePost)
