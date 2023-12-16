@@ -21,7 +21,7 @@ const fetchSellPost = async (req, res) => {
     sp.petPostDate,
     u.fName,
     u.lName
-    FROM sellPost as sp join user as u on sp.userID = u._id`)
+    FROM sellPost as sp join user as u on sp.userID = u._id ORDER BY petPostDate DESC`)
     const MapSellPost = sellPost[0].map((item) => {
       return {
         _id: item._id,
