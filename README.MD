@@ -44,7 +44,7 @@
 
 **#ขั้นตอนการตั้งค่า Account**
  - user ต้องการตั้งค่า Account สามารถคลิกที่ชื่อ Account จะมีเมนูให้เลือก 2 อย่าง คือ Edit Profile กับ Change Password
- ![enter image description here](https://cdn.discordapp.com/attachments/1162453582235308224/1185095680784617584/image.png?ex=658e5d5c&is=657be85c&hm=290b3b75d79eb524b9f6430a43d2561383ace2e11830afbe46cdf246832f24bc&)
+ ![enter image description here](https://media.discordapp.net/attachments/599635854713028611/1185344618074742885/image.png?ex=658f4533&is=657cd033&hm=090ddb882f3873b21cfd4a987651a4fee47a75519dd7087481958fd1b9000e12&=&format=webp&quality=lossless&width=1398&height=701)
 
 
 **#ขั้นตอนการสร้างโพสต์**
