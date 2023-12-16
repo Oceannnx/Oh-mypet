@@ -45,6 +45,7 @@ export const Filter = () => {
                 fName={post.user.fName}
                 lName={post.user.lName}
                 title={post.title}
+                petType={post.petType}
                 price={post.petPrice}
                 location={post.petLocation}
                 petImage={post.petImages}
