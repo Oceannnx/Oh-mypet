@@ -16,6 +16,7 @@ const { Login } = require('./controller/Login/Login.js')
 const { newSellPost } = require('./controller/NewSellPost/NewSellPost.js')
 const { fetchSellPost } = require('./controller/FetchSellPost/FetchSellPost.js')
 const { sellPost } = require('./controller/SellPost/SellPost.js')
+const { Logout } = require('./controller/Logout/Logout.js')
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
@@ -23,6 +24,7 @@ app.listen(port, () => {
 
 app.get('/', test)
 app.get('/api/user/me', authMe)
+app.post('/api/user/logout', Logout)
 app.post('/signup', Signup)
 app.post('/login', Login)
 app.post('/api/newsellpost', newSellPost)
