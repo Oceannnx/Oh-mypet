@@ -68,6 +68,7 @@ export const MyAccount = (props) => {
         timer: 1500,
       })
     }
+    setAccount(tempAccount)
   }
   useEffect(() => {
     fetchAccount()
