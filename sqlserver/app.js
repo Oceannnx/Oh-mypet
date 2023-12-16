@@ -22,7 +22,7 @@ const { Account } = require('./controller/Account/Account.js')
 const { editAccount } = require('./controller/editAccount/editAccount.js')
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+  console.log(`Server is running on port ${port}`)
 })
 
 app.get('/', test)
