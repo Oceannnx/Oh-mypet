@@ -3,6 +3,10 @@ const { dbConnect } = require('../dbConnect/database.js')
 const fetchSellPost = async (req, res) => {
   try {
     const client = await dbConnect()
+    let paramsID = req.params.id
+    if (paramsID === 'me') {
+      paramsID = req.cookies.userID
+    }
     const sellPost = await client.query(`SELECT 
     sp._id,
     sp.userID,
@@ -19,6 +23,7 @@ const fetchSellPost = async (req, res) => {
     sp.petImages,
     sp.petDescription,
     sp.petPostDate,
+    u._id,
     u.fName,
     u.lName
     FROM sellPost as sp join user as u on sp.userID = u._id ORDER BY petPostDate DESC`)
@@ -39,6 +44,7 @@ const fetchSellPost = async (req, res) => {
         petDescription: item.petDescription,
         petPostDate: item.petPostDate,
         user: {
+          _id: item._id,
           fName: item.fName,
           lName: item.lName,
         },
