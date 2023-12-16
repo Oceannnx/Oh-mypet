@@ -2,9 +2,9 @@ const { dbConnect } = require('../dbConnect/database.js')
 
 const authMe = async (req, res) => {
   try {
-    const pool = await dbConnect()
+    const client = await dbConnect()
     const userID = req.cookies.userID
-    const result = await pool.query('SELECT * FROM user WHERE _id = ?', [userID])
+    const result = await client.query('SELECT * FROM user WHERE _id = ?', [userID])
     if (result[0].length === 0) {
       res.send({
         message: 'No user found',
