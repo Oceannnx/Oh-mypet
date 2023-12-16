@@ -389,43 +389,47 @@ app.post('/api/editAccount', async (req, res) => {
 })
 
 app.post('/api/changePassword', async (req, res) => {
-  const { currentPassword, newPassword, confirmPassword } = req.body
-  const result = await client
-    .db('oh-mypet')
-    .collection('user')
-    .aggregate([
-      {
-        $match: { _id: new ObjectId(req.cookies.userID) },
-      },
-      {
-        $project: {
-          _id: 0,
-          password: 1,
+  try {
+    const { currentPassword, newPassword, confirmPassword } = req.body
+    const result = await client
+      .db('oh-mypet')
+      .collection('user')
+      .aggregate([
+        {
+          $match: { _id: new ObjectId(req.cookies.userID) },
         },
-      },
-    ])
-    .toArray()
-  if (!(await bcrypt.compare(currentPassword, result[0].password))) {
-    return res.status(400).send({ message: 'Current password is incorrect', success: false })
-  } else if (newPassword !== confirmPassword) {
-    return res.status(400).send({ message: 'password must be the same', success: false })
-  } else if (currentPassword === '' || newPassword === '') {
-    return res.status(400).send({ message: 'Bad Request', success: false })
-  } else if (currentPassword === newPassword) {
-    return res.status(400).send({ message: 'New password must be different from current password', success: false })
+        {
+          $project: {
+            _id: 0,
+            password: 1,
+          },
+        },
+      ])
+      .toArray()
+    if (!(await bcrypt.compare(currentPassword, result[0].password))) {
+      return res.status(400).send({ message: 'Current password is incorrect', success: false })
+    } else if (newPassword !== confirmPassword) {
+      return res.status(400).send({ message: 'password must be the same', success: false })
+    } else if (currentPassword === '' || newPassword === '') {
+      return res.status(400).send({ message: 'Bad Request', success: false })
+    } else if (currentPassword === newPassword) {
+      return res.status(400).send({ message: 'New password must be different from current password', success: false })
+    }
+    await client
+      .db('oh-mypet')
+      .collection('user')
+      .updateOne(
+        { _id: new ObjectId(req.cookies.userID) },
+        {
+          $set: {
+            password: await bcrypt.hash(newPassword, 3),
+          },
+        },
+      )
+    return res.status(200).send({ success: true })
+  } catch (error) {
+    res.status(500).send({ success: false })
   }
-  await client
-    .db('oh-mypet')
-    .collection('user')
-    .updateOne(
-      { _id: new ObjectId(req.cookies.userID) },
-      {
-        $set: {
-          password: await bcrypt.hash(newPassword, 3),
-        },
-      },
-    )
-  return res.status(200).send({ success: true })
 })
 
 app.delete('/api/deletePost/:postID', (req, res) => {
