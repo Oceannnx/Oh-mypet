@@ -12,6 +12,7 @@ const port = process.env.PORT
 const { test } = require('./controller/test/test.js')
 const { authMe } = require('./controller/Auth/Auth.js')
 const { Signup } = require('./controller/Signup/Signup.js')
+const { Login } = require('./controller/Login/Login.js')
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
@@ -20,3 +21,4 @@ app.listen(port, () => {
 app.get('/', test)
 app.get('/api/user/me', authMe)
 app.post('/signup', Signup)
+app.post('/login', Login)
