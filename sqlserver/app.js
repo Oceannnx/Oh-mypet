@@ -29,6 +29,7 @@ const { fetchAdvPost } = require('./controller/fetchAdvPost/fetchAdvPost.js')
 const { newComment } = require('./controller/newComment/newComment.js')
 const { fetchComment } = require('./controller/fetchComment/fetchComment.js')
 const { deleteComment } = require('./controller/deleteComment/deleteComment.js')
+const { deleteAdvPost } = require('./controller/deleteAdvPost/deleteAdvPost.js')
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
@@ -54,3 +55,4 @@ app.get('/api/fetchAdvPost', fetchAdvPost)
 app.post('/api/newComment', newComment)
 app.get('/api/fetchComment/:id', fetchComment)
 app.delete('/api/deleteComment/:commentID', deleteComment)
+app.delete('/api/deleteAdvPost/:advPostID', deleteAdvPost)
