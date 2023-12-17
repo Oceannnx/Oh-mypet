@@ -2,7 +2,7 @@ import { Member } from '../../contents/Member/index'
 import { MemberCard } from '../../components/MemberCard'
 import { Footer } from '../../components/Footer'
 
-export const Contact = () => {
+export const Members = () => {
   return (
     <>
       <div className="text-5xl flex justify-center m-10">Member</div>

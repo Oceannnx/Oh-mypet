@@ -13,7 +13,7 @@ import { AuthContext, ContextValue } from './context/user'
 import { Advidence } from './page/Advidence'
 import { Filter } from './page/Filter'
 import { NewAvdPost } from './page/NewAvdPost'
-import { Contact } from './page/Contact'
+import { Members } from './page/Member'
 import { NotFound } from './page/NotFound'
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
           <Route path="/sellpost/:postId" element={<Sellpost />} />
           <Route path="/account/:id" element={<Profile />} />
           <Route path="/faq" element={<FAQ />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Members />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AuthContext.Provider>
