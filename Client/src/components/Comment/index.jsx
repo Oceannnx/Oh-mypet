@@ -87,7 +87,7 @@ export const Comment = (props) => {
           </div>
           <div className="text-sm">{comment}</div>
           {isOwner ? (
-            <div className="absolute top-2 right-2">
+            <div className="absolute top-4 right-4 hover:text-red-500 fill-current">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className=""
