@@ -26,6 +26,7 @@ const { fetchMySellPost } = require('./controller/fetchMySellPost/fetchMySellPos
 const { fetchFilterSellPost } = require('./controller/fetchFilterSellPost/fetchFilterSellPost.js')
 const { newAdvPost } = require('./controller/newAdvPost/newAdvPost.js')
 const { fetchAdvPost } = require('./controller/fetchAdvPost/fetchAdvPost.js')
+const { newComment } = require('./controller/newComment/newComment.js')
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
@@ -48,3 +49,4 @@ app.post('/api/deletePost/:id', deletePost)
 app.get('/api/fetchFilterSellPost/:animal', fetchFilterSellPost)
 app.post('/api/newAdvPost', newAdvPost)
 app.get('/api/fetchAdvPost', fetchAdvPost)
+app.post('/api/newComment', newComment)
