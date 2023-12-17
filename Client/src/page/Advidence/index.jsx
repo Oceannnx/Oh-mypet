@@ -42,6 +42,7 @@ export const Advidence = () => {
                     postDesc={advPost.postDesc}
                     title={advPost.title}
                     userId={advPost.user._id}
+                    email={advPost.user.email}
                     fName={advPost.user.fName}
                     lName={advPost.user.lName}
                     advPostID={advPost._id}

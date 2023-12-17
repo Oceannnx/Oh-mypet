@@ -616,3 +616,15 @@ app.delete('/api/deleteComment/:commentID', (req, res) => {
     res.status(500).send({ success: false })
   }
 })
+app.delete('/api/deleteAdvPost/:advPostID', (req, res) => {
+  try {
+    const advPostID = req.params.advPostID
+    client
+      .db('oh-mypet')
+      .collection('advPost')
+      .deleteOne({ _id: new ObjectId(advPostID) })
+    return res.status(200).send({ success: true })
+  } catch (error) {
+    res.status(500).send({ success: false })
+  }
+})
