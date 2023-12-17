@@ -25,7 +25,7 @@ export const AdvPost = (props) => {
   const handleOnClickUser = () => {
     navigate(`/account/${userId}`)
   }
-  const deleteComment = async () => {
+  const deleteAdvPost = async () => {
     const result = await Swal.fire({
       title: 'Are you sure?',
       text: 'You will not be able to recover this post!',
@@ -100,13 +100,17 @@ export const AdvPost = (props) => {
           <div className="text-base xl:text-2xl">{title}</div>
           <div className="text-sm xl:text-lg">{postDesc}</div>
           {isOwner ? (
-            <div className="absolute top-5 right-5">
-              <button
-                className="border-2 border-slate-100 bg-slate-100 rounded-full xl:px-2 xl:py-1 text-red-600 hover:bg-red-600 hover:text-white float-right mr-2 mb-2 text-xs xl:text-lg"
-                onClick={deleteComment}
+            <div className="absolute top-5 right-5 hover:text-red-500 fill-current">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className=""
+                viewBox="0 0 24 24"
+                width="24px"
+                height="24px "
+                onClick={deleteAdvPost}
               >
-                x
-              </button>
+                <path d="M 10 2 L 9 3 L 3 3 L 3 5 L 4.109375 5 L 5.8925781 20.255859 L 5.8925781 20.263672 C 6.023602 21.250335 6.8803207 22 7.875 22 L 16.123047 22 C 17.117726 22 17.974445 21.250322 18.105469 20.263672 L 18.107422 20.255859 L 19.890625 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 6.125 5 L 17.875 5 L 16.123047 20 L 7.875 20 L 6.125 5 z" />
+              </svg>
             </div>
           ) : (
             ''
