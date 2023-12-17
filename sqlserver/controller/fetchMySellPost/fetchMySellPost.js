@@ -8,7 +8,25 @@ const fetchMySellPost = async (req, res) => {
       paramsID = req.cookies.userID
     }
     const result = await client.query(
-      `select * from sellPost as sp join user as u on sp.userID = u._id where userID = "${paramsID}" order by petPostDate desc`,
+      `select
+      sp._id,
+      sp.userID as userID,
+      sp.title,
+      sp.petType,
+      sp.petGene,
+      sp.petAge,
+      sp.petName,
+      sp.petGender,
+      sp.petBD,
+      sp.petPrice,
+      sp.petLocation,
+      sp.petImages,
+      sp.petDescription,
+      sp.petPostDate,
+      u.email,
+      u.fName,
+      u.lName
+      from sellPost as sp join user as u on sp.userID = u._id where userID = "${paramsID}" order by petPostDate desc`,
     )
     const MapSellPost = result[0].map((item) => {
       return {
@@ -27,6 +45,7 @@ const fetchMySellPost = async (req, res) => {
         petDescription: item.petDescription,
         petPostDate: item.petPostDate,
         user: {
+          email: item.email,
           fName: item.fName,
           lName: item.lName,
         },
