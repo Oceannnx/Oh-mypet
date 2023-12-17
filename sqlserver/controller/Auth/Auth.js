@@ -7,7 +7,7 @@ const authMe = async (req, res) => {
     return res.status(403).send({ message: '', success: false })
   }
   const result = await client.query('SELECT * FROM user WHERE _id = ?', [userID])
-  if (result[0].length === null) {
+  if (result[0].length === 0) {
     return res.status(403).send({ message: '', success: false })
   }
   return res.status(200).send({
