@@ -29,7 +29,6 @@ const fetchAdvPost = async (req, res) => {
         },
       }
     })
-    console.log(result[0])
     return res.status(200).send(MapAdvPost)
   } catch (error) {
     console.log(error)
