@@ -38,6 +38,7 @@ export const PostList = (props) => {
                 lName={post.user.lName}
                 title={post.title}
                 price={post.petPrice}
+                petType={post.petType}
                 location={post.petLocation}
                 petImage={post.petImages}
                 postDate={post.petPostDate}
