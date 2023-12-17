@@ -33,7 +33,7 @@ export const NewAvdPost = () => {
           confirmButtonText: 'OK',
         })
         setTimeout(() => {
-          window.location.href = '/'
+          window.location.href = '/advidence'
         }, 1000)
       }
     } catch (error) {
