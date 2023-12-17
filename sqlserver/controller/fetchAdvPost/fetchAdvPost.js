@@ -3,7 +3,16 @@ const { dbConnect } = require('../dbConnect/database.js')
 const fetchAdvPost = async (req, res) => {
   try {
     const client = await dbConnect()
-    const result = await client.query('select * from advPost as ap join user as u on ap.userID = u._Id')
+    const result = await client.query(`select 
+    ap._id,
+    ap.title,
+    ap.postDesc,
+    ap.postDate,
+    u._id as userID,
+    u.email,
+    u.fName,
+    u.lName
+    from advPost as ap join user as u on ap.userID = u._id`)
     const MapAdvPost = result[0].map((item) => {
       return {
         _id: item._id,
@@ -20,6 +29,7 @@ const fetchAdvPost = async (req, res) => {
         },
       }
     })
+    console.log(result[0])
     return res.status(200).send(MapAdvPost)
   } catch (error) {
     console.log(error)
