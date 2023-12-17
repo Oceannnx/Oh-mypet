@@ -38,7 +38,7 @@ const fetchSellPost = async (req, res) => {
         petDescription: item.petDescription,
         petPostDate: item.petPostDate,
         user: {
-          userID: item.userID,
+          _id: item.userID,
           fName: item.fName,
           lName: item.lName,
         },
