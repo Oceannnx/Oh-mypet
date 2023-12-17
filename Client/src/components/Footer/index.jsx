@@ -66,7 +66,7 @@ export const Footer = () => {
               <h1 className="font-bold text-lg">Help</h1>
               <Link to="/contact">
                 <li className="py-2 group transition duration-300">
-                  Contact Us
+                  Member
                   <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                 </li>
               </Link>
