@@ -26,7 +26,7 @@ export const FAQ = () => {
   }, [])
   return (
     <>
-      <div className="grid md:grid-cols-[2fr_6fr] grid-cols-1 divide-x-4 divide-slate-300">
+      <div className="grid md:grid-cols-[2fr_6fr] grid-cols-1 divide-x-4 divide-slate-300 bg-secondaryColor">
         <div className="w-full my-6">
           <h1 className="text-center font-bold text-2xl ">คำถามที่ถูกถามบ่อย</h1>
           <div className="md:grid md:grid-cols-1 w-full md:mx-auto md:max-w-5xl grid-cols-1">
@@ -44,7 +44,7 @@ export const FAQ = () => {
           </div>
         </div>
         <div className="bg-secondaryColor h-screen w-auto flex justify-center">
-          <div className="m-6 p-12 w-full border">
+          <div className="m-6 p-12 w-full border border-gray-400">
             <div className="md:text-4xl text-2xl py-6">{label}</div>
             <div className="md:text-xl text-base">{parse(answer)}</div>
           </div>
