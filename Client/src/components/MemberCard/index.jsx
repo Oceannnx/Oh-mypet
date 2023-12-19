@@ -19,7 +19,7 @@ export const MemberCard = (props) => {
   } = props || ''
   return (
     <>
-      <div className="flex justify-center border flex-col w-fit p-10 mx-10 mb-5">
+      <div className="flex justify-center border flex-col w-fit p-10 mx-10 mb-5 bg-secondaryColor">
         <img className="w-64 mx-1 rounded-md " src={img}></img>
         <div className="m-1">Name : {name}</div>
         <div className="m-1">Student ID : {studentID}</div>

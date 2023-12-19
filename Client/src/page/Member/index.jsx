@@ -5,7 +5,7 @@ import { Footer } from '../../components/Footer'
 export const Members = () => {
   return (
     <>
-      <div className="text-5xl flex justify-center m-10">Member</div>
+      <div className="text-5xl flex justify-center m-10 text-blue-900">Member</div>
       <div className="grid grid-col-1 justify-items-center xl:flex xl:justify-center">
         {Member.map((member, index) => {
           return (
