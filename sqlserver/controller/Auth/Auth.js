@@ -16,6 +16,7 @@ const authMe = async (req, res) => {
     fName: result[0][0].fName,
     lName: result[0][0].lName,
     email: result[0][0].email,
+    profileImg: result[0][0].profileImg,
   })
 }
 

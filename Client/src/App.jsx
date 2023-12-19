@@ -22,7 +22,13 @@ function App() {
     try {
       const result = await AxiosLib.get('/api/user/me')
       if (result.status === 200) {
-        setAuthContext({ fName: result.data.fName, lName: result.data.lName, IsLogin: true, email: result.data.email })
+        setAuthContext({
+          fName: result.data.fName,
+          lName: result.data.lName,
+          IsLogin: true,
+          email: result.data.email,
+          profileImg: result.data.profileImg,
+        })
       }
     } catch (error) {
       setAuthContext({ fName: '', IsLogin: false, email: '' })
