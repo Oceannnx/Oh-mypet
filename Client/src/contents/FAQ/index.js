@@ -1,7 +1,20 @@
 export const FAQContents = [
   {
     label: 'สมาชิก',
-    content: '<div>-วิธีสมัครสมาชิกทำอย่างไร</div> <div className="bg-white-100">-ขั้นตอนการเข้าสู่ระบบ</div>',
+    content: [
+      {
+        question: 'วิธีสมัครสมาชิกทำอย่างไร',
+        ans: '<div>Hello</div><div>World</div>',
+      },
+      {
+        question: 'ขั้นตอนการเข้าสู่ระบบ',
+        ans: '5',
+      },
+      {
+        question: 'ฉันควรทำอย่างไร หากฉันลืมรหัสใช้งาน',
+        ans: '6',
+      },
+    ],
   },
   {
     label: 'เกี่ยวกับเว็บไซต์',

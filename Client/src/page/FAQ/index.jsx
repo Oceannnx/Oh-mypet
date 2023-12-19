@@ -2,6 +2,7 @@ import { FAQContents } from '../../contents/FAQ/index'
 import { FAQBox } from '../../components/FAQ/FAQBox'
 import { Footer } from '../../components/Footer'
 import { useEffect, useState } from 'react'
+import parse from 'html-react-parser'
 
 export const FAQ = () => {
   const [label, setLabel] = useState('')
@@ -45,7 +46,7 @@ export const FAQ = () => {
         <div className="bg-secondaryColor h-screen w-auto flex justify-center">
           <div className="m-6 p-12 w-full border">
             <div className="md:text-4xl text-2xl py-6">{label}</div>
-            <div className="md:text-xl text-base">{answer}</div>
+            <div className="md:text-xl text-base">{parse(answer)}</div>
           </div>
         </div>
       </div>
