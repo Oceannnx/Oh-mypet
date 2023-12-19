@@ -64,7 +64,7 @@ export const Sellpost = () => {
             </div>
             <divv className="flex flex-col p-5">
               <div className="grid grid-cols-2 divide-x-2">
-                <div className="xl:px-10 px-">
+                <div className="xl:px-10 px-4 border border-solid">
                   <div className="flex py-4 lg:text-xl text-sm">
                     <div className="pr-4">Title : </div>
                     <div>{sellpost[0].title}</div>
@@ -91,7 +91,7 @@ export const Sellpost = () => {
                     <div>{sellpost[0].petGender}</div>
                   </div>
                 </div>
-                <div className="xl:px-10 px-4">
+                <div className="xl:px-10 px-4 border border-solid border-t-2 border-b-2 border-blue-1">
                   <div className="flex py-4 lg:text-xl text-sm">
                     <div className="pr-4">Location : </div>
                     <div>{sellpost[0].petLocation}</div>
@@ -110,8 +110,8 @@ export const Sellpost = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex py-4 lg:text-xl text-sm">
-                <div className="pr-4">Description : </div>
+              <div className="flex py-4 lg:text-xl text-sm border  border-t-2 border-b-2 border-blue1">
+                <div className="pr-4 px-9">Description : </div>
                 <div>{sellpost[0].petDescription}</div>
               </div>
             </divv>
