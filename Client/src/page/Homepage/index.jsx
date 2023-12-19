@@ -28,7 +28,7 @@ export const Homepage = () => {
       ) : (
         <div className="bg-[#FFFDF3] py-[30px]">
           <div className="flex justify-center">
-            <div className="md:grid md:grid-cols-2 md:m-3 m-6 grid-cols-1 border rounded-lg border-gray-400 w-[1320px] bg-[#E0F1F5] drop-shadow-lg">
+            <div className="md:grid md:grid-cols-2 md:m-3 m-6 grid-cols-1 border border-solid border-gray-400 w-[1320px] bg-[#E0F1F5] drop-shadow-lg">
               <div className="flex justify-center items-center md:py-[200px] py-[25px] md:text-2xl text-xl text-blue-900">
                 <h1>WELCOME TO OH-MYPET</h1>
               </div>
