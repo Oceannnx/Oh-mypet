@@ -335,7 +335,7 @@ app.get('/api/fetchMySellPost/:id', async (req, res) => {
 
 app.post('/api/editAccount', async (req, res) => {
   try {
-    const { fName, lName, email, tel, line, facebook, twitter, instagram, address } = req.body
+    const { fName, lName, email, profileImg, tel, line, facebook, twitter, instagram, address } = req.body
     const result = await client
       .db('oh-mypet')
       .collection('user')
@@ -373,6 +373,7 @@ app.post('/api/editAccount', async (req, res) => {
             fName,
             lName,
             email,
+            profileImg,
             tel,
             facebook,
             line,
@@ -525,6 +526,7 @@ app.get('/api/fetchAdvPost', async (req, res) => {
             'user.lName': 1,
             'user.email': 1,
             'user._id': 1,
+            'user.profileImg': 1,
             title: 1,
             postDesc: 1,
             postDate: 1,
@@ -592,6 +594,7 @@ app.get('/api/fetchComment/:id', async (req, res) => {
             'user.lName': 1,
             'user.email': 1,
             'user._id': 1,
+            'user.profileImg': 1,
             comment: 1,
             commentDate: 1,
           },

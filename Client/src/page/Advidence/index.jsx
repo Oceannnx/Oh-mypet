@@ -45,6 +45,7 @@ export const Advidence = () => {
                     email={advPost.user.email}
                     fName={advPost.user.fName}
                     lName={advPost.user.lName}
+                    profileImg={advPost.user.profileImg}
                     advPostID={advPost._id}
                   />
                 )

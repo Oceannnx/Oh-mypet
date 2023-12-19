@@ -33,6 +33,7 @@ export const AllComment = (props) => {
             commentDate={comment.commentDate}
             fName={comment.user.fName}
             lName={comment.user.lName}
+            profileImg={comment.user.profileImg}
             userID={comment.user._id}
             email={comment.user.email}
           />

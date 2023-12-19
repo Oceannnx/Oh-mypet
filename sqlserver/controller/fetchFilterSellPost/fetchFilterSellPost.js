@@ -26,6 +26,7 @@ const fetchFilterSellPost = async (req, res) => {
         user: {
           fName: item.fName,
           lName: item.lName,
+          profileImg: item.profileImg,
         },
       }
     })

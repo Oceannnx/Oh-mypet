@@ -12,13 +12,15 @@ export const Comment = (props) => {
   const [isLoad, setIsLoad] = useState(false)
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
-  const { comment, commentId, commentDate, email, fName, lName, userID } = props || {
+  const { comment, commentId, commentDate, email, fName, lName, userID, profileImg } = props || {
     comment: '',
     commentDate: '',
     commentId: '',
     email: '',
     fName: '',
     lName: '',
+    userID: '',
+    profileImg: '',
   }
   const deleteComment = async () => {
     const result = await Swal.fire({
@@ -66,14 +68,17 @@ export const Comment = (props) => {
       setDate(date.toLocaleString('th-TH', { month: 'long', day: '2-digit', year: 'numeric' }))
     }
   }, [])
+  console.log(profileImg)
   return (
     <>
       {isLoad ? (
         <div className="border p-3 my-3 relative">
           <div className="flex pb-3">
             <img
-              className="xl:rounded-lg rounded w-5 h-5 xl:w-8 xl:h-8 cursor-pointer"
-              src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
+              className="xl:rounded-lg rounded w-5 h-5 xl:w-8 xl:h-8 cursor-pointer items-center object-cover "
+              src={
+                profileImg ? profileImg : `https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`
+              }
             ></img>
             <div className="">
               <div

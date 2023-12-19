@@ -11,8 +11,9 @@ const fetchAdvPost = async (req, res) => {
     u._id as userID,
     u.email,
     u.fName,
-    u.lName
-    from advPost as ap join user as u on ap.userID = u._id`)
+    u.lName,
+    u.profileImg
+    from advPost as ap join user as u on ap.userID = u._id order by ap.postDate desc`)
     const MapAdvPost = result[0].map((item) => {
       return {
         _id: item._id,
@@ -26,12 +27,12 @@ const fetchAdvPost = async (req, res) => {
           email: item.email,
           fName: item.fName,
           lName: item.lName,
+          profileImg: item.profileImg,
         },
       }
     })
     return res.status(200).send(MapAdvPost)
   } catch (error) {
-    console.log(error)
     return res.status(500).send({ success: false })
   }
 }

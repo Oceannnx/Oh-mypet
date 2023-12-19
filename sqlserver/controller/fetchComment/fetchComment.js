@@ -12,8 +12,9 @@ const fetchComment = async (req, res) => {
       u._id as userID,
       u.email,
       u.fName,
-      u.lName
-      FROM comment as co join user as u on co.userID = u._id  WHERE advPostID = '${param}' order by co.commentDate desc`,
+      u.lName,
+      u.profileImg
+      FROM comment as co join user as u on co.userID = u._id WHERE advPostID = '${param}' order by co.commentDate desc`,
     )
     const MapResult = result[0].map((item) => {
       return {
@@ -25,12 +26,12 @@ const fetchComment = async (req, res) => {
           email: item.email,
           fName: item.fName,
           lName: item.lName,
+          profileImg: item.profileImg,
         },
       }
     })
     return res.send(MapResult)
   } catch (error) {
-    console.log(error)
     res.status(500).send({ success: false })
   }
 }

@@ -8,19 +8,20 @@ import { AuthContext } from '../../context/user'
 export const Post = (props) => {
   const navigate = useNavigate()
   const auth = useContext(AuthContext)
-  const { userId, email, fName, lName, title, petType, price, location, petImage, postId, postDate } = props || {
-    userId: '',
-    email: '',
-    fName: '',
-    lName: '',
-    title: '',
-    petType: '',
-    price: '',
-    location: '',
-    petImage: '',
-    postId: '',
-    postDate: '',
-  }
+  const { userId, email, fName, lName, profileImg, title, petType, price, location, petImage, postId, postDate } =
+    props || {
+      userId: '',
+      email: '',
+      fName: '',
+      lName: '',
+      title: '',
+      petType: '',
+      price: '',
+      location: '',
+      petImage: '',
+      postId: '',
+      postDate: '',
+    }
   const [date, setDate] = useState('')
   const [isOwner, setIsOwner] = useState(false)
 
@@ -93,8 +94,8 @@ export const Post = (props) => {
         )}
         <div className="flex " onClick={handleOnClickUser}>
           <img
-            className="rounded-lg w-11 h-11 cursor-pointer"
-            src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
+            className="rounded-lg w-11 h-11 cursor-pointer items-center object-cover "
+            src={profileImg ? profileImg : `https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
           ></img>
           <div className="">
             <div className="grid items-center cursor-pointer w-fit font-bold text-lg ml-3">{fName + ' ' + lName}</div>

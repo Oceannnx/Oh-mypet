@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { AxiosLib } from '../../lib/axios'
 import Swal from 'sweetalert2'
 import { ChangePassword } from '../ChangePassword'
+import { uploadImage } from '../../lib/supabase'
 
 export const MyAccount = (props) => {
   const { accountID } = props || ''
@@ -10,6 +11,8 @@ export const MyAccount = (props) => {
   const [isOwner, setIsOwner] = React.useState(false)
   const [editAccount, setEditAccount] = React.useState(true)
   const [isLoad, setIsLoad] = React.useState(false)
+  const [image, setImage] = React.useState(null)
+  const [previewImage, setPreviewImage] = React.useState(null)
 
   const togglePassword = () => {
     setEditAccount(true)
@@ -26,7 +29,11 @@ export const MyAccount = (props) => {
       setAccount(result.data.data[0])
       setTempAccount(result.data.data[0])
       setIsOwner(result.data.is_owner)
+      setImage(result.data.data[0].profileImg)
       setIsLoad(true)
+      if (result.data.data[0].profileImg !== null) {
+        setPreviewImage(result.data.data[0].profileImg)
+      }
     } catch (error) {
       if (error.response.status === 403) {
         Swal.fire({
@@ -44,26 +51,45 @@ export const MyAccount = (props) => {
   }
   const handleChangeAccount = (e) => {
     setAccount({ ...account, [e.target.name]: e.target.value })
+    if (e.target.files) {
+      setPreviewImage(URL.createObjectURL(e.target.files[0]))
+    }
   }
   const handleSubmitAccount = async (e) => {
     e.preventDefault()
     try {
-      const result = await AxiosLib.post(`/api/editAccount`, account)
-      if (result.status === 200) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Edit Account Success',
-          showConfirmButton: false,
-          timer: 1500,
-        })
-        setTimeout(() => {
-          window.location.reload()
-        }, 1500)
+      if (tempAccount.profileImg !== image) {
+        const imagesURL = await uploadImage('profileImage', image)
+        const result = await AxiosLib.post(`/api/editAccount`, { ...account, profileImg: imagesURL })
+        if (result.status === 200) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Edit Account Success',
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          setTimeout(() => {
+            window.location.reload()
+          }, 1500)
+        }
+      } else {
+        const result = await AxiosLib.post(`/api/editAccount`, account)
+        if (result.status === 200) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Edit Account Success',
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          setTimeout(() => {
+            window.location.reload()
+          }, 1500)
+        }
       }
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: error.response.data.message || 'Error',
+        title: error.response || 'Error',
         showConfirmButton: false,
         timer: 1500,
       })
@@ -73,6 +99,8 @@ export const MyAccount = (props) => {
   useEffect(() => {
     fetchAccount()
   }, [])
+
+  console.log(tempAccount.profileImg === image)
   return (
     <>
       {!isLoad ? (
@@ -83,13 +111,28 @@ export const MyAccount = (props) => {
         <div className="w-full">
           {isOwner ? (
             <div className="grid xl:grid-cols-2 grid-cols-1 py-8">
-              <div className="flex justify-center items-center">
+              <div className="grid grid-cols-1 justify-items-center">
                 <img
-                  className="flex justify-center items-center rounded-lg mx-3 my-3 xl:w-1/2"
-                  src={`https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
-                    account.fName[0] + account.lName[0]
-                  }`}
+                  className="flex justify-center items-center object-cover rounded-lg mx-3 my-3 h-24 w-24 xl:h-60 xl:w-60"
+                  src={
+                    account.profileImg || previewImage
+                      ? previewImage
+                      : `https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
+                          account.fName[0] + account.lName[0]
+                        }`
+                  }
+                  alt="profile"
                 ></img>
+                <input
+                  type="file"
+                  onChange={(e) => {
+                    setImage(e.target.files[0])
+                    setPreviewImage(URL.createObjectURL(e.target.files[0]))
+                  }}
+                  name="profielImg"
+                  id="profielImg"
+                  accept="image/*"
+                />
               </div>
               <div>
                 <div className="grid xl:flex justify-items-center px-4 text-2xl xl:divide-x-2  ">

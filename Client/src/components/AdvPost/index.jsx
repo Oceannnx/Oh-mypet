@@ -12,7 +12,7 @@ export const AdvPost = (props) => {
   const auth = useContext(AuthContext)
   const [date, setDate] = useState('')
   const [isOwner, setIsOwner] = useState(false)
-  const { advPostID, postDate, postDesc, title, email, fName, lName, userId } = props || {
+  const { advPostID, postDate, postDesc, title, email, profileImg, fName, lName, userId } = props || {
     advPostID: '',
     postDate: '',
     postDesc: '',
@@ -20,6 +20,7 @@ export const AdvPost = (props) => {
     email: '',
     fName: '',
     lName: '',
+    profileImg: '',
     userId: '',
   }
   const handleOnClickUser = () => {
@@ -75,17 +76,17 @@ export const AdvPost = (props) => {
       setDate(date.toLocaleString('th-TH', { month: 'long', day: '2-digit', year: 'numeric' }))
     }
   }, [])
-  console.log(isOwner)
-  console.log(email)
-  console.log(auth?.authContext?.email)
+
   return (
     <>
       <div className="flex justify-center ">
         <div className="border-4 w-3/4 min-w-[33%] p-5 m-5 relative">
           <div className="flex pb-3">
             <img
-              className="rounded-lg w-7 xl:w-11 cursor-pointer"
-              src={`https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`}
+              className="rounded-lg w-7 xl:w-11 cursor-pointer items-center object-cover "
+              src={
+                profileImg ? profileImg : `https://avatar.vercel.sh/${fName + lName}.svg?text=${fName[0] + lName[0]}`
+              }
             ></img>
             <div className="">
               <div
@@ -115,7 +116,7 @@ export const AdvPost = (props) => {
           ) : (
             ''
           )}
-          <NewComment advPostID={advPostID} />
+          <NewComment advPostID={advPostID} profileImg={profileImg} />
           <AllComment advPostID={advPostID} />
         </div>
       </div>

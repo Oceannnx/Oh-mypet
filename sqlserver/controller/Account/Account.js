@@ -14,6 +14,7 @@ const Account = async (req, res) => {
     email,
     fName,
     lName,
+    profileImg,
     address,
     facebook,
     instagram,

@@ -19,7 +19,8 @@ const fetchSellPost = async (req, res) => {
     sp.petDescription,
     sp.petPostDate,
     u.fName,
-    u.lName
+    u.lName,
+    u.profileImg
     FROM sellPost as sp join user as u on sp.userID = u._id ORDER BY petPostDate DESC`)
     const MapSellPost = sellPost[0].map((item) => {
       return {
@@ -41,6 +42,7 @@ const fetchSellPost = async (req, res) => {
           _id: item.userID,
           fName: item.fName,
           lName: item.lName,
+          profileImg: item.profileImg,
         },
       }
     })

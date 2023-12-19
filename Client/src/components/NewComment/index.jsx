@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 
 export const NewComment = (props) => {
-  const { advPostID } = props || ''
+  const { advPostID, profileImg } = props || ''
   const auth = useContext(AuthContext)
   const [comment, setComment] = useState('')
   const handleOnchange = (e) => {
@@ -31,10 +31,14 @@ export const NewComment = (props) => {
         <div className="flex justify-evenly  items-center border p-2">
           <div className="grid grid-col-1 md:grid-cols-2 justify-items-center">
             <img
-              className="rounded w-5 h-5 xl:w-8 xl:h-8 cursor-pointer"
-              src={`https://avatar.vercel.sh/${auth?.authContext?.fName + auth?.authContext?.lName}.svg?text=${
-                auth?.authContext?.fName[0] + auth?.authContext?.lName[0]
-              }`}
+              className="rounded w-5 h-5 xl:w-8 xl:h-8 cursor-pointer items-center object-cover "
+              src={
+                profileImg
+                  ? profileImg
+                  : `https://avatar.vercel.sh/${auth?.authContext?.fName + auth?.authContext?.lName}.svg?text=${
+                      auth?.authContext?.fName[0] + auth?.authContext?.lName[0]
+                    }`
+              }
             ></img>
             <div className="hidden md:flex items-center">{auth?.authContext?.fName}</div>
           </div>

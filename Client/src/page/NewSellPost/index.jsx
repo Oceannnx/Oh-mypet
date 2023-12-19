@@ -55,7 +55,7 @@ export const NewSellPost = () => {
       return Swal.fire('Error', 'Please fill all the information', 'error')
     } else {
       try {
-        const imagesURL = await uploadImage(image)
+        const imagesURL = await uploadImage('post', image)
         const result = await AxiosLib.post('/api/newsellpost', { ...post, petImages: imagesURL })
         if (result.status === 201) {
           Swal.fire('Success', 'Post has been created', 'success')

@@ -50,6 +50,7 @@ export const Homepage = () => {
                   email={post.user.email}
                   fName={post.user.fName}
                   lName={post.user.lName}
+                  profileImg={post.user.profileImg}
                   title={post.title}
                   petType={post.petType}
                   price={post.petPrice}
