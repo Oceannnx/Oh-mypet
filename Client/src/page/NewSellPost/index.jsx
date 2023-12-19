@@ -140,7 +140,7 @@ export const NewSellPost = () => {
                     placeholder="Gene"
                     id="petGene"
                     name="petGene"
-                    className="border rounded-md border-gray-400order-solid h-10 w-20 px-2"
+                    className="border rounded-md border-gray-400 border-solid h-10 w-20 px-2"
                   />
                 </div>
                 <div>

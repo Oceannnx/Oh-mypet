@@ -10,6 +10,6 @@ export const FAQContents = [
   },
   {
     label: 'การดูเเลสัตว์',
-    content: '<div>-การดูเเลรักษาหมา</div> <div>-การดูเเลรักษาเเมว</div>',
+    content: '<div >-การดูเเลรักษาหมา</div> <div>-การดูเเลรักษาเเมว</div>',
   },
 ]

@@ -7,13 +7,14 @@ export const FAQ = () => {
     <>
       <div className="h-screen bg-[#FFFDF3] container mx-auto py-5">
         <h1 className="text-center font-bold text-2xl">คำถามที่ถูกถามบ่อย</h1>
-        <div className="md:grid md:grid-cols-3 md:mx-auto md:max-w-5xl grid-cols-1">
+        <div className="md:grid md:grid-cols-3 md:mx-auto md:max-w-5xl grid-cols-1 text-blue-900 underline cursor-pointer">
           {FAQContents.map((FAQContent, index) => {
             return (
               <FAQBox key={FAQContent.label + index} label={String(FAQContent.label)} content={FAQContent.content} />
             )
           })}
         </div>
+        <div></div>
       </div>
       <Footer />
     </>
