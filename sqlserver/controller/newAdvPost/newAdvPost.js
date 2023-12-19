@@ -19,7 +19,6 @@ const newAdvPost = async (req, res) => {
       success: true,
     })
   } catch (error) {
-    console.log(error)
     return res.status(500).send({ success: false })
   }
 }

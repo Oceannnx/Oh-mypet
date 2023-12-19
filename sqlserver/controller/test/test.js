@@ -4,7 +4,9 @@ const test = (req, res) => {
       message: 'Oh-MYPET',
     })
   } catch (err) {
-    console.log(err)
+    res.send({
+      message: err.message,
+    })
   }
 }
 

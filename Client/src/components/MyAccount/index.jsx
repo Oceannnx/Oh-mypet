@@ -100,7 +100,6 @@ export const MyAccount = (props) => {
     fetchAccount()
   }, [])
 
-  console.log(tempAccount.profileImg === image)
   return (
     <>
       {!isLoad ? (
