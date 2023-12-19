@@ -5,6 +5,7 @@ export const ContextValue = {
   lName: '',
   IsLogin: false,
   email: '',
+  profileImg: '',
 }
 
 export const AuthContext = createContext(null)

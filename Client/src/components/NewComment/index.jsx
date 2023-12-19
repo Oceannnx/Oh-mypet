@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 
 export const NewComment = (props) => {
-  const { advPostID, profileImg } = props || ''
+  const { advPostID } = props || ''
   const auth = useContext(AuthContext)
   const [comment, setComment] = useState('')
   const handleOnchange = (e) => {
@@ -33,8 +33,8 @@ export const NewComment = (props) => {
             <img
               className="rounded w-5 h-5 xl:w-8 xl:h-8 cursor-pointer items-center object-cover "
               src={
-                profileImg
-                  ? profileImg
+                auth?.authContext?.profileImg
+                  ? auth?.authContext?.profileImg
                   : `https://avatar.vercel.sh/${auth?.authContext?.fName + auth?.authContext?.lName}.svg?text=${
                       auth?.authContext?.fName[0] + auth?.authContext?.lName[0]
                     }`
