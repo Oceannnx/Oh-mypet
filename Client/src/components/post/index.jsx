@@ -75,7 +75,7 @@ export const Post = (props) => {
 
   return (
     <>
-      <div className="p-4 border rounded-md border-gray-400 bg-white drop-shadow-md hover:drop-shadow-2xl w-80 h-[472px] min-w-0 hover:scale-110 transition">
+      <div className="p-4 border rounded-md border-gray-400 bg-white drop-shadow-md hover:drop-shadow-2xl w-[80%] h-[472px] min-w-0 hover:scale-110 transition">
         {isOwner ? (
           <div className="absolute top-5 right-5 hover:text-red-500 fill-current">
             <svg
