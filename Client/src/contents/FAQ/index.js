@@ -4,11 +4,11 @@ export const FAQContents = [
     content: [
       {
         question: 'วิธีสมัครสมาชิกทำอย่างไร',
-        ans: '<div>1. คลิกที่คำสั่ง Sign Up ด้านบน ของหน้าเว็บ</div><div>2.กรอกข้อมูล ชื่อ นามสกุล E-mail Password จากนั้น กดปุ่ม Summit</div>',
+        ans: '<div>1. คลิกที่คำสั่ง Sign Up ด้านบน ของหน้าเว็บ</div><div>2.กรอกข้อมูล ชื่อ, นามสกุล, E-mail, Password จากนั้น กดปุ่ม Summit</div>',
       },
       {
         question: 'ขั้นตอนการเข้าสู่ระบบ',
-        ans: '<div>1. คลิปที่คำสั่ง Login ด้านบน ของหน้าเว็บ</div><div>2. กรอกข้อมูล E-mail เเละ Password ที่สมัครสมาชิกไว้</div><div>3. กดปุ่ม Summit</div>',
+        ans: '<div>1. คลิกที่คำสั่ง Login ด้านบน ของหน้าเว็บ</div><div>2. กรอกข้อมูล E-mail, เเละ Password, ที่สมัครสมาชิกไว้</div><div>3. กดปุ่ม Summit</div>',
       },
     ],
   },
