@@ -58,9 +58,13 @@ export const NewAvdPost = () => {
             <div className="flex  mb-4">
               <img
                 className="mx-3 rounded-lg w-11 h-11 cursor-pointer"
-                src={`https://avatar.vercel.sh/${auth?.authContext?.fName + auth?.authContext?.lName}.svg?text=${
-                  auth?.authContext?.fName[0] + auth?.authContext?.lName[0]
-                }`}
+                src={
+                  auth?.authContext.profileImg
+                    ? auth?.authContext.profileImg
+                    : `https://avatar.vercel.sh/${auth?.authContext?.fName + auth?.authContext?.lName}.svg?text=${
+                        auth?.authContext?.fName[0] + auth?.authContext?.lName[0]
+                      }`
+                }
               ></img>
               <div className="grid items-center cursor-pointer w-fit text-xl ml-3 ">
                 {auth?.authContext?.fName + ' ' + auth?.authContext?.lName}
