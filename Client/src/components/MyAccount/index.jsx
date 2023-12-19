@@ -249,11 +249,12 @@ export const MyAccount = (props) => {
                           >
                             Cancle
                           </button>
-                          <input
-                            className="btn bg-[#FFFDF3] text-green-400  hover:bg-green-400 hover:text-[#FFFDF3] py-1 my-2 mx-4"
-                            value="Confirm Edit"
+                          <button
+                            className="btn bg-[#FFFDF3] text-green-400 select-none hover:bg-green-400 hover:text-[#FFFDF3] py-1 my-2 mx-4"
                             onClick={handleSubmitAccount}
-                          />
+                          >
+                            Edit Profile
+                          </button>
                         </div>
                       </div>
                     </div>
