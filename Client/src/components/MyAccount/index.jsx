@@ -267,10 +267,14 @@ export const MyAccount = (props) => {
             <div className="grid justify-center">
               <div className="flex justify-center">
                 <img
-                  className="flex justify-center items-center rounded-lg mx-3 my-3"
-                  src={`https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
-                    account.fName[0] + account.lName[0]
-                  }`}
+                  className="flex justify-center items-center object-cover rounded-lg mx-3 my-3 h-24 w-24 xl:h-60 xl:w-60"
+                  src={
+                    account.profileImg
+                      ? account.profileImg
+                      : `https://avatar.vercel.sh/${account.fName + account.lName}.svg?text=${
+                          account.fName[0] + account.lName[0]
+                        }`
+                  }
                 ></img>
               </div>
               <div className="border rounded-md border-gray-400 py-5 w-fit bg-[#8ECDDD] drop-shadow-md ">
