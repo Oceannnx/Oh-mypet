@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/user'
 import { useState } from 'react'
 import { AxiosLib } from '../../lib/axios'
 import Swal from 'sweetalert2'
+import { Footer } from '../../components/Footer'
 
 export const NewAvdPost = () => {
   const auth = useContext(AuthContext)
@@ -89,6 +90,7 @@ export const NewAvdPost = () => {
           </div>
         </div>
       </form>
+      <Footer />
     </>
   )
 }

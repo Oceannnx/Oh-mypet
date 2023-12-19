@@ -5,6 +5,7 @@ import { AxiosLib } from '../../lib/axios'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/user'
 import { uploadImage } from '../../lib/supabase'
+import { Footer } from '../../components/Footer'
 
 export const NewSellPost = () => {
   const auth = useContext(AuthContext)
@@ -229,6 +230,7 @@ export const NewSellPost = () => {
       ) : (
         ''
       )}
+      <Footer />
     </>
   )
 }
