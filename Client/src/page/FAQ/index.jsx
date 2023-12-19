@@ -48,6 +48,7 @@ export const FAQ = () => {
             <div className="md:text-xl text-base">{answer}</div>
           </div>
         </div>
+        <div></div>
       </div>
       <Footer />
     </>
