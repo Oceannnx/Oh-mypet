@@ -53,7 +53,6 @@ const fetchMySellPost = async (req, res) => {
     })
     return res.status(200).send(MapSellPost)
   } catch (error) {
-    console.log(error)
     res.status(500).send({ success: false })
   }
 }

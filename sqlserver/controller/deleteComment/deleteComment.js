@@ -6,7 +6,6 @@ const deleteComment = async (req, res) => {
   try {
     await client.query(`DELETE FROM comment WHERE comment._id = '${commentID}'`)
   } catch (error) {
-    console.log(error)
     return res.status(500).json({ message: 'Something went wrong' })
   }
 }
