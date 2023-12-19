@@ -14,7 +14,6 @@ export const FAQ = () => {
             )
           })}
         </div>
-        <div></div>
       </div>
       <Footer />
     </>

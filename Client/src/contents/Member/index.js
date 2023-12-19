@@ -19,7 +19,7 @@ export const Member = [
     name: 'Naphatchanun Suechey',
     studentId: '65090500434',
     position: 'UX/UI',
-    img: 'https://cdn.pixabay.com/photo/2019/08/07/14/11/dog-4390885_1280.jpg',
+    img: 'src/assets/pichong.jpg',
     GithubLink: 'https://github.com/naphatchanun',
     Github: 'naphatchanun',
     FacebookLink: 'https://www.facebook.com/hongmini.suechey',
