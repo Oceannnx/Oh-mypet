@@ -68,7 +68,7 @@ export const Comment = (props) => {
       setDate(date.toLocaleString('th-TH', { month: 'long', day: '2-digit', year: 'numeric' }))
     }
   }, [])
-  console.log(profileImg)
+
   return (
     <>
       {isLoad ? (
